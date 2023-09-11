@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 효과</title>
+
+    <link rel="stylesheet" href="https://webfontworld.github.io/gmarket/GmarketSans.css">
+    <link rel="stylesheet" href="https://websfont.github.io/nanumSquareNeo/nanumSquareNeo.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <h1><a href="index.html">javascript</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="javascript01.html">데이터 저장하기</a></li>
+                    <li><a href="javascript02.html">데이터 불러오기</a></li>
+                    <li><a href="javascript03.html">데이터 실행하기</a></li>
+                    <li><a href="javascript04.html">데이터 제어하기</a></li>
+                </ul>
+                <ul>
+                    <li><a href="javascript05.html">문자열 객체</a></li>
+                    <li><a href="javascript06.html">배열 객체</a></li>
+                    <li><a href="javascript07.html">수학 객체</a></li>
+                    <li><a href="javascript08.html">브라우저 객체</a></li>
+                    <li><a href="javascript09.html">요소 객체</a></li>
+                    <li><a href="javascript10.html">이벤트 객체</a></li>
+                </ul>
+                <ul>
+                    <li class="active"><a href="javascript11.html">데이터 효과</a></li>
+                    <li><a href="javascript12.html">퀴즈 효과</a></li>
+                    <li><a href="javascript13.html">마우스 효과</a></li>
+                    <li><a href="javascript14.html">슬라이드 효과</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- //header -->
+
+        <main id="main">
+            <div class="main__menu">
+                <ul>
+                    <li><a href="#sample01">01. 1부터 10까지 출력하기(초기값0)</a></li>
+                    <li><a href="#sample02">02. 2부터 25까지 출력하기(초기값0)</a></li>
+                    <li><a href="#sample03">03. 1부터 20까지 출력하기(짝수만)(3가지)</a></li>
+                    <li><a href="#sample04">04. 1부터 20까지 출력하기(홀수만)(3가지)</a></li>
+                    <li><a href="#sample05">05. 1부터 100까지 출력하기(5의 배수)(3가지)</a></li>
+                    <li><a href="#sample06">06. 1부터 20까지 출력하기(짝수는 빨간색, 홀수는 파란색)(3가지)</a></li>
+                    <li><a href="#sample07">07. 배열 데이터 1부터 10까지 출력하기</a></li>
+                    <li><a href="#sample08">08. 구구단 출력하기(8단만 출력하기)</a></li>
+                    <li><a href="#sample09">09. 테이블 출력하기(5*5 출력하기)</a></li>
+                    <li><a href="#sample10">10. 테이블 출력하기(5*5 짝수만 나오게 출력하기)</a></li>
+                    <li><a href="#sample11">11. 테이블 출력하기(10*10 짝수는 빨간색, 홀수는 파란색 출력하기)</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#mission1">미션1</a></li>
+                    <li><a href="#mission2">미션2</a></li>
+                </ul>
+            </div>
+            <!-- //main__menu -->
+
+            <div class="main__sample"> 
+                <div id="sample01" class="sample">
+                    <h3>01. 1부터 10까지 출력하기(초기값0)</h3>
+                    <p>for()문을 이용하여 1부터 10까지 출력하는 예제입니다.</p>
+<pre class="line-numbers"><code class="language-js">{
+        for(let i=0; i&lt;10; i++){
+                console.log(i);
+        }    
+}
+</code></pre>
+                    <p class="desc">
+                        1. for 키워드로 시작하여 루프를 초기화합니다. 루프 변수 i를 0으로 초기화하고, i가 10보다 작을 때까지 반복하며, 
+                        반복이 한 번씩 실행될 때마다 i를 1씩 증가시킵니다.<br>
+
+                        2. 각 반복에서 {} 중괄호 안에 있는 코드 블록이 실행됩니다. 
+                        여기서는 console.log(i);를 통해 현재 i의 값을 출력합니다.<br>
+
+                        3. 첫 번째 반복에서 i의 값은 0이므로 0이 출력됩니다.<br>
+
+                        4. 두 번째 반복에서 i의 값은 1이므로 1이 출력됩니다.<br>
+
+                        5. 이와 같이 반복하면서 9까지의 숫자가 차례대로 출력됩니다.<br>
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    for(let i=0; i<10; i++){
+                                        document.write(i+"<br>");
+                                    }   
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample01 -->
+
+                <div id="sample02" class="sample">
+                    <h3>02. 2부터 25까지 출력하기(초기값0) </h3>
+                    <p>for()문을 이용해서 2부터 25까지 출력하는 예제입니다. </p>
+<pre class="line-numbers"><code class="language-js">{
+        for(let i=0; i&lt;24; i++){
+            console.log(i+2);
+        }
+}
+</code></pre>
+                    <p class="desc">
+                        01. i 변수가 0부터 시작하여 23까지 증가하면서 반복문을 실행합니다.<br>
+                        02. 각 반복에서 i에 2를 더한 값을 계산합니다.<br>
+                        03. console.log() 함수를 사용하여 계산된 값을 출력합니다.<br>
+                        04. 끝날 때까지 위 과정을 반복합니다.<br>
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    for(let i=0; i<24; i++){
+                                        document.write(i+2+"<br>");
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample02 -->
+
+                <div id="sample03" class="sample">
+                    <h3>03. 1부터 20까지 출력하기(짝수만)(3가지) </h3>
+                    <p>1부터 20까지 짝수만 출력하는 3가지 예제입니다. </p>
+<pre class="line-numbers"><code class="language-js">{
+        // for()문
+        for(let i=2; i&lt;=20; i+=2){
+            console.log(i);
+        }
+
+        // while()문
+        let i = 2;
+        while (i &lt;= 20){
+            console.log(i);
+            i += 2;
+        }
+
+        // for()문 + if()문
+        for(let i=1; i&lt;=20; i++){
+            if(i % 2 == 0){
+                console.log(i);
+            }
+        }
+}
+</code></pre>
+                    <p class="desc">
+                        01. 첫번째 코드블록:<br>
+                        
+                            - for 반복문을 사용하여 2부터 시작해서 20까지의 짝수를 출력합니다.<br>
+                            - i 변수가 2부터 시작하여 2씩 증가하면서 반복합니다.<br>
+                            - document.write(i)를 통해 값을 출력하고, 이 동작을 끝날때까지 반복합니다.<br>
+                        
+                        02. 두번째 코드블록:<br>
+                        
+                            - while 반복문을 사용하여 2부터 시작해서 20 이하의 짝수를 출력합니다.<br>
+                            - i 변수가 2부터 시작하여 2씩 증가하면서 반복합니다.<br>
+                            - console.log(a)를 통해 값을 출력하고, 이 동작을 끝날때까지 반복합니다.<br>
+                        
+                        03. 세번째 코드블록:<br>
+                        
+                            - for 반복문을 사용하여 1부터 시작해서 20까지의 모든 숫자를 검사합니다.<br>
+                            - i % 2 == 0 조건을 통해 짝수인지를 검사하고, 짝수일 때만 값을 출력하며, 이 동작을 끝날떄까지
+                            반복합니다.<br>                                                   
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    {
+                                        for(let i=2; i<=20; i+=2){
+                                            document.write(i+"<br>");
+                                        }
+                                    }
+                                    {
+                                        let i = 2;
+                                        while (i <= 20){
+                                            document.write(i+"<br>");
+                                            i += 2;
+                                        }
+                                    }
+                                    {
+                                        for(let i=1; i<=20; i++){
+                                            if(i % 2 == 0){
+                                                document.write(i+"<br>");
+                                            }
+                                        } 
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample03 -->
+
+                <div id="sample04" class="sample">
+                    <h3>04. 1부터 20까지 출력하기(홀수만)(3가지) </h3>
+                    <p>1부터 20까지 홀수만 출력하는 3가지 예제입니다. </p>
+<pre class="line-numbers"><code class="language-js">{
+        // for()문
+        for(let i=1; i&lt;20; i+=2){
+            console.log(i);
+        }
+
+        // while()문
+        let i = 1;
+            while (i &lt; 20){
+                console.log(i);
+                i += 2;
+            }
+
+        // for()문 + if()문
+        for(let i=1; i&lt;20; i++){
+            if(i % 2 == 1){
+                console.log(i);
+            }
+        }
+}
+</code></pre>
+                    <p class="desc">
+                        01. 첫번째 코드블록:<br>
+                        
+                            - for 반복문을 사용하여 1부터 시작해서 20까지 숫자중 홀수를 출력합니다.<br>
+                            - i 변수가 1부터 시작하여 2씩 증가하면서 반복합니다.<br>
+                            - document.write(i)를 통해 값을 출력하고, 이 동작을 끝날때까지 반복합니다.<br>
+                        
+                        02. 두번째 코드블록:<br>
+                        
+                            - while 반복문을 사용하여 2부터 시작해서 20 이하의 홀수를 출력합니다.<br>
+                            - i 변수가 1부터 시작하여 2씩 증가하면서 반복합니다.<br>
+                            - console.log(i)를 통해 값을 출력하고, 이 동작을 끝날때까지 반복합니다.<br>
+                        
+                        03. 세번째 코드블록:<br>
+                        
+                            - for 반복문을 사용하여 1부터 시작해서 20까지의 모든 숫자를 검사합니다.<br>
+                            - i % 2 == 1 조건을 통해 홀수인지를 검사하고, 홀수일 때만 값을 출력하며, 이 동작을 끝날떄까지
+                            반복합니다.<br>                     
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    {
+                                        for(let i=1; i<20; i+=2){
+                                            document.write(i+"<br>");
+                                        }
+                                    }
+                                    {
+                                        let i = 1;
+                                        while (i < 20){
+                                            document.write(i+"<br>");
+                                            i += 2;
+                                        }
+                                    }
+                                    {
+                                        // for()문 + if()문
+                                        for(let i=1; i<20; i++){
+                                            if(i % 2 == 1){
+                                                document.write(i+"<br>");
+                                            }
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample04 -->
+
+                <div id="sample05" class="sample">
+                    <h3>05. 1부터 100까지 출력하기(5의 배수)(3가지) </h3>
+                    <p> </p>
+<pre class="line-numbers"><code class="language-js">{
+        // for()문
+        for(let i=1; i&lt;=20; i++){
+            console.log(i*5);
+        }
+
+        // while()문
+        let i = 5;
+            while(i&lt;=100){
+                console.log(i);
+                i += 5;
+            }
+
+        // for()문 + if()문
+        for(let i=1; i&lt;=100; i++){
+                if(i % 5 == 0){
+                    console.log(i);
+                }
+            }
+}
+</code></pre>
+                    <p class="desc">
+                        첫 번째 코드 블록:<br>
+
+                            - for 반복문을 사용하여 1부터 시작해서 20 이하의 숫자에 5를 곱한 값을 출력합니다.<br>
+                            - i 변수가 1부터 시작하여 1씩 증가하면서 반복합니다.<br>
+                            - console.log(i * 5)를 통해 값을 출력하고, 끝날때까지 반복합니다.<br>
+
+                        두 번째 코드 블록:<br>
+
+                            -while 반복문을 사용하여 5부터 시작해서 100 이하의 숫자 중 5의 배수를 출력합니다.<br>
+                            -i 변수가 5부터 시작하여 5씩 증가하면서 반복합니다.<br>
+                            -console.log(i)를 통해 값을 출력하고, 끝날때까지 반복합니다.<br>
+
+                        세 번째 코드 블록:<br>
+
+                            -for 반복문을 사용하여 1부터 시작해서 100 이하의 모든 숫자를 검사합니다.<br>
+                            -i % 5 == 0 조건을 통해 5의 배수인지를 검사하고, 5의 배수일 때만 값을 출력하며, 끝날때까지 반복합니다.<br>
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    {
+                                        for(let i=1; i<=20; i++){
+                                            document.write(i*5+"<br>");
+                                        }
+                                    }
+                                    {
+                                        let i = 5;
+                                            while(i<=100){
+                                                document.write(i+"<br>");
+                                                i += 5;
+                                            }
+                                    }
+                                    {
+                                        for(let i=1; i<=100; i++){
+                                                if(i % 5 == 0){
+                                                    document.write(i+"<br>");
+                                                }
+                                            }
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample05 -->
+
+                <div id="sample06" class="sample">
+                    <h3>06. 1부터 20까지 출력하기(짝수는 빨간색, 홀수는 파란색) </h3>
+                    <p>1부터 20까지 출력하는데 짝수는 빨간색, 홀수는 파란색으로 출력하는 예제입니다. </p>
+<pre class="line-numbers"><code class="language-js">{
+        for(let i=1; i&lt;=20; i++){
+            if (i % 2 == 0){
+                document.write('&lt;span style="color: red;"&gt;' + i + '&lt;/span&gt;&lt;br&gt;')
+            } else {
+                document.write('&lt;span style="color: blue;"&gt;' + i + '&lt;/span&gt;&lt;br&gt;')
+            }
+        }
+}
+</code></pre>
+                    <p class="desc">
+                        1. for 반복문을 사용하여 1부터 20까지의 숫자를 반복합니다.<br>
+                        2. 각 숫자 i에 대해 i % 2 == 0 조건을 사용하여 숫자가 짝수인지 검사합니다.<br>
+                        3.만약 짝수라면 span 태그를 사용하여 빨간색 텍스트로 숫자를 출력하고,
+                        홀수라면 파란색 텍스트로 숫자를 출력합니다.  
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    for(let i=1; i<=20; i++){
+                                        if (i % 2 == 0){
+                                            document.write('<span style="color: red;">' + i + '</span><br>')
+                                        } else {
+                                            document.write('<span style="color: blue;">' + i + '</span><br>')
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample06 -->
+
+                <div id="sample07" class="sample">
+                    <h3>07. 배열 데이터 1부터 10까지 출력하기 </h3>
+                    <p>배열 데이터를 1부터 10까지 출력하는 예제입니다. </p>
+<pre class="line-numbers"><code class="language-js">{
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        for(let i=0; i&lt;arr.length; i++){
+            console.log(arr[i])
+        }
+}
+</code></pre>
+                    <p class="desc">
+                        1.배열 arr에는 10개의 요소가 들어있으므로, for 반복문은 0부터 시작하여 
+                        배열의 길이(arr.length)보다 작을 때까지 반복됩니다.<br>
+
+                        2.각 반복마다 arr[i]를 통해 배열의 i번째 요소에 접근하고, 
+                        console.log()를 사용하여 해당 요소를 출력합니다.<br>
+
+                        3.끝날때 까지 반복하며 결과적으로 배열의 모든 데이터가 출력됩니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+                                    for(let i=0; i<arr.length; i++){
+                                        document.write(arr[i]+"<br>")
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample07 -->
+
+                <div id="sample08" class="sample">
+                    <h3>08. 구구단 출력하기(8단만 출력하기) </h3>
+                    <p>for()문을 이용하여 구구단 8단을 출력하는 예제입니다. </p>
+<pre class="line-numbers"><code class="language-js">{
+        for(let i=8; i&lt;9; i++){
+            console.log(i+"단");
+            for(let j=1; j&lt;=9; j++){
+                console.log(i+" * "+j+" = "+(i*j));
+            }
+        }
+}
+</code></pre>
+                    <p class="desc">
+                        1. 바깥쪽 반복문은 8을 1회만 반복합니다.<br>
+
+                        2. "8단"을 출력합니다.<br>
+
+                        3.내부 반복문은 1부터 9까지 반복하면서 구구단 계산을 i * j로 하여 출력합니다.<br>
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    for(let i=8; i<9; i++){
+                                        document.write(i+"단"+"<br>");
+                                        for(let j=1; j<=9; j++){
+                                            document.write(i+" * "+j+" = "+(i*j)+"<br>");
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample08 -->
+
+                <div id="sample09" class="sample">
+                    <h3>09. 테이블 출력하기(5*5 출력하기)</h3>
+                    <p>5*5 테이블 출력하는 예제입니다. </p>
+<pre class="line-numbers"><code class="language-js">{
+    let table = "&lt;table class='table'&gt;";
+    let num = 1;
+
+    for(let i=1; i&lt;=5; i++){
+        table += "&lt;tr&gt;";
+
+        for(let j=1; j&lt;=5; j++){
+            table += "&lt;td&gt;";
+            table += num;                                               
+            table += "&lt;/td&gt;";
+            num++;
+
+        }
+        table += "&lt;/tr&gt;";
+    }
+
+    table += "&lt;/table&gt;";
+
+    document.write(table);
+}
+</code></pre>
+                    <p class="desc">
+                        1. table 변수를 선언하고 num변수의 초깃값을 1로 선언한다.<br>
+
+                        2. for문을 이용해 tr태그로 5개의 행과 열을 만듭니다.<br>
+
+                        3. 중첩 for문을 이용해 5개의 열을 만들고, td태그로 데이터를 추가하며 num의 값을 1씩 증가시킵니다.<br>
+
+                        4. 이 동작이 끝나면 마지막으로 테이블을 닫고 화면에 출력합니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    {
+                                        let table = "<table class='table'>";
+                                        let num1 = 1;
+
+                                        for(let i=1; i<=5; i++){
+                                            table += "<tr>";
+
+                                            for(let j=1; j<=5; j++){
+                                                table += "<td>";
+                                                table += num1;                                               
+                                                table += "</td>";
+                                                num1++;
+                            
+                                            }
+
+                                            table += "</tr>";
+                                        }
+
+                                            table += "</table>";
+
+                                            document.write(table);
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample09 -->
+
+                <div id="sample10" class="sample">
+                    <h3>10. 테이블 출력하기(5*5 짝수만 나오게 출력하기)</h3>
+                    <p>5*5 테이블 짝수만 나오게 출력하는 예제입니다. </p>
+<pre class="line-numbers"><code class="language-js">{
+    let table = "&lt;table class='table'&gt;";
+        let num1 = 1;
+
+        for(let i=1; i&lt;=5; i++){
+            table += "&lt;tr&gt;";
+
+            for(let j=1; j&lt;=5; j++){
+                table += "&lt;td&gt;";
+                if(num1 % 2 == 0){
+                    table += num1;
+                }
+                table += "&lt;/td&gt;";
+                num1++;
+
+            }
+            table += "&lt;/tr&gt;";
+        }
+
+            table += "&lt;/table&gt;";
+
+            document.write(table);
+}
+</code></pre>
+                    <p class="desc">
+                            1. table 변수를 선언하고, 테이블의 시작 태그 를 문자열로 초기화합니다.<br>
+                            
+                            2. num1 변수를 선언하고, 초기값을 1로 설정합니다. 이 변수는 테이블 셀에 출력할 숫자를 나타냅니다.<br>                           
+                            
+                            3. 외부 반복문을 시작합니다. i 변수는 1부터 5까지 증가합니다. 이 반복문은 5개의 행을 생성합니다.<br>                          
+                            
+                            4. 각 행의 시작 태그 tr를 테이블 문자열에 추가합니다.<br>                        
+                        
+                            5. 내부 반복문을 시작합니다. j 변수는 1부터 5까지 증가합니다.<br>                          
+                            
+                            6. 각 셀의 시작 태그 td를 테이블 문자열에 추가합니다.<br>                           
+                            
+                            7. 현재 숫자인 num1 값을 테이블 문자열에 추가합니다. <br>                           
+                            
+                            8. 각 셀의 끝 태그 /td를 테이블 문자열에 추가합니다. <br>                          
+                            
+                            9. num1 값을 1 증가시켜 다음 숫자를 준비합니다.<br>                            
+                            
+                            10. 각 행의 끝 태그 /tr를 테이블 문자열에 추가합니다.<br>                          
+                            
+                            11. 5개의 행을 생성한 후, 외부 반복문을 종료합니다.<br>                            
+                            
+                            12. 테이블의 끝 태그를 테이블 문자열에 추가합니다.<br>  
+                            
+                            13. document.write() 함수를 사용하여 동적으로 테이블을 문서에 추가합니다.<br>
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    {
+                                        let table = "<table class='table'>";
+                                        let num1 = 1;
+
+                                        for(let i=1; i<=5; i++){
+                                            table += "<tr>";
+
+                                            for(let j=1; j<=5; j++){
+                                                table += "<td>";
+                                                if(num1 % 2 == 0){
+                                                    table += num1;
+                                                }
+                                                table += "</td>";
+                                                num1++;
+                            
+                                            }
+
+                                            table += "</tr>";
+                                        }
+
+                                            table += "</table>";
+
+                                            document.write(table);
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample10 -->
+
+                <div id="sample11" class="sample">
+                    <h3>11. 테이블 출력하기(10*10 짝수는 빨간색, 홀수는 파란색 출력하기)</h3>
+                    <p>10*10 테이블 출력하는데 짝수는 빨간색, 홀수는 파란색으로 출력하는 예제입니다. </p>
+<pre class="line-numbers"><code class="language-js">{
+    let table = "&lt;table class='table'>";
+        let num = 1;
+
+        for(let i=1; i&lt;=10; i++){
+            table += "&lt;tr&gt;";
+            for(let j=1; j&lt;=10; j++){
+                table += "&lt;td&gt;";
+                if(num % 2 == 0){
+                    table += "&lt;span style='color:red'&gt;"+num+"&lt;/span&gt;";
+                } else {
+                    table += "&lt;span style='color:blue'&gt;"+num+"&lt;/span&gt;";
+                }
+                table += "&lt;/td&gt;";
+                num++;                                            
+            }
+            table += "&lt;/tr&gt;";
+        }
+        table += "&lt;/table&gt;";
+        document.write(table);
+}
+</code></pre>
+                    <p class="desc">
+                        1. table을 선언하고 num의 초깃값을 1로 선언합니다. <br>
+                        
+                        2. for문을 이용해 각 행을 만들고, 중첩 for문을 이용해 반복되는 데이터를 만듭니다. <br>
+
+                        3. if문과 span style태그를 이용해 num의 값이 짝수면 빨간색, 홀수면 파란색으로 출력되게합니다.<br>
+
+                        4. 한 번 반복이 끝날떄마다 num의 값을 1씩 증가시킵니다.<br>
+
+                        5. 반복이 끝나면 마지막으로 table을 닫고, 화면에 출력합니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    {
+                                        let table = "<table class='table'>";
+                                        let num = 1;
+
+                                        for(let i=1; i<=10; i++){
+                                            table += "<tr>";
+                                            for(let j=1; j<=10; j++){
+                                                table += "<td>";
+                                                if(num % 2 == 0){
+                                                    table += "<span style='color:red'>"+num+"</span>";
+                                                } else {
+                                                    table += "<span style='color:blue'>"+num+"</span>";
+                                                }
+                                                table += "</td>";
+                                                num++;                                            
+                                            }
+                                            table += "</tr>";
+                                        }
+                                        table += "</table>";
+                                        document.write(table);
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample11 -->
+
+                <div id="mission1" class="sample">
+                    <h3>미션1 : 구구단 5단 만들기</h3>
+                    <p>while문을 이용하여 구구단 중 5단을 출력하는 코드입니다.</p>
+<pre class="line-numbers"><code class="language-js">{
+    var i = 1;
+    while(i&lt;10){
+        document.write("5X"+i+"="+i*5,"&lt;br&gt;");
+        i++
+    }    
+}
+</code></pre>
+                    <p class="desc">
+                        1. var i = 1;: 변수 i를 1로 초기화합니다. 이 변수는 루프에서 사용되며, 1부터 9까지의 숫자를 나타냅니다.<br>
+
+                        2. while 루프를 시작합니다. 이 루프는 i가 10보다 작을 때 계속 실행됩니다.<br>
+
+                        3. 루프 내부에서는 document.write 함수를 사용하여 화면에 출력합니다.<br>
+
+                        4. i 값을 1씩 증가시킵니다. 이렇게 하면 다음 숫자에 대한 5의 배수를 계산하고 출력합니다.<br>
+
+                        5. 루프는 i가 10보다 작을 때까지 반복됩니다. 즉, 1부터 9까지의 숫자에 대한 5의 배수가 출력됩니다.<br>
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    var i = 1;
+                                    while(i<10){
+                                        document.write("5X"+i+"="+i*5,"<br>");
+                                        i++
+                                    }
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //mission1 -->
+
+                <div id="mission2" class="sample">
+                    <h3>미션2 : 5행 5열표 만들기</h3>
+                    <p>5행 5열 표를 만들고, 데이터가 1부터 25까지 출력되도록하는 코드입니다.</p>
+<pre class="line-numbers"><code class="language-js">{
+    var num=1;
+    var t="&lt;table border=1&gt;";
+    
+    for(var i=1; i&lt;=5; i++){
+        t+="&lt;tr&gt;";
+        for(var k=1; k&lt;=5; k++){
+            t+="&lt;td&gt;"+num+"&lt;/td&gt;";
+            num++
+        }
+        t+="&lt;/tr&gt;";
+    }
+
+    t+="&lt;/table&gt;";
+    console.log(t);
+    document.write(t);
+}
+</code></pre>
+                    <p class="desc">
+                        1. var num = 1;: 숫자를 초기화합니다.<br>
+
+                        2. 문자열 t를 초기화하여 HTML 테이블을 시작합니다. border=1은 테이블에 테두리를 추가하는 HTML 속성입니다.<br>
+
+                        3. 바깥쪽 for 루프는 5번 반복됩니다.  이 루프는 표의 각 행을 생성합니다.<br>
+
+                        4. 안쪽 for 루프는 5번 반복됩니다. 이 루프는 각 행에 5개의 열을 추가합니다.<br>
+
+                        5. 현재의 num 값을 셀로 추가합니다. num은 1씩 증가됩니다.<br>
+
+                        6. 각 행을 닫고, 바깥쪽 for 루프를 통해 5개의 행을 생성합니다.<br>
+
+                        7. 마지막으로 HTML 테이블을 닫습니다.<br>
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                <script>
+                                    var num=1;
+                                    var t="<table border=1>";
+                                    for(var i=1; i<=5; i++){
+                                        t+="<tr>";
+                                        for(var k=1; k<=5; k++){
+                                            t+="<td>"+num+"</td>";
+                                            num++
+                                        }
+
+                                        t+="</tr>";
+                                    }
+
+                                    t+="</table>";
+                                    console.log(t);
+                                    document.write(t);
+                                </script>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //mission2 -->
+                
+            </div>
+            <!-- //main__sample -->
+        </main>
+        <!-- //main -->
+
+        <footer id="footer">
+            <a href="mailto:rlanrider77@gmail.com">rlanrider77@gmail.com</a>
+        </footer>
+        <!-- //footer -->
+        
+        <!-- script -->
+        <script src="../assets/js/prism.js"></script>
+
+        <script>
+            // 1~100까지 출력 for()
+            {
+                for(i=1; i<=100; i++){
+                    console.log(i);
+                }
+            }
+
+            // 1부터 100까지의 합
+            {
+                let sum = 0;
+                for(i=1; i<=100; i++){
+                    sum += i;
+                }
+                console.log(sum);
+            }
+            // 5단 구하기
+            {
+                for(i=1; i<2; i++){
+                    console.log("5단");
+                    for(j=1; j<=9; j++){
+                        console.log("5"+"X"+j+"="+(5*j));
+                    }
+                }
+            }
+            // 99단
+            {
+                for(let i=2; i<=9; i++){
+                    for(let j=1; j<=9; j++){
+                        console.log(i + " X " + j + "=" + i*j)
+                    }
+                }
+            }
+
+            // 테이블 만들기
+            {
+                let table = "<table>";
+                
+                document.write(table);
+            }
+        </script>
+
+        
+    </div>
+</body>
+</html>
+                

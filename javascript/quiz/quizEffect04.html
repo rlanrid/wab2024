@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 이펙트04</title>
+
+    <link rel="stylesheet" href="assets/css/quiz.css">
+    <link rel="stylesheet" href="assets/css/ani.css">
+    <style>
+        .quiz__score {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            width: 70px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 10px;
+            background-color: #412E91;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>
+            <a href="../index.html">Quiz</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="quizEffect01.html">1</a></li>
+                <li><a href="quizEffect02.html">2</a></li>
+                <li><a href="quizEffect03.html">3</a></li>
+                <li class="active"><a href="#">4</a></li>
+                <li><a href="quizEffect05.html">5</a></li>
+                <li><a href="quizEffect06.html">6</a></li>
+                <li><a href="quizEffect07.html">7</a></li>
+                <li><a href="quizEffect100.html">100</a></li>
+                <li><a href="quizEffect44.html">정</a></li>
+                <li><a href="quizEffect55.html">웹</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz__wrap"></div>
+        <div class="quiz__score">0</div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:rlanrider77@gamil.com">rlanrider77@gamil.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script>
+        // 선택자 
+        const quizWrap = document.querySelector(".quiz__wrap"); 
+        const quizScore = document.querySelector(".quiz__score");
+        let totalScore = 0;
+
+        // 문제 정보
+        const quizInfo = [
+            {
+                infoDate : "2019년 상시",
+                infoType : "정보처리기능사",
+                infoQuestion : "어떤 릴레이션 R의 정의에서 애트리뷰트의 수를 무엇이라 하는가?",
+                infoChoice : {
+                    1: "차수",  
+                    2: "튜플",  
+                    3: "도메인",  
+                    4: "기수"
+                },
+                infoAnswer : "1",
+                infoDesc : "속성(Attribute)의 개수를 차수, 튜플(Tuple)의 개수를 기수라고 합니다.",
+            },
+            {
+                infoDate : "2022년 6월",
+                infoType : "정보처리기능사",
+                infoQuestion : "SQL에서 기본 테이블을 생성하는 명령은?",
+                infoChoice : {
+                    1: "CREATE",
+                    2: "SELECT",
+                    3: "DROP",
+                    4: "UPDATE"
+                },
+                infoAnswer : "1",
+                infoDesc : "creat는 '창조하다, 창작하다' 라는 의미로 테이블, 인덱스, 도메인 등을 생성하는 명령어입니다.",
+            },
+            {
+                infoDate : "2019년 상시",
+                infoType : "정보처리기능사",
+                infoQuestion : "파워포인트에서 한 개의 도형이 선택된 상태에서 다른 도형을 연속적으로 선택하려면 어느 키를 누르고 선택해야 하는가?",
+                infoChoice : {
+                    1: "CapsLock",
+                    2: "Shift",
+                    3: "Ctrl",
+                    4: "Alt"
+                },
+                infoAnswer : "2",
+                infoDesc : "여러 슬라이드를 선택할 때는 Ctrl을 사용하지만 도형과 같은 개체를 선택할 때는 연속 또는 비연속에 상관없이 Shift를 이용합니다.",
+            },
+        ];
+
+        // 문제 출력
+        const updateQuiz = () => {
+            const quizArray = [];
+        
+            quizInfo.forEach((quiz, index) => {
+                quizArray.push(`
+                    <div class="quiz">
+                        <div class="quiz__header">${quiz.infoDate} ${quiz.infoType}</div>
+                        <div class="quiz__main">
+                            <div class="quiz__question">${index+1}. ${quiz.infoQuestion}</div>
+                            <div class="quiz__choice">
+                                <label for="choice1-${index}">
+                                    <input type="radio" id="choice1-${index}" name="choice${index}" value="1">
+                                    <span>${quiz.infoChoice[1]}</span>
+                                </label>
+                                <label for="choice2-${index}">
+                                    <input type="radio" id="choice2-${index}" name="choice${index}" value="2">
+                                    <span>${quiz.infoChoice[2]}</span>
+                                </label>
+                                <label for="choice3-${index}">
+                                    <input type="radio" id="choice3-${index}" name="choice${index}" value="3">
+                                    <span>${quiz.infoChoice[3]}</span>
+                                </label>
+                                <label for="choice4-${index}">
+                                    <input type="radio" id="choice4-${index}" name="choice${index}" value="4">
+                                    <span>${quiz.infoChoice[4]}</span>
+                                </label>
+                            </div>
+                            <div class="quiz__answer none">${quiz.infoAnswer}</div>
+                            <div class="quiz__desc none">${quiz.infoDesc}</div>
+                        </div>
+                        <div class="quiz__footer">
+                            <button class="quiz__confirm" data-index="${index}">정답 확인하기</button>
+                        </div>
+                    </div>
+                `);
+            });
+
+            quizWrap.innerHTML = quizArray.join(" ");
+        }
+        
+        // 정답 확인
+        const answerQuiz = (index) => {
+            const quizChoices = document.querySelectorAll(`.quiz__choice input[name="choice${index}"]:checked`);
+            const answerElement = quizWrap.querySelectorAll(".quiz__answer")[index];
+            const descElement = quizWrap.querySelectorAll(".quiz__desc")[index];
+            const quizElement = quizWrap.querySelectorAll(".quiz")[index];
+
+            if (quizChoices.length > 0) {
+                const userAnswer = quizChoices[0].value;
+
+                if (userAnswer === quizInfo[index].infoAnswer) {
+                    answerElement.textContent = "정답입니다!";
+                    quizElement.classList.add("good");
+                    answerElement.classList.remove("none");
+                    descElement.classList.remove("none");
+                    totalScore++;
+                    quizScore.innerHTML = totalScore;
+                } else {
+                    answerElement.textContent = "오답입니다!";
+                    quizElement.classList.add("bad");
+                    answerElement.classList.remove("none");
+                    descElement.classList.remove("none");
+                }
+            }
+        }
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            updateQuiz();
+
+            const confirmButtons = document.querySelectorAll(".quiz__confirm");
+            confirmButtons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    answerQuiz(index);
+                });
+            });
+        });
+
+    
+    </script>
+</body>
+</html>

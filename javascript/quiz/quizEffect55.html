@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 이펙트55</title>
+
+    <link rel="stylesheet" href="assets/css/quiz.css">
+    <link rel="stylesheet" href="assets/css/ani.css">
+    <style>
+        .quiz__score {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            width: 70px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 10px;
+            background-color: #412E91;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>
+            <a href="../index.html">Quiz</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="quizEffect01.html">1</a></li>
+                <li><a href="quizEffect02.html">2</a></li>
+                <li><a href="quizEffect03.html">3</a></li>
+                <li><a href="quizEffect04.html">4</a></li>
+                <li><a href="quizEffect05.html">5</a></li>
+                <li><a href="quizEffect06.html">6</a></li>
+                <li><a href="quizEffect07.html">7</a></li>
+                <li><a href="quizEffect100.html">100</a></li>
+                <li><a href="quizEffect44.html">정</a></li>
+                <li class="active"><a href="quizEffect55.html">웹</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz__wrap"></div>
+        <div class="quiz__score">0</div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:rlanrider77@gamil.com">rlanrider77@gamil.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script>
+        // 선택자 
+        const quizWrap = document.querySelector(".quiz__wrap"); 
+        const quizScore = document.querySelector(".quiz__score");
+        let totalScore = 0;
+
+        // 문제 정보
+        const quizInfo = [
+            {
+                infoDate : "2017년 3월",
+                infoType : "웹디자인기능사",
+                infoQuestion : "디자인의 의미를 설명한 것으로 틀린 것은?",
+                infoChoice : {
+                    1: "디자인이란 프랑스어의 '데생'에서 유래되었다.",  
+                    2: "도안, 밑그림, 그림, 소묘, 계획, 설계, 목적이란 의미를 기술하고 있다.",  
+                    3: "디자인은 De(이탈)과 Sign(형상)의 합성어로 기존 것을 파괴하고 새로운 재화를 창출한다는 의미가 포함된다.",  
+                    4: "디자인은 기존의 것을 유지하며 실용적 가치보다는 예술적 가치의 기준이다."
+                },
+                infoAnswer : "4",
+                infoDesc : "미적인 것과 실용적인 것을 통합하여 가시적으로 표현하는 것입니다.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "시각적 균형과 가장 거리가 먼 것은?",
+                infoChoice : {
+                    1: "명암에 의한 균형",  
+                    2: "경험에 의한 균형",  
+                    3: "질감에 의한 균형",  
+                    4: "위치에 의한 균형"
+                },
+                infoAnswer : "2",
+                infoDesc : "균형은 시각적으로 부피, 중량 등 물리적인 구조와 색채에서 시각적인 안정감을 이룬 것을 말합니다. 흰색과 검정색의 대비를 통한 명암에 의한 균형, 거칠고 부드러움에 의한 질감에 의한 균형, 중심축을 기준으로 위치를 이동시킨 위치에 의한 균형 등이 있습니다.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "미적 대상을 구상하는 부분과 부분의 사이에 질적으로나 양적으로 모순되는 일 없이 질서가 잡혀 어울리는 것은?",
+                infoChoice : {
+                    1: "균형",  
+                    2: "조화",  
+                    3: "변화",  
+                    4: "리듬"
+                },
+                infoAnswer : "2",
+                infoDesc : "조화란 요소들이 상호 관계를 가지고 균형감이 안정적으로 이루어진 상태입니다.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "오스트발트(Ostwald) 색상환은 무채색 축을 중심으로 몇 색상이 배열되어 있는가?",
+                infoChoice : {
+                    1: "9",  
+                    2: "10",  
+                    3: "11",  
+                    4: "24"
+                },
+                infoAnswer : "4",
+                infoDesc : "오스트발트 색상환은 무채색 축을 중심으로 24색상으로 배열되어있습니다.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "색광의 혼합에서 색을 혼합하면 할수록 높아지는 색의 속성은?",
+                infoChoice : {
+                    1: "명도",  
+                    2: "채도",  
+                    3: "색상",  
+                    4: "점도"
+                },
+                infoAnswer : "1",
+                infoDesc : "색광의 혼합은 빛의 혼합으로 가산혼합이며, 혼합할수록 명도가 높아집니다.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "게슈탈트 이론 중 비슷한 모양이 서로 가까이 놓여 있을 때 그 모양들이 동일한 형태의 그룹으로 보이는 경향을 무엇이라고 하는가?",
+                infoChoice : {
+                    1: "근접성의 법칙",  
+                    2: "유사성의 법칙",  
+                    3: "연속성의 법칙",  
+                    4: "폐쇄성의 법칙"
+                },
+                infoAnswer : "1",
+                infoDesc : "유사성의 법칙->유사한 형태, 색채, 질감을 가진 것끼리 동등하게 보이는것, 연속성의 법칙-> 배열과 진행 방향이 비슷한 것끼리 하나로 보이게 되는것, 폐쇄성의 법칙-> 닫혀있지 않은 도형이 심리적으로 닫혀 보이거나 무리 지어 보이는 것입니다.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 디자인 형태 중에서 다른 성격을 지닌 것은 어느 것인가?",
+                infoChoice : {
+                    1: "추상적 형태",  
+                    2: "기하학적 형태",  
+                    3: "유기적 형태",  
+                    4: "기능적 형태"
+                },
+                infoAnswer : "3",
+                infoDesc : "유기적 형태란 자연의 사물에서 쉽게 볼 수 있는 것으로 인위적인 직선, 직각 등의 형태가 아니라 부드러운 곡선으로 만들어진 형태입니다.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 슈퍼그래픽이 속하는 분야와 가장 관계가 있는 것은?",
+                infoChoice : {
+                    1: "패턴디자인",  
+                    2: "제품디자인",  
+                    3: "환경디자인",  
+                    4: "의류디자인"
+                },
+                infoAnswer : "3",
+                infoDesc : "슈퍼그래픽은 환경디자인의 한 분야로 미술관, 화랑뿐만 아니라 규모가 큰 공간의 벽면을 디자인하여 주변 환경과 아우러지게 함으로써 도시의 경관을 아름답게 하는 것",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 감산혼합의 3원색으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "BLUE",  
+                    2: "YELLOW",  
+                    3: "MAGENTA",  
+                    4: "CYAN"
+                },
+                infoAnswer : "1",
+                infoDesc : "감산혼합은 혼합할수록 어두워지는 색료의 혼합으로 감색혼합이라고도 함",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 이미지 관련 HTML 태그가 아닌것은?",
+                infoChoice : {
+                    1: "IMG",  
+                    2: "MAP",  
+                    3: "AREA",  
+                    4: "SELECT"
+                },
+                infoAnswer : "4",
+                infoDesc : "원하는 값을 선택할 수 있는 입력폼은 SELECT입니다.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "네트워크를 통해 데이터 통신을 실행하는데 사용되는 일련의 규칙을 무엇이라고 하는가?",
+                infoChoice : {
+                    1: "호스트",  
+                    2: "서버",  
+                    3: "프로토콜", 
+                    4: "토폴로지"
+                },
+                infoAnswer : "3",
+                infoDesc : "프로토콜은 데이터 전송을 오류 없이 효율적으로 구현하기 위해 지켜야 하는 약속과 규범으로, 송신측 컴퓨터와 수신측 컴퓨터 사이에엇 주고받는 정보의 일정한 형식과 절차 등을 규정함.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "웹페이지 작성 언어들 중 그 특성이 다른 하나는?",
+                infoChoice : {
+                    1: "ASP",  
+                    2: "JSP",  
+                    3: "PHP",  
+                    4: "Javascript"
+                },
+                infoAnswer : "4",
+                infoDesc : "ASP, JSP, PHP는 서버 상에서 실행되어 그 결과만을 HTML 문서로 만들어서 웹 브라우저로 보내주며, Javascript는 소스코드가 HTML 문서 중에 포함되어 사용자의 브라우저에서 직접 번역되어 수행됨",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "웹 브라우저를 통하여 볼 수 있는 이미지 포맷이 아닌 것은?",
+                infoChoice : {
+                    1: "jpg",  
+                    2: "gif",  
+                    3: "png",  
+                    4: "psd"
+                },
+                infoAnswer : "4",
+                infoDesc : "psd는 포토샵 기본 파일 포맷",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "전용선을 이용하여 인터넷을 접속하려고 한다. 네트워크 환경 설정 시 입력해야할 내용으로 올바르지 않은 것은?",
+                infoChoice : {
+                    1: "게이트웨이",  
+                    2: "서브넷 마스크",  
+                    3: "접속 전화번호",  
+                    4: "DNS"
+                },
+                infoAnswer : "3",
+                infoDesc : "접속 전화번호는 모뎀을 이용하여 인터넷에 접속할 때 사용함",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 마크업 언어 중 가장 나중에 만들어진 것은?",
+                infoChoice : {
+                    1: "SGML",  
+                    2: "HTML",  
+                    3: "XML",  
+                    4: "XHTML"
+                },
+                infoAnswer : "4",
+                infoDesc : "XHTML은 XML규칙을 따르면서 HTML과도 호환되도록 새롭게 만든 마크업언어이다.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "자바스크립트의 내장함수에 해당되지 않는 것은?",
+                infoChoice : {
+                    1: "fun define()",  
+                    2: "eval()",  
+                    3: "parselnt()",  
+                    4: "escape()"
+                },
+                infoAnswer : "1",
+                infoDesc : "fun define()은 JavaScript에 없는 함수이며 사용자 정의 함수로서 사용될 수 있음",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "도서관의 도서들을 분류한 것과 같이 정보를 대분류, 중분류, 소분류 식으로 찾아들어가는 방식의 검색엔진은?",
+                infoChoice : {
+                    1: "주제별 검색엔진",  
+                    2: "단어별 검색엔진",  
+                    3: "메타 검색엔진",  
+                    4: "통합 검색엔진"
+                },
+                infoAnswer : "1",
+                infoDesc : "주제별 검색엔진은 디렉터리형 검색엔진으로서 카테고리에 의한 쳬게적인 링크 정보를 제공",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "일반적으로 드림위버에서 웹문서에 자바스크립트소스를 삽입하여 인터렉티브한 페이지를 만들 수 있도록 제공해 주는 것은?",
+                infoChoice : {
+                    1: "Layer",  
+                    2: "Behaviors",  
+                    3: "Form",  
+                    4: "CSS"
+                },
+                infoAnswer : "2",
+                infoDesc : "드림위버에서 제공하는 Behaviors를 이용하면 스크립트를 사용하지 않고 간단하게 역동적인 웹페지이를 만들 수 있음",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음의 검색 연산자 중 부울 연산자가 아닌 것은?",
+                infoChoice : {
+                    1: "AND",  
+                    2: "OR",  
+                    3: "NOT",  
+                    4: "NEAR"
+                },
+                infoAnswer : "4",
+                infoDesc : "부울 연산자는 논리 연산자로서 진리 값(참, 거짓)을 피연산자로 취하여 논리 값을 계산해 내는 연산자임",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "OSI-7layer에서 다음 설명과 관련 있는 계층은? [정보의 표현 방식 관리, 암호화, 정보압축 등의 기능을 수행한다.]",
+                infoChoice : {
+                    1: "전송 계층",  
+                    2: "표현 계층",  
+                    3: "세션 계층",  
+                    4: "응용 계층"
+                },
+                infoAnswer : "2",
+                infoDesc : "표현 계층에서는 데이터 표현 기법의 차이 해결, 압축, 인코딩, 암호화 담당",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "인터넷에서 두 호스트 시스템과의 연결 검사 또는 특정 호스트의 실행 여부 검사 등에 사용되는 서비스는?",
+                infoChoice : {
+                    1: "Rlogin",  
+                    2: "PING",  
+                    3: "NTP",  
+                    4: "SNMP"
+                },
+                infoAnswer : "2",
+                infoDesc : "PING은 컴퓨터 네트워크 상태를 점검, 진단하는 명령어로 특정 IP주소를 확인하게 함으로써 연결을 검사하고 응답을 확인하는데 사용함",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "2차원 이미지를 3차원 이미지로 대응시키는 텍스처 매핑이 개발된 년도는?",
+                infoChoice : {
+                    1: "1971년",  
+                    2: "1974년",  
+                    3: "1976년",  
+                    4: "1979년"
+                },
+                infoAnswer : "2",
+                infoDesc : "텍스처 매핑은 3차원 대상물 표면에 세부적인 질감을 나타내거나 색을 입히는 기법으로 1974년에 개발됨",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음의 HTML태그 중 종료 태그가 없는 것은?",
+                infoChoice : {
+                    1: "HTML",  
+                    2: "BODY",  
+                    3: "HR",  
+                    4: "DIV"
+                },
+                infoAnswer : "3",
+                infoDesc : "hr은 웹브라우저 화면에 수직선을 긋는 태그로 종료 태그가 없음",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "이미지를 선분의 집합이 아니라 픽셀들의 배열 형태로 처리하는 방식은?",
+                infoChoice : {
+                    1: "랜덤 그래픽스",  
+                    2: "벡터 그래픽스",  
+                    3: "래스터 그래픽스",  
+                    4: "픽셀 그래픽스"
+                },
+                infoAnswer : "3",
+                infoDesc : "래스터 그래픽스는 비트맵 방식과 같이 이미지의 구성이 사각형의 요소인 픽셀에 의해 이루어지는 방식임.",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "매핑 방법 중 오브젝트에 요철이나 엠보싱 효과를 표현하는 방법은?",
+                infoChoice : {
+                    1: "범프 매핑",  
+                    2: "오패시티 매핑",  
+                    3: "솔리드 텍스쳐 매핑",  
+                    4: "리플렉션 매핑"
+                },
+                infoAnswer : "1",
+                infoDesc : "범프 매핑은 오브젝트에 요철이나 엠보싱 효과를 표현하는 것으로, 빛에 대한 음영을 섬세하게 나타냄",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "마우스에 반응하는 플래시 무비를 만들기 위해 등록하는 심벌로 가장 적절한 것은?",
+                infoChoice : {
+                    1: "그래픽 심벌",  
+                    2: "버튼 심벌",  
+                    3: "사운드 심벌",  
+                    4: "무비클립 심벌"
+                },
+                infoAnswer : "2",
+                infoDesc : "플래시 심벌에는 마우스를 올릴 때 변해 링크를 걸때나 이벤트 효과를 줄 때 사용하는 버튼 심벌, 일반 이미지로 등록할 때 사용되는 그래픽 심벌, 별개의 무비를 만들 때나 액션스크립트 삽입 시 사용하는 무비심벌이 있음",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "RGB컬러에서 R=0, G=0, B=0로 설정할 때 모니터에 나타나는 색상은?",
+                infoChoice : {
+                    1: "White",  
+                    2: "Black",  
+                    3: "Blue",  
+                    4: "Yellow"
+                },
+                infoAnswer : "2",
+                infoDesc : "RGB가 모두 255이면 흰색, 0이면 검정색으로 나타남",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 웹사이트의 내비게이션 요소가 아닌 것은?",
+                infoChoice : {
+                    1: "메뉴",  
+                    2: "사이트맵",  
+                    3: "디렉터리",  
+                    4: "템플릿"
+                },
+                infoAnswer : "4",
+                infoDesc : "템플릿은 컴퓨터 그래픽에서 빈번히 사용될 것을 대비하여 만들어 놓은 형판을 의미, 템플릿을 만듦으로써 간편하게 홈페이지를 제작할 수 있음",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "컴퓨터 그래픽스 시스템의 구성요소 중 전원이 갑자기 나갔을 때 정보를 유실하는 휘발성 기억 장치는?",
+                infoChoice : {
+                    1: "HDD",  
+                    2: "Memory Stick",  
+                    3: "RAM",  
+                    4: "ROM"
+                },
+                infoAnswer : "3",
+                infoDesc : "RAM은 임시기억 장소이며 전원이 끊어지면 동시에 그 내용도 지워지게 되기 때문에 작업하는 도중에는 보조 기억 장치에 저장을 해야 전원이 끊겼을 경우 데이터의 손실을 방지가능",
+            },
+            {
+                infoDate : "2021년 1회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "화면을 표현하기 위한 최소 단위이며, 화소라고 불리는것은?",
+                infoChoice : {
+                    1: "비트맵",  
+                    2: "벡터",  
+                    3: "해상도",  
+                    4: "픽셀"
+                },
+                infoAnswer : "4",
+                infoDesc : "픽셀은 래스터라고도 함",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "디자인의 원리와 관련된 용어 설명 중 틀린 것은?",
+                infoChoice : {
+                    1: "조화 : 둘 이상의 요소가 서로 밀접한 관계를 갖고 어울렸을 때를 말하는 것",  
+                    2: "통일 : 정돈과 안정된 느낌을 주는것",  
+                    3: "변화 : 크기나 형태 및 색채 등이 같지 않은 것",  
+                    4: "균형 : 형이나 색 등이 반복되어 느껴지는 아름다운 운동감"
+                },
+                infoAnswer : "4",
+                infoDesc : "균형은 물리적인 구조와 색채에서 시각적인 안정감을 이룬 것",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 명시성이 가장 높은 색의 조합은?",
+                infoChoice : {
+                    1: "백색 바탕에 적색 글씨",  
+                    2: "백색 바탕에 검정 글씨",  
+                    3: "청색 바탕에 백색 글씨",  
+                    4: "노랑 바탕에 검정 글씨"
+                },
+                infoAnswer : "4",
+                infoDesc : "명시성-> 먼 거리에서도 잘 보이는 성질로 색상, 명도, 채도의 차이가 클수록 명시성이 높아짐, 주목성-> 색 자체가 명도나 채도가 높아서 시각적으로 빨리 눈에 띄는 성질이며, 따듯한 색과 명도와 채도가 높은 색일수록 주목성이 높아짐. 명시도가 높은 색은 주목성도 높음",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "편집디자인의 구성요소에 해당하지 않는 것은?",
+                infoChoice : {
+                    1: "포맷",  
+                    2: "레이아웃",  
+                    3: "타이포그래피",  
+                    4: "일러스트레이션"
+                },
+                infoAnswer : "1",
+                infoDesc : "편집디자인은 문자, 일러스트, 사진을 배치하는 인쇄물의 편집디자인으로서, 포맷은 파일 확장자로서 구성요소에 해당하지 않음.",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "디자인 원리 중 동질의 부분이 조합될 때 이루어지는 것은?",
+                infoChoice : {
+                    1: "유사",  
+                    2: "대비",  
+                    3: "대조",  
+                    4: "점이"
+                },
+                infoAnswer : "1",
+                infoDesc : "유사는 같은 성질을 조화시킬 때 나타나는 것으로 친근감과 부드러움을 주는 반면 단조로울 수 있음",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "환경 디자인에 속하지 않는 것은?",
+                infoChoice : {
+                    1: "인테리어 디자인",  
+                    2: "원예 디자인",  
+                    3: "가구 디자인",  
+                    4: "조경 디자인"
+                },
+                infoAnswer : "3",
+                infoDesc : "가구 디자인은 공업 디자인임",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "색채를 과학적으로 정리하여 스펙트럼을 7색으로 분리한 사람은?",
+                infoChoice : {
+                    1: "뉴턴",  
+                    2: "먼셀",  
+                    3: "오스트발트",  
+                    4: "돈더스"
+                },
+                infoAnswer : "1",
+                infoDesc : "뉴턴은 프리즘을 통과한 빛이 퍼짐에 따라 굴절하는 각도가 다른 성질을 이용하여 순수 가시광선을 얻었는데 이 색을 연속광 또는 스펙트럼이라고함",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "인접하는 두 색의 경계 부분에 색상, 명도, 채도의 대비가 더욱 강하게 일어나는 현상을 무엇이라고 하는가?",
+                infoChoice : {
+                    1: "면적대비",  
+                    2: "보색대비",  
+                    3: "연변대비",  
+                    4: "한난대비"
+                },
+                infoAnswer : "3",
+                infoDesc : "면적대비-> 면적의 크기에 따라 색상이 다르게 느껴지는 현상, 보색대비->보색이 되는 색상이 인접한 경우 서로 영향을 받아 채도가 선명해 보이는 현상, 한난대비->차가운 색과 따뜻한 색을 배열한 경우 차가운 색은 더 차갑게, 따듯한 색은 더 따듯하게 느껴지는 현상",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "양탄자 디자인의 예를 들어 하나의 색만을 변화시키거나 더함으로써 전체의 배색을 변화시킬 수 있다는 사실을 발견한 사람은?",
+                infoChoice : {
+                    1: "에브니",  
+                    2: "피사로",  
+                    3: "세브뢸",  
+                    4: "베졸트"
+                },
+                infoAnswer : "4",
+                infoDesc : "베졸트는 양탄자의 날실이나 씨실 중 하나의 색을 바꾸거나 더하면 전체 직물의 배색이 변화되는 것을 발견함",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "계통색명이라고도 하며, 색상, 명도, 채도를 표시하는 색명은?",
+                infoChoice : {
+                    1: "특정색명",  
+                    2: "관용색명",  
+                    3: "일반색명",  
+                    4: "근대색명"
+                },
+                infoAnswer : "3",
+                infoDesc : "일반색명->감성적으로 느껴진 느낌을 수식어로 덧붙여 사용한느 방법이다.",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "먼셀의 표색계에서 색상을 표시하는 기호로 맞는것은?",
+                infoChoice : {
+                    1: "C/HV",  
+                    2: "HC/V",  
+                    3: "HV/C",  
+                    4: "CV/H"
+                },
+                infoAnswer : "3",
+                infoDesc : "먼셀표색계는 미국의 화가이자 색채 연구가인 먼셀이 구성했고, 색상, 명도, 채도의 3속성을 사용해 색상을 표기하며, 이를 HV/C로 축약해서 표기함",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 TCP/IP 프로토콜의 구성 계층에 해당하지 않는 것은 무엇인가?",
+                infoChoice : {
+                    1: "응용 계층",  
+                    2: "전송 계층",  
+                    3: "인터넷 계층",  
+                    4: "표현 계층"
+                },
+                infoAnswer : "4",
+                infoDesc : "TCP/IP는 응용 계층, 전송 계층, 인터넷 게층, 링크 게층(네트워크 인터페이스 계층)으로 구성됨",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "연산자 좌우의 검색어를 모두 포함하는 데이터를 찾는 정보검색 연산자는?",
+                infoChoice : {
+                    1: "OR",  
+                    2: "NOT",  
+                    3: "AND",  
+                    4: "AND NOT"
+                },
+                infoAnswer : "3",
+                infoDesc : "AND는 두 키워드가 모두 포함되어 있는 정보만 검색하도록 지시함",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 시기적으로 가장 늦게 탄생한 인터넷 서비스는 무엇인가?",
+                infoChoice : {
+                    1: "무선 인터넷",  
+                    2: "원격 로그인",  
+                    3: "전자우편",  
+                    4: "파일 전송"
+                },
+                infoAnswer : "1",
+                infoDesc : "인터넷 서비스 FTP의 표준 제정, 원격로그인 Telnet, Email 등은 1972녀녀 이후 시작되었으며 무선 인터넷은 1980년대 후반 탄생한 이후 1990년대 이후 활성화됨",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "주제별 검색엔진으로 카테고리에 의한 체게적인 링크 정보를 제공하는 검색엔진은?",
+                infoChoice : {
+                    1: "디렉터리형 검색엔진",  
+                    2: "메타 검색엔진",  
+                    3: "하이브리드형 검색엔진",  
+                    4: "에이전트 검색엔진"
+                },
+                infoAnswer : "1",
+                infoDesc : "주제별 검색엔진은 디렉터리형 검색엔진으로서 카테고리에 의한 체게적인 링크 정보를 제공",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "Javascript의 설명으로 틀린것은?",
+                infoChoice : {
+                    1: "소스코드가 HTML 문서 내에 포함된다.",  
+                    2: "변수 타입 선언 없이 사용이 가능하다.",  
+                    3: "반드시 플랫폼에 종속적으로 사용된다.",  
+                    4: "객체지향적인 스크립트 언어이다."
+                },
+                infoAnswer : "3",
+                infoDesc : "JavaScript는 모든 운영체제, 하드웨어에서 사용할 수 있는 플랫폼으로 독립적이고 이식성이 높은언어",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "라우팅 프로토콜에 해당하지 않는 것은?",
+                infoChoice : {
+                    1: "BGP",  
+                    2: "NNTP",  
+                    3: "OSPF",  
+                    4: "RIP"
+                },
+                infoAnswer : "2",
+                infoDesc : "NNTP는 뉴스기사와 관련된 프로토콜임",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "HTML 문서의 시작을 알려주는 태그는?",
+                infoChoice : {
+                    1: "begin",  
+                    2: "body",  
+                    3: "html",  
+                    4: "start"
+                },
+                infoAnswer : "3",
+                infoDesc : "html의 문서는 html태그로 시작하고 /html태그로 종료됨",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "고속통신망으로서 전화교환기를 거치지 않고 ATM 초고속망에 연결하여 고속의 서비스를 제공하는 방식의 인터넷 서비스는?",
+                infoChoice : {
+                    1: "ISDN",  
+                    2: "Backbone",  
+                    3: "ADSL",  
+                    4: "WAN"
+                },
+                infoAnswer : "3",
+                infoDesc : "ADSL은 수신과 송신 속도가 다른 점으로 인해서 비대칭 DSL이라고 하며, 음성통화와 고속 인터넷 통신을 동시에 즐길 수 있는 접속 서비스",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "웹 브라우저의 기능으로 옳지 않은것은?",
+                infoChoice : {
+                    1: "웹사이트 접속",  
+                    2: "정보 것맥",  
+                    3: "사진합성",  
+                    4: "인터넷서비스 제공"
+                },
+                infoAnswer : "3",
+                infoDesc : "웹 브라우저는 정보 검색, 웹 페이지의 저장 및 인쇄, 파일 전송 및 홈페이지 문자 서비스 등을 제공하지만 사진 합성기능은 제공하지 않음",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "큰 이미지 또는 사진과 같이 컬러 수가 많은 웹 이미지에 적합한 파일 포맷은?",
+                infoChoice : {
+                    1: "EPS",  
+                    2: "PSD",  
+                    3: "JPEG",  
+                    4: "BMP"
+                },
+                infoAnswer : "3",
+                infoDesc : "JEPG는 웹용 이미지 파일 포맷",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "일반적으로 웹 디자이너가 홈페이지에 적용할 색을 설계할 때 고려해야 할 사항으로 거리가 먼 것은?",
+                infoChoice : {
+                    1: "상식적인 수준을 따르는 것이 좋다",  
+                    2: "보색 사용은 자제한다.",  
+                    3: "배경색과 배경무늬는 심플한 것이 좋다",  
+                    4: "일관성보다 다양한 색상을 고려하여 적용한다."
+                },
+                infoAnswer : "4",
+                infoDesc : "홈페이지 제작 시 색상, 글자 모양, 레이아웃 등에 대한 원칙을 수립하도록 하며, 전체적으로 일관성 있는 색상으로 설계함",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 쉐이딩의 종류가 아닌 것은?",
+                infoChoice : {
+                    1: "플랫",  
+                    2: "클리핑",  
+                    3: "고러드",  
+                    4: "퐁"
+                },
+                infoAnswer : "2",
+                infoDesc : "쉐이딩은 입체화된 오브젝트에 빛에 의해 생기는 음영을 표현한 것으로 플랫 쉐이딩, 퐁 쉐이딩, 메탈 쉐이딩, 고러드 쉐이딩이 있음",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 동영상 관련 포맷 방식이 아닌 것은?",
+                infoChoice : {
+                    1: "wav",  
+                    2: "asf",  
+                    3: "avi",  
+                    4: "mp4"
+                },
+                infoAnswer : "1",
+                infoDesc : "wav는 PC 환경에서 사용되는 형식으로 Microsoft 사에서 만든 컴퓨터용 오디오 파일임",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 컴퓨터 그래픽스의 기본적인 컬러 시스템이 아닌 것은?",
+                infoChoice : {
+                    1: "RGB",  
+                    2: "CMY",  
+                    3: "CRT",  
+                    4: "HSB"
+                },
+                infoAnswer : "3",
+                infoDesc : "CRT는 모니터 브라우관 장치",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "웹용 이미지를 디자인할 때 고려해야 할 사항으로 가장 거리가 먼 것은?",
+                infoChoice : {
+                    1: "파일 크기",  
+                    2: "파일 포맷 형식",  
+                    3: "이미지의 색상",  
+                    4: "인쇄 설정"
+                },
+                infoAnswer : "4",
+                infoDesc : "웹용으로 이미지를 디자인할 때는 결과물을 모니터 상에서 보는 것이기 때문에 인쇄해서 출력물을 확인하는 것은 고려대상이 아님",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 컴퓨터그래픽스의 특징이 아닌 것은?",
+                infoChoice : {
+                    1: "색상을 마음대로 표현하거나 변경할 수 있다.",  
+                    2: "실제로 나타낼 수 없는 부분까지 표현이 가능하다.",  
+                    3: "시간과 공간에 제약이 있다.",  
+                    4: "디자인 의도대로 명도나 질감을 표현할 수 있다."
+                },
+                infoAnswer : "3",
+                infoDesc : "컴퓨터그래픽스는 컴퓨터를 통해 그래픽 작업을 자동화하는 것으로 시간과 공간의 제약이 없음",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "컴퓨터그래픽스의 렌더링에서 물체의 각 꼭지점에서 빛의 양을 계산한 후 그 값들을 보관하여 각 점에 색 값을 할당하는 쉐이딩 기법은?",
+                infoChoice : {
+                    1: "Modeling",  
+                    2: "Flat",  
+                    3: "Gouraud",  
+                    4: "Phong"
+                },
+                infoAnswer : "3",
+                infoDesc : "Gouraud은 꼭지점에서의 조명을 계산하여 면을 채우는 방식으로 인접된 면 색상이 단계적으로 부드럽게 표현되며 플랫 쉐이딩보다 사실적임",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "스크린 위에 수천 개의 핀을 꽂고 조명에 의해 나타나는 그림자를 영상으로 담아내는 애니메이션을 무엇이라고 하는가?",
+                infoChoice : {
+                    1: "셀 애니메이션",  
+                    2: "조니메이션",  
+                    3: "그림자 애니메이션",  
+                    4: "핀 스크린 애니메이션"
+                },
+                infoAnswer : "4",
+                infoDesc : "핀 스크린 애니메이션은 하얀색 판 위에 수천 개의 얇은 핀들을 꽂고 옆에서 비추는 조명들과 핀의 움직임에 의해 나타나는 그림자를 가지고 영상으로 표현하는 기법",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "웹 인터페이스 디자인에서 강조되는 특성이 아닌 것은?",
+                infoChoice : {
+                    1: "사용자 편의성",  
+                    2: "일관성",  
+                    3: "독창성",  
+                    4: "강제성"
+                },
+                infoAnswer : "4",
+                infoDesc : "웹 인터페이스는 사용자의 환경을 고려하여 일관성 있고 편리하며 독창적으로 디자인함",
+            },
+            {
+                infoDate : "2021년 2회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "색상모드 중 256 색상 내에 이미지를 표현하는 것으로 용량이 적기 때문에 웹에서 가장 많이 쓰이는 색상 체계는?",
+                infoChoice : {
+                    1: "RGB",  
+                    2: "CMYK",  
+                    3: "INDEX",  
+                    4: "GRAYSCALE"
+                },
+                infoAnswer : "3",
+                infoDesc : "INDEX 색상체계->256가지의 색상을 표현할 수 있으며, GIF 파일 포맷을 저장할 수 있음",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "명도에 대한 설명 중 틀린 것은?",
+                infoChoice : {
+                    1: "색의 밝고 어두운 정도의 단계를 말한다.",  
+                    2: "그레이스케일이라고 부른다.",  
+                    3: "무채색만 명도를 가진다.",  
+                    4: "명도의 밝기에 따라 고 중 저명도로 나뉜다."
+                },
+                infoAnswer : "3",
+                infoDesc : "유채색과 무채색의 공통점은 서로 명도를 가진다는것",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "단순화 디자인의 장점으로 거리가 먼 것은?",
+                infoChoice : {
+                    1: "장식성",  
+                    2: "접근 용이성",  
+                    3: "인식성",  
+                    4: "사용성"
+                },
+                infoAnswer : "1",
+                infoDesc : "장식성은 화려한 디자인에서 나타나는 특징",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "일반적으로 좋은 디자인이라고 할 때 갖추어야 하는 조건은 무엇인가?",
+                infoChoice : {
+                    1: "화려한 장식을 더 하는 것",  
+                    2: "실용적인 기능과 조형적인 아름다움",  
+                    3: "상징적인 형태로 단순화하는 것",  
+                    4: "타제품과 차별화하는 작업"
+                },
+                infoAnswer : "2",
+                infoDesc : "디자인에서 심미적인 부분과 실용적인 부분을 함께 갖추어야 좋은 디자인 제품이 될 수 있음",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "망막에 다른 색광이 자극하여 혼합되는 현상으로 색 점이 서로 가깝게 있어 명도와 채도가 떨어지지 않는 혼합 방식은?",
+                infoChoice : {
+                    1: "보색혼합",  
+                    2: "병치혼합",  
+                    3: "가산혼합",  
+                    4: "감산혼합"
+                },
+                infoAnswer : "2",
+                infoDesc : "병치혼합은 망막에 다른 색광이 자극하여 혼합되는 현상으로 색점이 서로 가깝게 있어 명도와 채도가 떨어지지 않는 혼합방식임",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "디자인 원리 중 율동에 해당하지 않는 것은?",
+                infoChoice : {
+                    1: "점이",  
+                    2: "교차",  
+                    3: "비례",  
+                    4: "반복"
+                },
+                infoAnswer : "3",
+                infoDesc : "비례-> 요소의 전체와 부분을 연관 지어 상대적으로 설명하는 것",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 주위 색의 영향에 의해 인접 색에 가깝게 느껴지는 현상을 의미하는 것은?",
+                infoChoice : {
+                    1: "동화 현상",  
+                    2: "명시 현상",  
+                    3: "색의 수축성",  
+                    4: "대비 현상"
+                },
+                infoAnswer : "1",
+                infoDesc : "동화 현상은 다른 색의 영향을 받아 인접되어있거나 둘러싸여 있는 색상과 비슷하게 보이는 것으로 자극이 지속되는 잔상효과",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 2차원 디자인에 포함되지 않는 것은?",
+                infoChoice : {
+                    1: "타이포그래피",  
+                    2: "일러스트레이션",  
+                    3: "애니메이션",  
+                    4: "편집디자인"
+                },
+                infoAnswer : "3",
+                infoDesc : "애니메이션 2차원의 평면에 깊이를 더하여 공간으로 표현되는 4차원 디자인",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "게슈탈트의 형태에 관한 시각 기본 법칙에 해당되지 않는 것은?",
+                infoChoice : {
+                    1: "통일",  
+                    2: "근접",  
+                    3: "유사",  
+                    4: "연속"
+                },
+                infoAnswer : "1",
+                infoDesc : "게슈탈트 법칙에 의하면 형태는 근접, 유사, 폐쇄, 연속된 속성을 가진 형태들이 심리적으로 보기 좋음",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "병원 수술실의 색채 계획으로 가장 적당한 배색은?",
+                infoChoice : {
+                    1: "노란색 계열",  
+                    2: "녹색 계열",  
+                    3: "보라색 계열",  
+                    4: "무채색 계열"
+                },
+                infoAnswer : "2",
+                infoDesc : "붉은색 피를 계속 보게되면 녹색 계열로 계시대비가 나타나게 됨. 따라서 수술실 공간을 녹색 계열로 배치함으로써 붉은색에 대한 계시대비 현상을 방지함",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "웹상에서 하이퍼텍스트 문서 전송에 필요한 통신 규약은?",
+                infoChoice : {
+                    1: "FTP",  
+                    2: "USENET",  
+                    3: "TELNET",  
+                    4: "HTTP"
+                },
+                infoAnswer : "4",
+                infoDesc : "HTTP는 HyperText Transfer Protocol의 약자로 하이퍼텍스트 전송 규약",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 데이터 전송 속도를 나타내는 단위가 아닌 것은?",
+                infoChoice : {
+                    1: "bps",  
+                    2: "baud",  
+                    3: "dpi",  
+                    4: "cps"
+                },
+                infoAnswer : "3",
+                infoDesc : "DPI->프린터 또는 스캐너의 출력 해상도",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "자바스크립트 언어의 기본적인 특성으로 틀린 것은?",
+                infoChoice : {
+                    1: "대, 소문자를 구분한다.",  
+                    2: "변수 이름에 공백문자를 사용할 수 있다.",  
+                    3: "하나의 명령문이 끝나면, 세미콜론(;)을 기술한다.",  
+                    4: "변수 이름은 반드시 영문자 또는 밑줄(_)로 시작해야 한다."
+                },
+                infoAnswer : "2",
+                infoDesc : "자바스크립트의 변수 이름에는 영문 대소문자, 숫자, 밑줄을 사용할 수 있으며, 변수 이름에 공백 문자를 사용할 수 없음",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "자바스크립트의 내장함수 중 [확인]이나 [취소]를 선택하도록 하는 대화상자를 생성하는 함수는?",
+                infoChoice : {
+                    1: "String()",  
+                    2: "parselnt()",  
+                    3: "confirm()",  
+                    4: "eval()"
+                },
+                infoAnswer : "3",
+                infoDesc : "confirm()-> 메시지를 사용자에게 알려서 [확인]이나 [취소]를 선택하도록 하는 대화상자를 생성하는 내장함수",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "IPv4에서 10.255.255.255 주소는 어느 클래스에 속하는가?",
+                infoChoice : {
+                    1: "클래스 A",  
+                    2: "클래스 B",  
+                    3: "클래스 C",  
+                    4: "클래스 D"
+                },
+                infoAnswer : "1",
+                infoDesc : "A클래스의 처음 8bit 값을 이진수 비트 수로 표현하면 0000 0001~0111 1110이며, 이를 십진수로 표현하면 1~126임. 10.255.255.255는 A클래스에 해당하는 IP주소로 A클래스 중 사설 IP 주소에 해당",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "전자우편을 전송할 때 사용되는 프로토콜은?",
+                infoChoice : {
+                    1: "FTP",  
+                    2: "SMTP",  
+                    3: "Telnet",  
+                    4: "Usenet"
+                },
+                infoAnswer : "2",
+                infoDesc : "SMTP는 전자우편물의 송신을 담당하는 프로토콜",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 인터넷 검색엔진 중 주제별 검색에 의한 기법을 사용하지 않는 것은?",
+                infoChoice : {
+                    1: "야후",  
+                    2: "네이버",  
+                    3: "멀티서치",  
+                    4: "다음"
+                },
+                infoAnswer : "3",
+                infoDesc : "멀티서치는 많은 검색 엔진의 서치 결과를 한 차례에 모아주는 검색엔진을 의미함",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "인터넷 주소 형식에서 마지막 부분은 항상 최상위 도메인을 나타낸다. 다음 중 최상위 도메인에 속하지 않는것은?",
+                infoChoice : {
+                    1: "ac",  
+                    2: "com",  
+                    3: "gov",  
+                    4: "kr"
+                },
+                infoAnswer : "1",
+                infoDesc : "ac, or, re는 차상위 도메인",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "채팅이나 온라인 게임에 참여할 때 자신을 대신하여 존재하고 행동하는 가상의 캐릭터로서 '분산'이라고 불리는 것은?",
+                infoChoice : {
+                    1: "아바타",  
+                    2: "쿠키",  
+                    3: "포털",  
+                    4: "허브"
+                },
+                infoAnswer : "1",
+                infoDesc : "아바타->인터넷상에서 사용자를 대신하는 캐릭터로서, 네트워크 환경에서 자신을 대신하여 커뮤니케이션에 참여하는 가상의 그림 또는 아이콘을 뜻함",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "웹 그래픽 디자인은 효과적으로 웹 사용자에게 정보전달을 돕는 도구라고 할 수 있다. 다음 중 정보전달 역할로서의 웹디자인과 가장 거리가 먼 것은?",
+                infoChoice : {
+                    1: "정보접근의 편의성 제공",  
+                    2: "정보에 대한 빠른 이해력 증대",  
+                    3: "시각적, 청각적인 친근감 확대",  
+                    4: "개성적인 표현의 다양성"
+                },
+                infoAnswer : "4",
+                infoDesc : "개성적인 표현의 다양성은 시각적인 효과를 제공하기 위한 디자인으로서의 역할임",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "컴퓨터 그래픽스에서 벡터 방식에 대한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "수학적 연산에 의해 그래픽 데이터를 만들어 낸다.",  
+                    2: "선과 도형으로 그려내며 단순한 도형의 표현에 적합하다.",  
+                    3: "이미지를 확대하거나 축소해도 손상이 없다.",  
+                    4: "대표적인 벡터 기반 프로그램으로는 포토샵이 있다."
+                },
+                infoAnswer : "4",
+                infoDesc : "포토샵은 비트맵 기반의 프로그램임",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "일반적이 좋은 웹 사이트 레이아웃에 대한 설명으로 맞는 것은?",
+                infoChoice : {
+                    1: "메인페이지는 4~6개의 프레임으로 나누어 구성한다.",  
+                    2: "정보의 중요성에 따라 폰트의 크기를 세분화한다.",  
+                    3: "콘텐츠의 크기가 큰 것은 웹페이지 상단에 배치한다.",  
+                    4: "웹사이트의 초기화면에는 사이트의 주제를 보여줄 수 있는 대용량의 이미지를 사용한다."
+                },
+                infoAnswer : "3",
+                infoDesc : "웹사이트 페이지는 시선이 상단에서 하단으로 흐르므로 무조건 큰 콘텐츠를 상단에 배치하는 것이 아니라 중요도가 높은 콘텐츠를 상단에 배치하도록 함",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "홈페이지의 해당 컨셉을 이끌어 내기 위해 종이에 최대한 많이 그려봄으로써 여러 가지 구성을 만들어 보는 디자인 실무의 초기 작업은?",
+                infoChoice : {
+                    1: "브레인스토밍",  
+                    2: "콘텐츠디자인",  
+                    3: "벤치마킹",  
+                    4: "아이디어 스케치"
+                },
+                infoAnswer : "4",
+                infoDesc : "아이디어 스케치는 웹 사이트 기획 과정에서 웹사이트의 주제에 맞는 컨셉을 이끌어 내기 위해 종이 위에 여러 가지 아이디어를 표현해 보는 작업",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "물체 경계면의 픽셀을 물체의 색상과 배경의 색상을 혼합해서 표현하여 경계면이 부드럽게 보이도록 하는 기법은?",
+                infoChoice : {
+                    1: "Antialiasing",  
+                    2: "Dithering",  
+                    3: "Blending",  
+                    4: "Compositing"
+                },
+                infoAnswer : "1",
+                infoDesc : "안티앨리어싱은 계단 현상을 최소화하기 위한 옵션으로, 이 옵션을 선택하면 가장자리 픽셀과 바탕 픽셀 사이의 색상 변이가 매끄럽게 이루어짐",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "래스터 이미지에 대한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "화면 확대 시 이미지가 손상된다.",  
+                    2: "비트맵 이미지를 래스터 이미지라고 한다.",  
+                    3: "일러스트레이터에서 주로 사용되는 이미지 형식이다.",  
+                    4: "디지털 카메라로 찍은 이미지는 래스터 이미지이다."
+                },
+                infoAnswer : "3",
+                infoDesc : "래스터 이미지는 이미지가 픽셀로 구성된 비트맵 이미지를 의미. 일러스트레이터는 벡터 방식의 이미지 형식",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "웹 디자인 프로세스 중 Pre-Production 단계에 해당하지 않는 것은?",
+                infoChoice : {
+                    1: "콘텐츠 디자인 및 제작",  
+                    2: "디자인 계획 수립",  
+                    3: "콘셉트 구상",  
+                    4: "디자인 구체화"
+                },
+                infoAnswer : "1",
+                infoDesc : "Pre-Production 단계란 사전 제작 단계이며, 콘텐츠 디자인은 Production에 해당함",
+            },
+            {
+                infoDate : "2021년 3회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음이 설명하고 있는 것은? [장치츨 통한 데이터를 주고받는 상호교환을 하며 두 개의 컴퓨터 시스템 장치를 기능적으로 연결한다.]",
+                infoChoice : {
+                    1: "오토캐드",  
+                    2: "포토샵",  
+                    3: "레이아웃",  
+                    4: "인터페이스"
+                },
+                infoAnswer : "4",
+                infoDesc : "인터페이스란 2대 이상의 장치나 소프트웨어 사이에서 정보나 신호를 주고받을 때 그 사이를 연결하는 연결 장치나 소프트웨어를 말함",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "굿 디자인을 위한 디자인의 조건에 올바르지 않은것은?",
+                infoChoice : {
+                    1: "합목적성",  
+                    2: "다양성",  
+                    3: "심미성",  
+                    4: "독창성"
+                },
+                infoAnswer : "2",
+                infoDesc : "합목적성, 경제성, 심미성, 독창성, 질서성을 만족시킴으로써 외적인 독창성과 편리함을 갖춘 디자인을 굿 디자인이라고 함",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 선에 대한 설명으로 거리가 먼 것은?",
+                infoChoice : {
+                    1: "선은 하나의 점이 이동하면서 이루는 자취다.",  
+                    2: "가는 직선은 예리하고 가볍게 느껴진다.",  
+                    3: "사선은 동적이고 불안정한 느낌을 주나 사용에 따라 강한 표현에 효과적이다.",  
+                    4: "곡선은 우아, 매력, 모호, 유연, 섬세함과 정적인 표정을 나타낸다."
+                },
+                infoAnswer : "4",
+                infoDesc : "곡선은 동적인 표정을 나타냄",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "고차원적 프로덕트 디자인에 속하지 않는 것은?",
+                infoChoice : {
+                    1: "텍스타일 디자인",  
+                    2: "편집 디자인",  
+                    3: "벽지 디자인",  
+                    4: "인테리어 직물 디자인"
+                },
+                infoAnswer : "2",
+                infoDesc : "편집 디자인은 프로덕트 디자인이 아닌, 2차원 시각 디자인에 해당",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 디자인의 표현 요소가 아닌 것은?",
+                infoChoice : {
+                    1: "점, 선, 면",  
+                    2: "방향, 공간",  
+                    3: "형태, 크기",  
+                    4: "흔적, 영역"
+                },
+                infoAnswer : "4",
+                infoDesc : "디자인의 표현 요소-> 점, 선, 면 등의 개념 요소, 형태, 크기 등의 시각요소, 방향, 공간감등의 상관요소가 있음.",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 시각적 또는 촉각적으로 느껴지는 물체표면에 대한 느낌을 의미하는 것은?",
+                infoChoice : {
+                    1: "시간",  
+                    2: "점이",  
+                    3: "질감",  
+                    4: "공간"
+                },
+                infoAnswer : "3",
+                infoDesc : "질감은 물체의 표면적인 느낌으로 광택, 매끄러움, 거침, 울퉁불퉁함 등의 촉감과 재질을 의미함",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "과거부터 전해 내려와 습관적으로 사용하는 색 하나하나의 색명을 무엇이라 하는가?",
+                infoChoice : {
+                    1: "일반 색명",  
+                    2: "계통 색명",  
+                    3: "관용 색명",  
+                    4: "특정 색명"
+                },
+                infoAnswer : "3",
+                infoDesc : "관용 색명은 관습적이거나 연상적인 느낌으로 이름을 붙이는 방법으로 인명, 지명, 원료, 자연 등에 따라 이름이 붙어짐",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 한색에 대한 설명으로 옳은 것은?",
+                infoChoice : {
+                    1: "주황색은 팽창을 나타낸다.",  
+                    2: "청록색은 수축을 나타낸다.",  
+                    3: "보라색은 후퇴를 나타낸다.",  
+                    4: "파랑색은 면적이 크게 느껴지는 팽창의 느낌을 준다."
+                },
+                infoAnswer : "2",
+                infoDesc : "청색 계통의 색을 한색이라고 함. 한색은 후퇴와 수축의 느낌을 줌",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 색과 색의 연상이 잘못 연결된 것은?",
+                infoChoice : {
+                    1: "파랑 - 여름, 시원함",  
+                    2: "보라 - 주의 표시, 명량",  
+                    3: "회색 - 공장, 테크노, 음울",  
+                    4: "검정 - 주검, 탄 것, 엄숙미"
+                },
+                infoAnswer : "2",
+                infoDesc : "보라: 위엄, 고독 등을 연상",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 웹 페이지에 삽입할 수 있는 이미지 형식이 아닌 것은?",
+                infoChoice : {
+                    1: "GIF",  
+                    2: "JPG",  
+                    3: "PCX",  
+                    4: "PNG"
+                },
+                infoAnswer : "3",
+                infoDesc : "웹 이미지 형식->png,jpg,gif 등",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "IPv4에서 172.31.255.255 주소는 어느 클래스에  속하는가?",
+                infoChoice : {
+                    1: "클래스 A",  
+                    2: "클래스 B",  
+                    3: "클래스 C",  
+                    4: "클래스 D"
+                },
+                infoAnswer : "2",
+                infoDesc : "B클래스의 처음 8bit값을 이진수 비트 수로 표현하면 1000 0000~1011 1111이며, 이를 십진수로 표현하면 128~191임.",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음중 TCP/IP 프로토콜 중 IP 주소를 실제의 물리 네트워크 MAC주소로 바꾸어주는 프로토콜은?",
+                infoChoice : {
+                    1: "ARP",  
+                    2: "SMTP",  
+                    3: "RARP",  
+                    4: "POP"
+                },
+                infoAnswer : "1",
+                infoDesc : "ARP는 주소변환 프로토콜로서, 사용자가 입력한 IP 주소를 네트워크상에서 실제적인 물리적인 주소로 변환해 주는 프로토콜",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "웹 검색에서 웹 사이트의 방문 기록을 사용자 측의 컴퓨터에 남겨두었다가, 이후에 다시 방문할 경우 이전의 상태를 유지할 수 있도록 하는 것은?",
+                infoChoice : {
+                    1: "아바타",  
+                    2: "쿠키",  
+                    3: "포털",  
+                    4: "허브"
+                },
+                infoAnswer : "2",
+                infoDesc : "쿠키는 웹사이트 방문 기록을 사용자 측의 컴퓨터에 남겨두는 것이다.",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "다음 중 웹 브라우저가 직접 처리하지 못하는 데이터를 처리하는 보조 프로그램으로서 미디어 데이터를 처리하고 재생해 주는 프로그램을 의미하는 것은?",
+                infoChoice : {
+                    1: "쿠키",  
+                    2: "플러그인",  
+                    3: "책갈피",  
+                    4: "다이어그램"
+                },
+                infoAnswer : "2",
+                infoDesc : "플러그인은 웹 브라우저가 직접 처리하지 못하는 데이터를 처리 함으로써 웹 브라우저의 기능을 확장시키는 프로그램",
+            },
+            {
+                infoDate : "2021년 4회",
+                infoType : "웹디자인기능사",
+                infoQuestion : "웹 디자인 프로세스 중 Post-Production 단게에 해당하는 것은?",
+                infoChoice : {
+                    1: "콘텐츠 디자인",  
+                    2: "디자인 계획 수립",  
+                    3: "콘셉트 구상",  
+                    4: "사이트 홍보"
+                },
+                infoAnswer : "4",
+                infoDesc : "Post-Production은 후반 제작 단계로서 기본 사항이 완료된 후의 작업과 사이트 홍보, 홍보 콘텐츠 제작 등이 해당됨",
+            }
+        ];
+
+        // 문제 출력
+        const updateQuiz = () => {
+            const quizArray = [];
+        
+            quizInfo.forEach((quiz, index) => {
+                quizArray.push(`
+                    <div class="quiz">
+                        <div class="quiz__header">${quiz.infoDate} ${quiz.infoType}</div>
+                        <div class="quiz__main">
+                            <div class="quiz__question">${index+1}. ${quiz.infoQuestion}</div>
+                            <div class="quiz__choice">
+                                <label for="choice1-${index}">
+                                    <input type="radio" id="choice1-${index}" name="choice${index}" value="1">
+                                    <span>${quiz.infoChoice[1]}</span>
+                                </label>
+                                <label for="choice2-${index}">
+                                    <input type="radio" id="choice2-${index}" name="choice${index}" value="2">
+                                    <span>${quiz.infoChoice[2]}</span>
+                                </label>
+                                <label for="choice3-${index}">
+                                    <input type="radio" id="choice3-${index}" name="choice${index}" value="3">
+                                    <span>${quiz.infoChoice[3]}</span>
+                                </label>
+                                <label for="choice4-${index}">
+                                    <input type="radio" id="choice4-${index}" name="choice${index}" value="4">
+                                    <span>${quiz.infoChoice[4]}</span>
+                                </label>
+                            </div>
+                            <div class="quiz__answer none">${quiz.infoAnswer}</div>
+                            <div class="quiz__desc none">${quiz.infoDesc}</div>
+                        </div>
+                        <div class="quiz__footer">
+                            <button class="quiz__confirm" data-index="${index}">정답 확인하기</button>
+                        </div>
+                    </div>
+                `);
+            });
+
+            quizWrap.innerHTML = quizArray.join(" ");
+        }
+        
+        // 정답 확인
+        const answerQuiz = (index) => {
+            const quizChoices = document.querySelectorAll(`.quiz__choice input[name="choice${index}"]:checked`);
+            const answerElement = quizWrap.querySelectorAll(".quiz__answer")[index];
+            const descElement = quizWrap.querySelectorAll(".quiz__desc")[index];
+            const quizElement = quizWrap.querySelectorAll(".quiz")[index];
+
+            if (quizChoices.length > 0) {
+                const userAnswer = quizChoices[0].value;
+
+                if (userAnswer === quizInfo[index].infoAnswer) {
+                    answerElement.textContent = "정답입니다!";
+                    quizElement.classList.add("good");
+                    answerElement.classList.remove("none");
+                    descElement.classList.remove("none");
+                    totalScore++;
+                    quizScore.innerHTML = totalScore;
+                } else {
+                    answerElement.textContent = quizInfo[index].infoAnswer;
+                    quizElement.classList.add("bad");
+                    answerElement.classList.remove("none");
+                    descElement.classList.remove("none");
+                }
+            }
+        }
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            updateQuiz();
+
+            const confirmButtons = document.querySelectorAll(".quiz__confirm");
+            confirmButtons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    answerQuiz(index);
+                });
+            });
+        });
+
+    
+    </script>
+</body>
+</html>

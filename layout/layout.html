@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background-color: #9183ed;
+        }
+        #wrap {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        #header {
+            width: 100%;
+            height: 100px;
+            background-color: #555;
+        }
+        #nav {
+            width: 100%;
+            height: 100px;
+            background-color: #777;
+        }
+        #main {
+            width: 100%;
+        }
+        #aside {
+            width: 100%;
+            height: 100px;
+            background-color: #364;
+        }
+        #contents {
+            width: 100%;
+            flex-wrap: wrap;
+            display: flex;
+        }
+        #content1 {
+            width: 100%;
+            height: 280px;
+            background-color: #155;
+        }
+        #content2 {
+            width: 50%;
+            height: 500px;
+            background-color: #161;
+        }
+        #content3 {
+            width: 50%;
+            height: 500px;
+            background-color: #101;
+        }
+        #footer {
+            width: 100%;
+            height: 100px;
+            background-color: #999;
+        }
+        @media (max-width: 1290px){
+            #wrap {
+                width: 90%;
+            }
+            #main {
+                display: flex;               
+            }
+            #aside {
+                width: 30%;
+                height: 880px;
+            }
+            #contents {
+                width: 70%;
+            }
+            #content1 {
+                width: 100%;
+                height: 440px;
+            }
+            #content2 {
+                width: 50%;
+                height: 440px;
+            }
+            #content3 {
+                width: 50%;
+                height: 440px;
+            }
+        }
+        @media (max-width: 768px){
+            #wrap {
+                width: 100%;
+            }
+            #aside {
+                width: 30%;
+                height: 885px;
+            }
+            #contents {
+                width: 70%;
+            }
+            #content1 {
+                width: 100%;
+                height: 295px;
+            }
+            #content2 {
+                width: 100%;
+                height: 295px;
+            }
+            #content3 {
+                width: 100%;
+                height: 295px;
+            }
+        }
+        @media (max-width: 600px){
+            #wrap {
+                width: 100%;
+            }
+            #main {
+                flex-wrap: wrap;
+            }
+            #aside {
+                width: 100%;
+                height: 150px;
+            }
+            #contents {
+                width: 100%;
+            }
+            #content1 {
+                width: 100%;
+                height: 200px;
+            }
+            #content2 {
+                width: 100%;
+                height: 200px;
+            }
+            #content3 {
+                width: 100%;
+                height: 340px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header"></header>
+        <nav id="nav"></nav>
+        <main id="main">
+            <aside id="aside"></aside>
+            <section id="contents">
+                <article id="content1"></article>
+                <article id="content2"></article>
+                <article id="content3"></article>
+            </section>
+        </main>
+        <footer id="footer"></footer>
+    </div>
+</body>
+</html>
