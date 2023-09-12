@@ -358,11 +358,150 @@
                         <li>이벤트 :</li>
                     </ul>
 <pre class="line-numbers"><code class="language-js">{
+    // 선택자
+    const quizWrap = document.querySelector(".quiz__wrap");
 
+    // 문제 정보
+    const quizInfo = [
+        {
+            infoDate : "2006년 5회",
+            infoType : "정보처리 기능사",
+            infoQuestion : "이항(binary) 연산에 해당하는 것은?",
+            infoChoice : {
+                1: "COMPLEMENT",
+                2: "AND",
+                3: "ROTATE",
+                4: "SHIFT"
+            },
+            infoAnswer : "2",
+            infoDesc : "단항연산 : ROTATE, SHIFT, MOVE, NOT(COMPLEMENT)"
+        },{
+            infoDate : "2006년 5회",
+            infoType : "정보처리 기능사",
+            infoQuestion : "프로그램이 컴퓨터의 기종에 관계없이 수행될 수 있는 성질을 의미하는 것은?",
+            infoChoice : {
+                1: "가용성",
+                2: "신뢰성",
+                3: "호환성",
+                4: "안전성"
+            },
+            infoAnswer : "3",
+            infoDesc : "컴퓨터의 기종에 관계없이 동작하므로 호환성입니다. 호환성이란 까스활명수, 까스명수, 베아제등 이름은 틀리지만 소화제의 기능을 하는것처럼 기종에 관계없이 동작할수 있는 것들을 말합니다."
+        },{
+            infoDate : "2006년 5회",
+            infoType : "정보처리 기능사",
+            infoQuestion : "제어장치가 앞의 명령 실행을 완료한 후, 다음에 실행 할 명령을 기억장치로부터 가져오는 동작을 완료할 때까지의 주기를 무엇이라고 하는가?",
+            infoChoice : {
+                1: "fetch cycle",
+                2: "transfer cycle",
+                3: "search time",
+                4: "run time"
+            },
+            infoAnswer : "1",
+            infoDesc : "명령어를 가지고 오는것을 fetch cycle 이라고 합니다."
+        }
+    ];
+    
+    // 문제 출력
+    const updataQuiz = () => {
+        const quizArray = [];
+
+        quizInfo.forEach((quiz, index) => {
+            quizArray.push(`
+                <!-- <div class="quiz">
+                    <div class="quiz__header">${quiz.infoDate} ${quiz.infoType}</div>
+                    <div class="quiz__main">
+                        <div class="quiz__question">${index+1} ${quiz.infoQuestion}</div>                    
+                        <div class="quiz__choice">
+                            <label for="choice1-${index}">
+                                <input type="radio" id="choice1-${index}" name="choice-${index}" value="1">
+                                <span>${quiz.infoChoice[1]}</span>
+                            </label>
+                            <label for="choice2-${index}">
+                                <input type="radio" id="choice2-${index}" name="choice-${index}" value="2">
+                                <span>${quiz.infoChoice[2]}</span>
+                            </label>
+                            <label for="choice3-${index}">
+                                <input type="radio" id="choice3-${index}" name="choice-${index}" value="3">
+                                <span>${quiz.infoChoice[3]}</span>
+                            </label>
+                            <label for="choice4-${index}">
+                                <input type="radio" id="choice4-${index}" name="choice-${index}" value="4">
+                                <span>${quiz.infoChoice[4]}</span>
+                            </label>
+                        </div>
+                        <div class="quiz__answer none">
+                            ${quiz.infoAnswer}                      
+                        </div>
+                        <div class="quiz__desc none">  
+                            ${quiz.infoDesc}                      
+                        </div>
+                    </div>
+                    <div class="quiz__footer">
+                        <button class="quiz__confirm" data-index="${index}">정답 확인하기</button>
+                    </div>
+                </div> -->
+            `);
+        });
+        
+        quizWrap.innerHTML = quizArray.join("");           
+    };
+
+    // 정답 확인
+    const answerQuiz = (index) => {
+        const quizChoices = quizWrap.querySelectorAll(`.quiz__choice input[name="choice-${index}"]:checked`);
+        const quizElement = quizWrap.querySelectorAll(".quiz")[index];
+        const descElement = quizWrap.querySelectorAll(".quiz__desc")[index];
+        const answerElement = quizWrap.querySelectorAll(".quiz__answer")[index];
+        const confirmElement = quizWrap.querySelectorAll(".quiz__confirm")[index];
+
+        if (quizChoices.length > 0) {
+            const userAnswer = quizChoices[0].value;    // 사용자가 체크한 정답           
+            if(userAnswer === quizInfo[index].infoAnswer){
+                quizElement.classList.add("good");          // O 표시
+                descElement.classList.remove("none"); 
+            } else {
+                quizElement.classList.add("bad");           // X 표시
+                descElement.classList.remove("none");       // 해설 보기
+                answerElement.classList.remove("none");     // 정답 보기
+            }
+            confirmElement.classList.add("none");   // 정답 확인버튼 삭제
+        } else {
+            alert("보기를 선택해주세요!");
+        }
+    };
+
+    // 페이지가 로드된 후 실행
+    document.addEventListener("DOMContentLoaded", () => {
+        updataQuiz();
+
+        const quizConfirm = document.querySelectorAll(".quiz__confirm");
+
+        quizConfirm.forEach((button, index) => {
+            button.addEventListener("click", () => {
+                answerQuiz(index);
+            });
+        });
+    });
 }
 </code></pre>
                     <p class="desc">
-                        
+                        1. 선택자 설정(line3):<br>
+                        quizWrap: 이 변수는 HTML에서 "quiz__wrap" 클래스를 가진 요소를 선택합니다.<br>
+                        <br>
+                        2. 문제 정보 세팅(line6~42):<br>
+                        quizInfo: 이 배열은 각 퀴즈 질문을 나타내는 객체들로 구성됩니다. 각 객체에는 질문의 날짜, 유형, 질문 내용, 답변 선택지, 올바른 답변 및 설명이 포함되어 있습니다.<br>
+                        <br>
+                        3. 문제 출력(line47~56):<br>
+                        forEach를 이용해 문제를 출력합니다.<br>
+                        <br>
+                        4. 정답 확인(line57~81):<br>
+                        if문을 이용해 정답이면 O표시를하고, 오답이면 X표시를하고 해설과 정답을 보여줍니다.<br>
+                        <br>
+                        5. DOMContentLoaded 이벤트 리스너(line84~91):<br>
+                        이 이벤트 리스너는 DOM(Document Object Model)이 완전히 로드되고 파싱된 후에 트리거됩니다.<br>
+
+
                     </p>      
                     <a href="quiz/quizEffect04.html">확인하기</a>
                 </div>
@@ -377,11 +516,151 @@
                         <li>이벤트 :</li>
                     </ul>
 <pre class="line-numbers"><code class="language-js">{
+    // 선택자
+    const quizWrap = document.querySelector(".quiz__wrap");
 
+    // 문제 정보
+    const quizInfo = [
+        {
+            infoDate : "2006년 5회",
+            infoType : "정보처리 기능사",
+            infoQuestion : "이항(binary) 연산에 해당하는 것은?",
+            infoChoice : ["COMPLEMENT","AND","ROTATE","SHIFT"],
+            infoAnswer : "2",
+            infoDesc : "단항연산 : ROTATE, SHIFT, MOVE, NOT(COMPLEMENT)"
+        },
+        {
+            infoDate : "2006년 5회",
+            infoType : "정보처리 기능사",
+            infoQuestion : "프로그램이 컴퓨터의 기종에 관계없이 수행될 수 있는 성질을 의미하는 것은?",
+            infoChoice : ["가용성","신뢰성","호환성","안전성"],
+            infoAnswer : "3",
+            infoDesc : "컴퓨터의 기종에 관계없이 동작하므로 호환성입니다. 호환성이란 까스활명수, 까스명수, 베아제등 이름은 틀리지만 소화제의 기능을 하는것처럼 기종에 관계없이 동작할수 있는 것들을 말합니다."
+        },
+        {
+            infoDate : "2006년 5회",
+            infoType : "정보처리 기능사",
+            infoQuestion : "제어장치가 앞의 명령 실행을 완료한 후, 다음에 실행 할 명령을 기억장치로부터 가져오는 동작을 완료할 때까지의 주기를 무엇이라고 하는가?",
+            infoChoice : ["fetch cycle","transfer cycle","search time","run time"],
+            infoAnswer : "1",
+            infoDesc : "명령어를 가지고 오는것을 fetch cycle 이라고 합니다."
+        }
+    ];
+
+    let currentIndex = 0;
+
+    // 문제 출력
+    const updataQuiz = (index) => {
+        let quizWrapTag = ` 
+            <!-- <div class="quiz">
+                <div class="quiz__header">${quizInfo[index].infoDate} ${quizInfo[index].infoType}</div>
+                <div class="quiz__main">
+                    <div class="quiz__question">${index+1}. ${quizInfo[index].infoQuestion}</div>                    
+                    <div class="quiz__choice">
+                        <label for="choice1">
+                            <input type="radio" id="choice1" name="choice" value="1">
+                            <span>${quizInfo[index].infoChoice[0]}</span>
+                        </label>
+                        <label for="choice2">
+                            <input type="radio" id="choice2" name="choice" value="2">
+                            <span>${quizInfo[index].infoChoice[1]}</span>
+                        </label>
+                        <label for="choice3">
+                            <input type="radio" id="choice3" name="choice" value="3">
+                            <span>${quizInfo[index].infoChoice[2]}</span>
+                        </label>
+                        <label for="choice4">
+                            <input type="radio" id="choice4" name="choice" value="4">
+                            <span>${quizInfo[index].infoChoice[3]}</span>
+                        </label>
+                    </div>
+                    <div class="quiz__answer none">   
+                        ${quizInfo[index].infoAnswer}                   
+                    </div>
+                    <div class="quiz__desc none">                 
+                        ${quizInfo[index].infoDesc}       
+                    </div>
+                </div>
+                <div class="quiz__footer">
+                    <button class="quiz__confirm">정답 확인하기</button>
+                    <button class="quiz__next none">다음 문제</button>
+                </div>
+            </div> -->
+        `;
+
+        quizWrap.innerHTML = quizWrapTag;
+
+        // 선택자
+        const quizConfirm = quizWrap.querySelector(".quiz__confirm");
+        const quizNext = quizWrap.querySelector(".quiz__next");
+
+        // 정답 확인 버튼
+        quizConfirm.addEventListener("click", () => {
+            const selectedChoice = quizWrap.querySelector("input[name='choice']:checked");
+
+            if (!selectedChoice) {
+                alert("답을 선택하세요!"); // 원하는 경고 메시지로 대체할 수 있습니다.
+                return; // 함수 종료
+            }
+            checkAnswer();
+            quizConfirm.classList.add("none");  // 정답 버튼 삭제
+            quizNext.classList.remove("none");  // 다음 버튼 추가
+        });
+
+        // 다음 문제 버튼
+        quizNext.addEventListener("click", () => {
+            if(currentIndex &lt; quizInfo.length -1){
+                quizNext.classList.add("none");         // 다음 버튼 삭제
+                quizConfirm.classList.remove("none");   // 정답 버튼 추가
+                currentIndex++;                         // 문제 번호 추가
+                updataQuiz(currentIndex);               // 퀴즈 반영
+            } else {
+                alert("퀴즈가 종료되었습니다.");
+            }
+        });
+    };
+
+    // 정답 확인
+    const checkAnswer = () => {
+        const selectedChoice = quizWrap.querySelector("input[name='choice']:checked");
+        const userAnswer = selectedChoice.value;                    // 사용자가 클릭한 정답
+        const correctAnswer = quizInfo[currentIndex].infoAnswer;    // 정답자의 정답
+        const quizElement = quizWrap.querySelector(".quiz");
+        const descElement = quizWrap.querySelector(".quiz__desc");
+        const answerElement = quizWrap.querySelector(".quiz__answer");
+        
+
+        if(userAnswer === correctAnswer){
+        quizElement.classList.add("good");
+        } else {
+            quizElement.classList.add("bad");
+            answerElement.classList.remove("none");
+        }
+        descElement.classList.remove("none");        
+    }
+
+    // 페이지가 로드된 후 실행
+    document.addEventListener("DOMContentLoaded", () => {
+        updataQuiz(currentIndex);
+    });
 }
 </code></pre>
                     <p class="desc">
-                        
+                        1. 선택자 설정(line3):<br>
+                        quizWrap: 이 변수는 HTML에서 "quiz__wrap" 클래스를 가진 요소를 선택합니다.<br>
+                        <br>
+                        2. 문제 정보 세팅(line6~42):<br>
+                        quizInfo: 이 배열은 각 퀴즈 질문을 나타내는 객체들로 구성됩니다. 각 객체에는 질문의 날짜, 유형, 질문 내용, 답변 선택지, 올바른 답변 및 설명이 포함되어 있습니다.<br>
+                        <br>
+                        3. 문제 출력(line47~56):<br>
+                        forEach를 이용해 문제를 출력합니다.<br>
+                        <br>
+                        4. 정답 확인 및 다음 버튼(line57~81):<br>
+                        if문을 이용해 정답이면 O표시를하고, 문제 버튼이 사라지며 다음버튼이 생깁니다. 오답이면 X표시를하고 해설과 정답을 보여줍니다.<br>
+                        <br>
+                        5. DOMContentLoaded 이벤트 리스너(line84~91):<br>
+                        이 이벤트 리스너는 DOM(Document Object Model)이 완전히 로드되고 파싱된 후에 트리거됩니다.<br>
+
                     </p>      
                     <a href="quiz/quizEffect05.html">확인하기</a>
                 </div>
