@@ -50,6 +50,80 @@
                         <li>선택자 : document.querySelector()</li>
                         <li>메서드 : innerText(), classList.add(), classList.remove()</li>
                     </ul>
+<pre class="line-numbers"><code class="language-js">{
+    // 문제 정보
+    const infoDate = "2021년 10월";
+    const infoType = "정보처리 기능사";
+    const infoNum = "1.";
+    const infoQuestion = "CPU의 정보처리 속도 단위 중 초당 100만 개의 연산을 수행한다는 의미의 단위는?"
+    const infoAnswer = "MIPS";
+    const infoDesc = "LIPS는 초당 1개, KIPS는 초당 1000개, MIPS는 초당 1000000의 연산을 수행하는것을 의미합니다."
+
+    // 선택자 
+    const quizWrap = document.querySelector(".quiz__wrap");
+    const quizDate = quizWrap.querySelector(".quiz__date");
+    const quizType = quizWrap.querySelector(".quiz__type");
+    const quizNum = quizWrap.querySelector(".quiz__question em");
+    const quizQuestion = quizWrap.querySelector(".quiz__question span");
+    const quizAnswer = quizWrap.querySelector(".quiz__answer");
+    const quizDesc = quizWrap.querySelector(".quiz__desc");
+    const quizConfirm = quizWrap.querySelector(".quiz__confirm");
+    const quizInput = quizWrap.querySelector(".quiz__input input");
+    const quizAnimation = quizWrap.querySelector(".quiz__animation");
+
+    // 문제 출력
+    quizDate.innerText = infoDate;
+    quizType.innerText = infoType;
+    quizNum.innerText = infoNum;
+    quizQuestion.innerText = infoQuestion;
+    quizAnswer.innerText = infoAnswer;
+    quizDesc.innerText = infoDesc;
+
+    // 정답 해설 숨기기
+    quizAnswer.classList.add("none");
+    quizDesc.classList.add("none");
+
+    // 정답 확인하기
+    quizConfirm.addEventListener("click", () => {
+        const userAnswer = quizInput.value;
+
+        if(infoAnswer == userAnswer){
+            quizAnimation.classList.add("like");
+        } else {
+            quizAnimation.classList.add("dislike");
+        }
+        quizConfirm.classList.add("none");
+        quizInput.classList.add("none");
+        quizAnswer.classList.remove("none");
+        quizDesc.classList.remove("none");
+    });  
+}
+</code></pre>
+                    <p class="desc">
+                        01. 문제 정보 세팅(line2~8):<br>
+                        이 부분에서는 퀴즈에 필요한 정보를 변수에 저장합니다. infoDate에는 퀴즈의 날짜, infoType에는 퀴즈의 유형, 
+                        infoNum에는 문제 번호, infoQuestion에는 퀴즈 질문, infoAnswer에는 정답, 
+                        infoDesc에는 정답에 대한 설명이 들어갑니다.<br>
+                        <br>
+                        02. 선택자 설정(line11~20):<br>
+                        이 부분에서는 HTML 문서 내에서 각 요소를 선택합니다. 
+                        예를 들어, .quiz__date 클래스를 가진 요소를 quizDate 변수에 저장하고, 이와 같이 다른 요소들도 선택합니다.<br>
+                        <br>
+                        03. 문제 출력(line23~28):<br>
+                        이 부분에서는 선택한 HTML 요소들에 퀴즈 정보를 출력합니다. 
+                        각 변수에 저장된 정보를 해당 요소의 innerText 속성에 할당하여 화면에 퀴즈 내용을 표시합니다.<br>
+                        <br>
+                        04. 정답, 해설 숨기기(line31~32):<br>
+                        퀴즈 페이지를 처음 로드했을 때, 정답과 정답 설명은 숨겨져 있도록 하기 위해 
+                        해당 요소들에 none 클래스를 추가합니다.<br>
+                        <br>
+                        05. 정답 확인하기(line35~46):<br>
+                        정답을 확인하는 기능이 구현된 부분입니다. 사용자가 입력한 답안을 quizInput에서 가져와 userAnswer 변수에 저장합니다. 
+                        그런 다음, 사용자의 답안과 정답을 비교하여 일치하면 "like" 애니메이션을 추가하고, 불일치하면 "dislike" 애니메이션을 추가합니다. 
+                        그리고 확인 버튼(quizConfirm)을 숨기고 입력 필드(quizInput)도 숨깁니다. 
+                        마지막으로 정답과 정답 설명을 화면에 보여주기 위해 none 클래스를 제거합니다.
+                    </p>
+                    
                     <a href="quiz/quizEffect01.html">확인하기</a>
                 </div>
                 <div class="desc02">
@@ -62,6 +136,126 @@
                         <li>메서드 : textContent(), classList, trim(), toLowerCase()</li>
                         <li>이벤트 : if문, addEventListener()</li>
                     </ul>                   
+<pre class="line-numbers"><code class="language-js">{
+        // 선택자 
+        const quizWrap = document.querySelector(".quiz__wrap");
+        const quizDate = quizWrap.querySelectorAll(".quiz__date");
+        const quizType = quizWrap.querySelectorAll(".quiz__type");
+        const quizNum = quizWrap.querySelectorAll(".quiz__question em");
+        const quizQuestion = quizWrap.querySelectorAll(".quiz__question span");
+        const quizAnswer = quizWrap.querySelectorAll(".quiz__answer");
+        const quizDesc = quizWrap.querySelectorAll(".quiz__desc");
+        const quizConfirm = quizWrap.querySelectorAll(".quiz__confirm");
+        const quizInput = quizWrap.querySelectorAll(".quiz__input input");
+        const quizAnimation = quizWrap.querySelectorAll(".quiz__animation");
+
+        // 문제 정보
+        const quizInfo = [
+            {
+                infoDate : "2019년 상시",
+                infoType : "정보처리기능사",
+                infoNum : "1.",
+                infoQuestion : "어떤 릴레이션 R의 정의에서 애트리뷰트의 수를 무엇이라 하는가?",
+                infoAnswer : "차수",
+                infoDesc : "속성(Attribute)의 개수를 차수, 튜플(Tuple)의 개수를 기수라고 합니다.",
+            }, 
+            {
+                infoDate : "2021년 10월",
+                infoType : "정보처리기능사",
+                infoNum : "2.",
+                infoQuestion : "시스템의 날짜를 변경하거나 확인할 수 있는 DOS 명령어는?",
+                infoAnswer : "2",
+                infoDesc : "'시스템 날짜 변경' 명령어는 DATE입니다.",
+            }, 
+            {
+                infoDate : "2021년 6월",
+                infoType : "정보처리기능사",
+                infoNum : "3.",
+                infoQuestion : "2개의 조건을 동시에 만족해야 출력하는 논리 연산자는?",
+                infoAnswer : "AND",
+                infoDesc : "2개의 조건을 동시에 만족한다는 것은 2개의 조건이 모두 참이라는 의미입니다. 즉 모든 조건이 참일 때만 참을 출력하는 논리 연산자는 AND입니다",
+            }
+        ];
+
+        // 문제 출력
+
+        // for()
+        // for(let i=0; i&lt;quizInfo.length; i++){
+        //     quizDate[i].textContent = quizInfo[i].infoDate;
+        //     quizType[i].textContent = quizInfo[i].infoType;
+        //     quizNum[i].textContent = quizInfo[i].infoNum;
+        //     quizQuestion[i].textContent = quizInfo[i].infoQuestion;
+        //     quizAnswer[i].textContent = quizInfo[i].infoAnswer;
+        //     quizDesc[i].textContent = quizInfo[i].infoDesc;
+        // }
+
+        // forEach()
+        quizInfo.forEach((el, i) => {
+        quizDate[i].textContent = quizInfo[i].infoDate;
+        quizType[i].textContent = quizInfo[i].infoType;
+        quizNum[i].textContent = quizInfo[i].infoNum;
+        quizQuestion[i].textContent = quizInfo[i].infoQuestion;
+        quizAnswer[i].textContent = quizInfo[i].infoAnswer;
+        quizDesc[i].textContent = quizInfo[i].infoDesc;
+        });
+
+        // 정답 해설 숨기기
+        // quizAnswer[0].style.display = "none";
+        // quizAnswer[1].style.display = "none";
+        // quizAnswer[2].style.display = "none";
+
+        // quizDesc[0].style.display = "none";
+        // quizDesc[1].style.display = "none";
+        // quizDesc[2].style.display = "none";
+
+        // for()
+        // for(i=0; i&lt;quizInfo.length; i++){
+        //     quizAnswer[i].style.display = "none";
+        //     quizDesc[i].style.display = "none";
+        // }
+
+        // forEach()
+        quizInfo.forEach((el, i) => {
+            quizAnswer[i].style.display = "none";
+            quizDesc[i].style.display = "none";
+        });
+
+        // 정답확인
+        quizConfirm.forEach(function(btn, num){
+            btn.addEventListener("click", function(){
+                const userAnswer = quizInput[num].value.trim().toLowerCase();
+                const correctAnswer = quizInfo[num].infoAnswer.trim().toLowerCase();
+
+                if(userAnswer == correctAnswer){
+                    quizAnimation[num].classList.add("like");
+                } else {
+                    quizAnimation[num].classList.add("dislike");
+                }
+
+                quizAnswer[num].style.display = "block";
+                quizDesc[num].style.display = "block";
+                quizConfirm[num].style.display = "none";
+                quizInput[num].style.display = "none";
+            });
+        });
+}
+</code></pre>
+                    <p class="desc">
+                        1.선택자 설정(line3~12):<br>
+                        먼저, HTML 문서에서 필요한 요소들을 선택자로 가져옵니다. 예를 들어, .quiz__date, .quiz__type, .quiz__question, 등의 클래스를 가진 요소들을 선택합니다.<br>
+                        <br>    
+                        2.문제 정보 세팅(line15~40): <br>
+                        quizInfo 배열은 퀴즈 정보를 저장하는데 사용됩니다. 각 항목은 퀴즈의 날짜, 유형, 번호, 질문, 정답 및 설명을 포함하는 객체입니다.<br>
+                        <br>
+                        3.문제 출력(line55~61):<br>
+                        forEach 메서드를 사용하여 각 배열 요소에 대해 정보를 채웁니다.<br>
+                        <br>
+                        4.정답 해설 숨기기(line80~82):<br>
+                        그 후, 정답과 해설을 숨기기 위해 quizAnswer 및 quizDesc 배열의 스타일 속성의 display를 "none"으로 설정합니다.<br>
+                        <br>
+                        5.정답 확인(line86~100):<br>
+                        quizConfirm 배열의 각 버튼(정답 확인 버튼)에 이벤트 리스너를 추가합니다. 사용자가 정답 확인 버튼을 클릭하면, 해당 퀴즈에 대한 사용자의 답변과 정답을 비교하여 퀴즈의 상태를 나타내는 클래스를 추가합니다. 그리고 정답과 해설을 표시하고, 정답 확인 버튼과 입력 필드를 숨깁니다.
+                    </p>                 
                     <a href="quiz/quizEffect02.html">확인하기</a>
                 </div>
                 <div>
@@ -74,6 +268,83 @@
                         <li>메서드 : innerHTML(), classList</li>
                         <li>이벤트 : addEventListener()</li>
                     </ul>
+<pre class="line-numbers"><code class="language-js">{
+    // 선택자 
+    const quizWrap = document.querySelector(".quiz__wrap");
+    const quizHeader = quizWrap.querySelector(".quiz__header");
+    const quizQuestion = quizWrap.querySelector(".quiz__question");
+    const quizAnswer = quizWrap.querySelector(".quiz__answer");
+    const quizDesc = quizWrap.querySelector(".quiz__desc");
+    const quizChoice = quizWrap.querySelectorAll(".quiz__choice span");
+    const quizSelect = quizWrap.querySelectorAll(".quiz__choice input");
+
+    const quizConfirm = quizWrap.querySelector(".quiz__confirm");
+
+    // 문제 정보
+    const quizInfo = [
+        {
+            infoDate : "2019년 상시",
+            infoType : "정보처리기능사",
+            infoNum : "01",
+            infoQuestion : "어떤 릴레이션 R의 정의에서 애트리뷰트의 수를 무엇이라 하는가?",
+            infoChoice : ["차수", "기수", "도메인", "튜플"],
+            infoAnswer : "1",
+            infoDesc : "속성(Attribute)의 개수를 차수, 튜플(Tuple)의 개수를 기수라고 합니다.",
+        }
+    ];
+
+    // 문제 출력
+
+    quizHeader.innerHTML = quizInfo[0].infoDate + " " +quizInfo[0].infoType;
+    quizQuestion.innerHTML = quizInfo[0].infoNum + ". " + quizInfo[0].infoQuestion;
+    quizAnswer.innerText = quizInfo[0].infoAnswer;
+    quizDesc.innerText = quizInfo[0].infoDesc;
+
+    for(let i=0; i&lt;quizChoice.length; i++){
+        quizChoice[i].innerText = quizInfo[0].infoChoice[i];
+    }
+
+    // 정답 확인
+    quizConfirm.addEventListener("click", ()=>{
+        let selectedChoice = null;
+
+        for(let i=0; i&lt;quizSelect.length; i++){
+            if(quizSelect[i].checked){
+                selectedChoice = quizSelect[i].value;
+                break;
+            }
+        }
+
+        if(selectedChoice !== null){
+            if(selectedChoice == quizInfo[0].infoAnswer){
+                // alert("정답");
+                alert("정답입니다.");
+                quizDesc.classList.remove("none");
+            } else {
+                // alert("오답");
+                alert("오답입니다.");
+                quizAnswer.classList.remove("none");
+                quizDesc.classList.remove("none");
+            }
+        } else {
+            alert("보기를 선택해주세요!! 😊");
+        }
+    });
+}
+</code></pre>
+                    <p class="desc">
+                        1. 선택자 설정(line3~9):<br>
+                        먼저, HTML 문서에서 필요한 요소들을 선택자로 가져옵니다. .quiz__wrap 클래스 내부의 요소들을 선택합니다.<br>
+                        <br>
+                        2. 문제 정보 세팅(line14~22):<br>
+                        quizInfo 배열은 퀴즈 정보를 저장하는데 사용됩니다. 각 항목은 퀴즈의 날짜, 유형, 번호, 질문, 보기, 정답 및 설명을 포함하는 객체입니다. 이 예시에서는 하나의 퀴즈만을 다루기 때문에 배열 내에 하나의 객체만 포함됩니다.<br>
+                        <br>
+                        3. 문제 출력(line28~34):<br>
+                        퀴즈 정보를 HTML 요소에 채워 넣습니다. quizHeader, quizQuestion, quizAnswer, quizDesc는 텍스트 콘텐츠를 설정하고, quizChoice와 quizSelect는 각각의 선택지와 라디오 버튼을 설정합니다.<br>
+                        <br>
+                        4. 정답 확인 및 해설 확인(line38~60):<br>
+                        quizConfirm 버튼에 클릭 이벤트 리스너를 추가합니다. 사용자가 "정답 확인" 버튼을 클릭하면, 사용자가 선택한 답을 확인하고, 선택한 답이 정답인지 여부에 따라 적절한 경고 메시지를 표시합니다. 선택한 답이 정답이면 "정답입니다." 메시지가 표시되고, 그렇지 않으면 "오답입니다." 메시지가 표시됩니다. 또한, 보기를 선택하지 않은 경우 "보기를 선택해주세요!" 메시지가 표시됩니다.
+                    </p>      
                     <a href="quiz/quizEffect03.html">확인하기</a>
                 </div>
                 <div>
@@ -86,7 +357,33 @@
                         <li>메서드 :</li>
                         <li>이벤트 :</li>
                     </ul>
+<pre class="line-numbers"><code class="language-js">{
+
+}
+</code></pre>
+                    <p class="desc">
+                        
+                    </p>      
                     <a href="quiz/quizEffect04.html">확인하기</a>
+                </div>
+                <div>
+                    <h2>05. 퀴즈 이펙트 : 객관식 : 정답 선택하기 유형(5문제)</h2>
+                    <p>객관식을 선택하면 정답을 알려줍니다.</p>
+                    <ul>
+                        <li>저장하기 :</li>
+                        <li>제어하기 :</li>
+                        <li>선택자 :</li>
+                        <li>메서드 :</li>
+                        <li>이벤트 :</li>
+                    </ul>
+<pre class="line-numbers"><code class="language-js">{
+
+}
+</code></pre>
+                    <p class="desc">
+                        
+                    </p>      
+                    <a href="quiz/quizEffect05.html">확인하기</a>
                 </div>
             </div>
             <!-- //main__desc -->

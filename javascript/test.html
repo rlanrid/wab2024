@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 
+        const aaa = [10,20,30,40,50,60,70,80,90];
+        let sum = 0;
+
+        // for(i=0; i<aaa.length; i++){
+        //     sum += aaa[i];
+        // }
+        // console.log(sum);
+
+        // aaa.forEach(function(el, i){
+        //     sum += aaa[i];
+        // })
+        // console.log(sum);
+
+        // for(let el of aaa){
+        //     sum += el;
+        // }
+        // console.log(sum);
+
+        // for(let el in aaa){
+        //     sum += aaa[el];
+        // }
+        // console.log(sum);
+
+        // aaa.map(function(el, i){
+        //     sum += aaa[i];
+        // })
+        // console.log(sum);
+
+        aaa.filter(function(el, i){
+            sum += aaa[i];
+        })
+        console.log(sum);
+    </script>
+</body>
+</html>
