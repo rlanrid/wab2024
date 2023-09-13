@@ -408,39 +408,39 @@
 
         quizInfo.forEach((quiz, index) => {
             quizArray.push(`
-                <!-- <div class="quiz">
-                    <div class="quiz__header">${quiz.infoDate} ${quiz.infoType}</div>
-                    <div class="quiz__main">
-                        <div class="quiz__question">${index+1} ${quiz.infoQuestion}</div>                    
-                        <div class="quiz__choice">
-                            <label for="choice1-${index}">
-                                <input type="radio" id="choice1-${index}" name="choice-${index}" value="1">
-                                <span>${quiz.infoChoice[1]}</span>
-                            </label>
-                            <label for="choice2-${index}">
-                                <input type="radio" id="choice2-${index}" name="choice-${index}" value="2">
-                                <span>${quiz.infoChoice[2]}</span>
-                            </label>
-                            <label for="choice3-${index}">
-                                <input type="radio" id="choice3-${index}" name="choice-${index}" value="3">
-                                <span>${quiz.infoChoice[3]}</span>
-                            </label>
-                            <label for="choice4-${index}">
-                                <input type="radio" id="choice4-${index}" name="choice-${index}" value="4">
-                                <span>${quiz.infoChoice[4]}</span>
-                            </label>
-                        </div>
-                        <div class="quiz__answer none">
+                &lt;div class="quiz">
+                    &lt;div class="quiz__header"&gt;${quiz.infoDate} ${quiz.infoType}&lt;/div&gt;
+                    &lt;div class="quiz__main"&gt;
+                        &lt;div class="quiz__question">${index+1} ${quiz.infoQuestion}&lt;/div&gt;                    
+                        &lt;div class="quiz__choice"&gt;
+                            &lt;label for="choice1-${index}"&gt;
+                                &lt;input type="radio" id="choice1-${index}" name="choice-${index}" value="1"&gt;
+                                &lt;span&gt;${quiz.infoChoice[1]}&lt;/span&gt;
+                            &lt;/label&gt;
+                            &lt;label for="choice2-${index}"&gt;
+                                &lt;input type="radio" id="choice2-${index}" name="choice-${index}" value="2"&gt;
+                                &lt;span>${quiz.infoChoice[2]}&lt;/span>
+                            &lt;/label&gt;
+                            &lt;label for="choice3-${index}"&gt;
+                                &lt;input type="radio" id="choice3-${index}" name="choice-${index}" value="3"&gt;
+                                &lt;span>${quiz.infoChoice[3]}&lt;/span>
+                            &lt;/label&gt;
+                            &lt;label for="choice4-${index}"&gt;
+                                &lt;input type="radio" id="choice4-${index}" name="choice-${index}" value="4"&gt;
+                                &lt;span>${quiz.infoChoice[4]}&lt;/span&gt;
+                            &lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div class="quiz__answer none"&gt;
                             ${quiz.infoAnswer}                      
-                        </div>
-                        <div class="quiz__desc none">  
+                        &lt;/div&gt;
+                        &lt;div class="quiz__desc none"&gt;  
                             ${quiz.infoDesc}                      
-                        </div>
-                    </div>
-                    <div class="quiz__footer">
-                        <button class="quiz__confirm" data-index="${index}">정답 확인하기</button>
-                    </div>
-                </div> -->
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="quiz__footer"&gt;
+                        &lt;button class="quiz__confirm" data-index="${index}"&gt;정답 확인하기&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
             `);
         });
         
@@ -489,7 +489,7 @@
                         1. 선택자 설정(line3):<br>
                         quizWrap: 이 변수는 HTML에서 "quiz__wrap" 클래스를 가진 요소를 선택합니다.<br>
                         <br>
-                        2. 문제 정보 세팅(line6~42):<br>
+                        2. 문제 정보 세팅(line6~31):<br>
                         quizInfo: 이 배열은 각 퀴즈 질문을 나타내는 객체들로 구성됩니다. 각 객체에는 질문의 날짜, 유형, 질문 내용, 답변 선택지, 올바른 답변 및 설명이 포함되어 있습니다.<br>
                         <br>
                         3. 문제 출력(line47~56):<br>
