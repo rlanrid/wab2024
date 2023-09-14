@@ -82,7 +82,7 @@
             <div class="main__sample"> 
                 <div id="s30" class="sample">
                     <h3>30. string.prototype.trim()</h3>
-                    <p>메서드는 문자열의 앞/뒤 공백을 제거하고, 새로운 문자열을 반환합니다.</a></li></p>
+                    <p>메서드는 문자열의 앞/뒤 공백을 제거하고, 새로운 문자열을 반환합니다.</p>
 <pre><code class="language-js">{
     const greeting = '   Hello world!   ';
 
@@ -98,11 +98,11 @@
                         여기서 말하는 공백이란 모든 공백문자(space, tab, NBSP 등)와 모든 개행문자(LF, CR 등)를 의미합니다.
                     </p> -->
                 </div>
-                <!-- //sample01 -->
+                <!-- //s30 -->
 
                 <div id="s27" class="sample">
                     <h3>27. string.prototype.toLowerCase()</h3>
-                    <p>메서드는 문자열을 소문자로 설정하고, 소문자 문자열을 반환합니다.</a></li></p>
+                    <p>메서드는 문자열을 소문자로 설정하고, 소문자 문자열을 반환합니다.</p>
 <pre><code class="language-js">{
     const originalString = "Hello World";
     const lowerCaseString = originalString.toLowerCase();
@@ -110,11 +110,31 @@
     console.log(lowerCaseString); // "hello world"
 }
 </code></pre>
-                    <!-- <p class="desc">
-
-                    </p> -->
+                    <p class="desc">
+                        toLowerCase() 는 원래의 str에 영향을 주지 않습니다.
+                    </p>
                 </div>
-                <!-- //sample01 -->
+                <!-- //s27 -->
+
+                <div id="s28" class="sample">
+                    <h3>28. string.prototype.toUpperCase()</h3>
+                    <p>메서드는 문자열을 대문자로 설정하고, 대문자 문자열을 반환합니다.</p>
+<pre><code class="language-js">{
+    // 원본 문자열
+    var originalString = "Hello, World!";
+
+    // toUpperCase() 메서드를 사용하여 대문자로 변환
+    var upperCaseString = originalString.toUpperCase();
+
+    // 결과 출력
+    console.log(upperCaseString); // "HELLO, WORLD!"
+}
+</code></pre>
+                    <p class="desc">
+                        toUpperCase() 는 원래의 str에 영향을 주지 않습니다.
+                    </p>
+                </div>
+                <!-- //s28 -->
             </div>
             <!-- //main__sample -->
         </main>

@@ -168,7 +168,7 @@ body::after {
     min-height: 400px;
     background-color: #fff;
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
     margin: 10px;
 }
@@ -532,13 +532,13 @@ body::after {
         margin-bottom: 10px;
     }
     .quiz__date {
-        padding: 14px;
+        font-size: 14px;
     }
     .quiz__type {
-        padding: 14px;
+        font-size: 14px;
     }
     .quiz__question {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         line-height: 1.5;
         font-size: 20px;
     }
@@ -558,6 +558,9 @@ body::after {
         padding: 14px;
     }
     .quiz__choice label span {
+        padding: 13px;
+    }
+    .quiz__confirm {
         padding: 13px;
     }
 }
