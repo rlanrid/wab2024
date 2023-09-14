@@ -175,7 +175,7 @@
     <!-- //footer -->
 
     <script>
-        // 선택자 
+        // 선택자
         const quizWrap = document.querySelector(".quiz__wrap");
         const quizDate = quizWrap.querySelectorAll(".quiz__date");
         const quizType = quizWrap.querySelectorAll(".quiz__type");
@@ -187,94 +187,72 @@
         const quizInput = quizWrap.querySelectorAll(".quiz__input input");
         const quizAnimation = quizWrap.querySelectorAll(".quiz__animation");
 
+
         // 문제 정보
         const quizInfo = [
             {
-                infoDate : "2019년 상시",
-                infoType : "정보처리기능사",
+                infoDate : "1",
+                infoType : "웹디자인",
                 infoNum : "1.",
-                infoQuestion : "어떤 릴레이션 R의 정의에서 애트리뷰트의 수를 무엇이라 하는가?",
-                infoAnswer : "차수",
-                infoDesc : "속성(Attribute)의 개수를 차수, 튜플(Tuple)의 개수를 기수라고 합니다.",
-            }, 
+                infoQuestion : "안녕하세요",
+                infoAnswer : "네",
+                infoDesc : "안녕히가세요."
+            },
             {
-                infoDate : "2021년 10월",
-                infoType : "정보처리기능사",
+                infoDate : "2",
+                infoType : "웹디자인",
                 infoNum : "2.",
-                infoQuestion : "시스템의 날짜를 변경하거나 확인할 수 있는 DOS 명령어는?",
-                infoAnswer : "2",
-                infoDesc : "'시스템 날짜 변경' 명령어는 DATE입니다.",
-            }, 
+                infoQuestion : "반가워요",
+                infoAnswer : "네",
+                infoDesc : "안녕히가세요."
+            },
             {
-                infoDate : "2021년 6월",
-                infoType : "정보처리기능사",
+                infoDate : "3",
+                infoType : "웹디자인",
                 infoNum : "3.",
-                infoQuestion : "2개의 조건을 동시에 만족해야 출력하는 논리 연산자는?",
-                infoAnswer : "AND",
-                infoDesc : "2개의 조건을 동시에 만족한다는 것은 2개의 조건이 모두 참이라는 의미입니다. 즉 모든 조건이 참일 때만 참을 출력하는 논리 연산자는 AND입니다",
+                infoQuestion : "오랜만입니다.",
+                infoAnswer : "네",
+                infoDesc : "안녕히가세요."
             }
         ];
 
         // 문제 출력
 
-        // for()
-        // for(let i=0; i<quizInfo.length; i++){
-        //     quizDate[i].textContent = quizInfo[i].infoDate;
-        //     quizType[i].textContent = quizInfo[i].infoType;
-        //     quizNum[i].textContent = quizInfo[i].infoNum;
-        //     quizQuestion[i].textContent = quizInfo[i].infoQuestion;
-        //     quizAnswer[i].textContent = quizInfo[i].infoAnswer;
-        //     quizDesc[i].textContent = quizInfo[i].infoDesc;
-        // }
-
-        // forEach()
-        quizInfo.forEach((el, i) => {
+        for(let i=0; i<quizInfo.length; i++){
             quizDate[i].textContent = quizInfo[i].infoDate;
             quizType[i].textContent = quizInfo[i].infoType;
             quizNum[i].textContent = quizInfo[i].infoNum;
             quizQuestion[i].textContent = quizInfo[i].infoQuestion;
             quizAnswer[i].textContent = quizInfo[i].infoAnswer;
             quizDesc[i].textContent = quizInfo[i].infoDesc;
-        });
+        }
 
-        // 정답 해설 숨기기
-        // quizAnswer[0].style.display = "none";
-        // quizAnswer[1].style.display = "none";
-        // quizAnswer[2].style.display = "none";
+        // 정답 숨기기
 
-        // quizDesc[0].style.display = "none";
-        // quizDesc[1].style.display = "none";
-        // quizDesc[2].style.display = "none";
-
-        // for()
-        // for(i=0; i<quizInfo.length; i++){
-        //     quizAnswer[i].style.display = "none";
-        //     quizDesc[i].style.display = "none";
-        // }
-
-        // forEach()
-        quizInfo.forEach((el, i) => {
+        quizInfo.forEach(function(el, i){
             quizAnswer[i].style.display = "none";
             quizDesc[i].style.display = "none";
         });
 
-        // 정답확인
-        quizConfirm.forEach(function(btn, num){
-            btn.addEventListener("click", function(){
-                const userAnswer = quizInput[num].value.trim().toLowerCase();
-                const correctAnswer = quizInfo[num].infoAnswer.trim().toLowerCase();
+        // 정답 확인
 
-                if(userAnswer == correctAnswer){
+        quizConfirm.forEach((btn, num) => {
+            btn.addEventListener("click", () => {
+                const userAnswer = quizInput[num].value;
+                const correctAnswer = quizInfo[num].infoAnswer;
+
+                if(userAnswer === correctAnswer){
                     quizAnimation[num].classList.add("like");
+                    quizElement.classList.add("good");
                 } else {
                     quizAnimation[num].classList.add("dislike");
+                    quizElement.classList.add("bad");
                 }
-
                 quizAnswer[num].style.display = "block";
                 quizDesc[num].style.display = "block";
                 quizConfirm[num].style.display = "none";
-                quizInput[num].style.display = "none";
-            });
+                quizInput[num].style.display = "none";                   
+            })
         });
     </script>
 </body>
