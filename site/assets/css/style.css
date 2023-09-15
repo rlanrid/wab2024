@@ -325,14 +325,15 @@
 .use__title h3 {
     font-size: 45px;
     font-weight: 800;
+    line-height: 1;
 }
 .use__title h3 em {
     font-weight: 300;
 }
 .use__title h3 span {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
-    color: #000;
+    color: #333;
 }
 .use__img {
     display: flex;
