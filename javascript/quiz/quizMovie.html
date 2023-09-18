@@ -91,14 +91,14 @@
                         <div class="quiz__question">${quizInfo[index].infoQuestion}</div>
                         <div class="hint">
                             <button class="hint__btn">누르면 힌트</button>
-                            <div class="hint__text"><span>${quizInfo[index].infoHint}</span></div>
+                            <div class="hint__text none"><span>${quizInfo[index].infoHint}</span></div>
                         </div>
                         <div class="quiz__input">
                             <input type="text" placeholder="정답을 입력해주세요!">
                         </div>
                         <div class="quiz__answer">
                             <button class="answer__btn">정답 확인</button>
-                            <div class="answer__text"><span>${quizInfo[index].infoAnswer}</span></div>
+                            <div class="answer__text none"><span>${quizInfo[index].infoAnswer}</span></div>
                         </div>
                     </div>
                 </div>
@@ -109,6 +109,16 @@
 
 
         // 정답 확인하기
+        const checkAnswer = () => {
+            const userAnswer = quizInput.value;
+
+      
+        }
+
+        // 페이지가 로딩된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            updataQuiz(currentIndex);
+        })
 
     </script>
 </body>
