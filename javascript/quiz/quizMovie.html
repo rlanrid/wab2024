@@ -10,34 +10,20 @@
     <link href="https://webfontworld.github.io/DdangFonts/TangsBudaeJjigae.css" rel="stylesheet">
     <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
     <style>
-        /* * {
-            margin: 0;
-            padding: 0;
-        }
-        a {
-            color: #fff;
-            text-decoration: none;
-        }
-        body {
-            color: #fff;
-            background-color: #111;
-            font-family: "Jalnan";
+        /* .slider__wrap {
+            position: relative;
         } */
-        .parallax__item {
+        .slider__wrap {
             width: 100%;
             height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
         }
-        .parallax__item__img {
-            width: 10%;
-            height: 15%;
-            margin: 1vw;
-            background-position: center;
-            border: 3px solid pink;
+        .slider__img {
+            width: 100%;
+            height: inherit;
+            position: relative;
+        }
+        .slider {
+            position: absolute;
         }
 
     </style>
@@ -47,31 +33,22 @@
     <main id="main">
         <div class="quiz__wrap">
         </div>
+        <div class="slider__wrap">
+            <div class="slider__img">
+                <div class="slider"><img src="assets/img/movie1-min.jpg" alt=""></div>
+                <div class="slider"><img src="assets/img/movie2-min.jpg" alt=""></div>
+                <div class="slider"><img src="assets/img/movie3-min.jpg" alt=""></div>
+            </div>
+            <div class="slider__btn">
+                <button class="btn">시작하기</button>
+            </div>
+        </div>
     </main>
-    <section id="img" class="parallax__item">
-        <div class="parallax__item__img1"><img src="assets/img/movie1-min.jpg" alt=""></div>
-        <div class="parallax__item__img2"><img src="assets/img/movie2-min.jpg" alt=""></div>
-        <div class="parallax__item__img3"><img src="assets/img/movie3-min.jpg" alt=""></div>
-        <div class="parallax__item__img4"><img src="assets/img/movie44-min.jpg" alt=""></div>
-        <!-- <div class="parallax__item__img5"><img src="assets/img/movie5.jpg" alt=""></div>
-        <div class="parallax__item__img6"><img src="assets/img/movie6.jpg" alt=""></div>
-        <div class="parallax__item__img7"><img src="assets/img/movie7.jpg" alt=""></div>
-        <div class="parallax__item__img8"><img src="assets/img/movie8.jpg" alt=""></div> -->
-    </section>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        const ani = gsap.timeline();
-        ani.to("#img .parallax__item__img1", { xPercent: 300 , duration: 2, autoAlpha: 0}, "img")
-        ani.to("#img .parallax__item__img2", { xPercent: -300 , duration: 2, autoAlpha: 0}, "img")
-        ani.to("#img .parallax__item__img3", { xPercent: 300 , duration: 2, autoAlpha: 0}, "img")
-        ani.to("#img .parallax__item__img4", { xPercent: -300 , duration: 2, autoAlpha: 0}, "img")
-        // ani.to("#img .parallax__item__img5", { xPercent: 300 , duration: 3, autoAlpha: 0}, "img")
-        // ani.to("#img .parallax__item__img6", { xPercent: -300 , duration: 3, autoAlpha: 0}, "img")
-        // ani.to("#img .parallax__item__img7", { xPercent: 300 , duration: 3, autoAlpha: 0}, "img")
-        // ani.to("#img .parallax__item__img8", { xPercent: -300 , duration: 3, autoAlpha: 0}, "img")
-        ani.from("#main .quiz", { duration: 3, autoAlpha: 1}, "img")
 
         // 선택자
         const quizWrap = document.querySelector(".quiz__wrap");
