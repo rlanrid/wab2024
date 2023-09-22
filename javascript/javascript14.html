@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="https://webfontworld.github.io/gmarket/GmarketSans.css">
     <link rel="stylesheet" href="https://websfont.github.io/nanumSquareNeo/nanumSquareNeo.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="../assets/css/default.min.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
+    <style>
+        .main__desc {
+            margin-top: 50px;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
     <div id="wrap">
@@ -168,8 +174,148 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
             <!-- //main__sample -->
+
+            <div class="main__desc">
+                <div>
+                    <h2>01. 슬라이드 이펙트 - 트랜지션 효과</h2>
+                    <p>트랜지션 효과에 관한 예제입니다.</p>
+<pre class="line-numbers"><code class="language-js">{
+    window.onload = function(){
+        let currentIndex = 0;                                   // 현재 이미지
+        const slider = document.querySelectorAll(".slider");    // 모든 이미지를 변수에 저장
+        slider.forEach(img => img.style.opacity = "0");         // 모든 이미지를 투명하게
+        slider[0].style.opacity = "1";
+
+        // 이미지를 변경    
+        setInterval(() => {         // 3초에 한번씩 실행  
+            let nextIndex = (currentIndex + 1) % slider.length;   // 0 1 2 3 4 0 1 2 3 4
+                                                    
+            slider[currentIndex].style.opacity = "0";   // 첫번째 이미지가 사라짐
+            slider[nextIndex].style.opacity = "1";      // 두번째 이미지가 나타남
+            slider.forEach(img => img.style.transition = "all 1s");     // 이미지 애니메이션 추가
+
+            currentIndex = nextIndex;   // 두번째 인덱스값을 현 인덱스값에 저장
+
+            console.log(currentIndex);
+        }, 3000);                                               
+    }
+}
+</code></pre>
+                    <p class="desc">
+                        01. currentIndex = 0;으로 현재 이미지를 표현합니다.<br>
+                        <br>
+                        02. 모든 이미지를 변수에 저장합니다.<br>
+                        <br>
+                        03. forEach문을 사용하여 모든 이미지를 투명하게 합니다.<br>
+                        <br>
+                        04. setInterval()메서드로 3초에 한번씩 이미지를 변경합니다.<br>
+                        <br>
+                        05. opacity로 이미지를 사라지고 나타나게 할 수 있습니다.
+                    </p>
+                    
+                    <a href="slider/slider01.html">확인하기</a>
+                </div>
+                <div>
+                    <h2>02. 슬라이드 이펙트 - 좌로 움직이기</h2>
+                    <p>좌로 움직이는 예제입니다.</p>
+<pre class="line-numbers"><code class="language-js">{
+    // 선택자
+    const sliderWrap = document.querySelector(".slider__wrap");
+    const sliderImg = sliderWrap.querySelector(".slider__img");         // 보여지는 영역
+    const sliderInner = sliderWrap.querySelector(".slider__inner");     // 움직이는 영역
+    const slider = sliderWrap.querySelectorAll(".slider");              // 개별 이미지
+
+    // 변수 설정
+    let currentIndex = 0;               // 현재 보이는 이미지
+    let sliderCount = slider.length;    // 이미지 갯수
+    let sliderInterval = 3000;          // 이미지 변경 간격 시간
+
+    // 애니메이션
+    sliderInner.style.transform = "translateX(-0px)";           // -800 * 0
+    sliderInner.style.transform = "translateX(-800px)";         // -800 * 1
+    sliderInner.style.transform = "translateX(-1600px)";        // -800 * 2
+    sliderInner.style.transform = "translateX(-2400px)";        // -800 * 3
+    sliderInner.style.transform = "translateX(-3200px)";        // -800 * 4
+
+    sliderInner.style.transition = "all 0.6s";
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % sliderCount;
+
+        sliderInner.style.transform = "translateX("+ -800 * currentIndex + "px)";
+    }, sliderInterval);
+}
+</code></pre>
+                    <p class="desc">
+                        01. 선택자를 지정합니다.<br>
+                        <br>
+                        02. currentIndex로 현재 보이는 이미지를 변수설정하고, slideCount와 sliderInterval변수에 각각 이미지 갯수와 이미지 변경 간격시간을 설정합니다.<br>
+                        <br>
+                        03. -800px만큼 x축으로 이동하는 애니메이션 코드를 작성합니다.<br>
+                        <br>
+                        04. setInterval메서드로 이미지 변경 간격 시간을 지정합니다.<br>
+                    </p>
+                    
+                    <a href="slider/slider02.html">확인하기</a>
+                </div>
+                <div>
+                    <h2>03. 슬라이드 이펙트 - 좌로 움직이기(연속적으로)</h2>
+                    <p>좌로 연속적으로 움직이는 에제입니다.</p>
+<pre class="line-numbers"><code class="language-js">{
+    // 선택자
+    const sliderWrap = document.querySelector(".slider__wrap");
+    const sliderImg = sliderWrap.querySelector(".slider__img");         // 보여지는 영역
+    const sliderInner = sliderWrap.querySelector(".slider__inner");     // 움직이는 영역
+    const slider = sliderWrap.querySelectorAll(".slider");              // 개별 이미지
+    
+    // 변수 설정
+    let currentIndex = 0;                       // 현재 이미지
+    let sliderCount = slider.length;            // 이미지 갯수
+    let sliderInterval = 2000;                  // 이미지 변경 간격 시간
+    let sliderWidth = slider[0].offsetWidth;    // 이미지 가로 값
+    let sliderClone = sliderInner.firstElementChild.cloneNode(true);
+
+    // 복사한 이미지를 마지막에 붙여넣기
+    sliderInner.appendChild(sliderClone);
+
+    function sliderEffect (){
+        currentIndex++;
+
+        sliderInner.style.transition = "all 0.6s ease-in";
+        sliderInner.style.transform = "translateX(-"+ sliderWidth * currentIndex +"px)";
+
+        // 마지막 이미지가 위치 했을 때
+        if(currentIndex == sliderCount){
+            setTimeout(() => {
+                sliderInner.style.transition = "0s";
+                sliderInner.style.transform = "translateX(0px)";
+            }, 700)
+            currentIndex = 0;
+        }
+    }
+    setInterval(sliderEffect, sliderInterval);
+}
+</code></pre>
+                    <p class="desc">
+                        01. 선택자를 지정합니다.<br>
+                        <br>
+                        02. 현재 이미지, 이미지 갯수, 이미지 변경 간격 시간, 이미지 가로 값등을 변수에 설정합니다.<br>
+                        <br>
+                        03. 첫번째의 이미지를 복제하고, 복제한 이미지를 appendChild메서드를 이용하여 마지막에 붙여넣기합니다.<br>
+                        <br>
+                        04. sliderEffect함수에 이미지 변경 애니메이션 코드를 작성합니다. <br>
+                        <br>
+                        05. setInterval메서드로 지정한 이미지 변경 간격 시간마다 sliderEffect함수를 실행합니다.
+                        <br>
+                        06. 만약 현재 이미지의 값과 이미지 갯수 값이 같아진다면 초기화합니다.
+                    </p>
+                    
+                    <a href="slider/slider03.html">확인하기</a>
+                </div>
+            </div>
+            <!-- //main__desc -->
+        
         </main>
         <!-- //main -->
 
@@ -179,8 +325,7 @@
         <!-- //footer -->
         
         <!-- script -->
-        <script src="../assets/js/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script>
+        <script src="../assets/js/prism.js"></script>
 
         <script>
             
