@@ -52,14 +52,14 @@ body {
 }
 .quiz__wrap > .quiz.good::after {
     content: '';
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     position: absolute;
     border: 30px solid red;
     border-radius: 50%;
     transform: rotate(45deg);
-    left: 325px;
-    top: 80px;
+    left: 301px;
+    top: 30px;
 }
 .container {
     border-radius: 15px;
@@ -102,11 +102,12 @@ body {
     border-radius: 15px;
     text-align: center;
     font-weight: 800;
-    font-family: "EF_Macho";
+    font-family: "Jalnan";
     /* padding: 10px 0; */
 }
 .hint {
     text-align: center;
+    box-sizing: border-box;
 }
 .hint .hint__btn {
     margin-top: 50px;
@@ -116,7 +117,7 @@ body {
     background-color: #3E3B43;
     color: #fff;
     font-weight: 800;
-    border: none;
+    border: 1px solid transparent;
     cursor: pointer;
     box-shadow: 3px 3px 3px #3E3B43;
     transition: all 0.3s;
@@ -168,7 +169,7 @@ body {
     background-color: #3E3B43;
     color: #fff;
     font-weight: 800;
-    border: none;
+    border: 1px solid transparent;
     cursor: pointer;
     box-shadow: 3px 3px 3px #3E3B43;
     display: flex;
@@ -201,9 +202,6 @@ body {
     justify-content: center; /* 수평 가운데 정렬 */
     align-items: center; /* 수직 가운데 정렬 */
 }
-.answer__text::before {
-    content: " 😊정답 : ";
-}
 .next {
     position: relative;
 }
@@ -220,4 +218,11 @@ body {
     border: none;
     cursor: pointer;
     box-shadow: 3px 3px 3px #3E3B43;
+}
+.quiz__score {
+    position: fixed;
+    padding: 10px;
+    font-size: 32px;
+    left: 70%;
+    top: 20%;
 }

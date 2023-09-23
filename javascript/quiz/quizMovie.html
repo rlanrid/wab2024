@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>퀴즈무비</title>
     <link rel="stylesheet" href="assets/css/movie.css">
     <link href="https://webfontworld.github.io/DdangFonts/TangsBudaeJjigae.css" rel="stylesheet">
     <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
@@ -145,7 +145,7 @@
                                     <button class="next__btn none">다음 문제</button>
                                 </div>
                             </div>
-                            <div class="quiz__score"></div>
+                            <div class="quiz__score">점수: ${totalScore}</div>
                         </div>
                     </div>
                     <!-- //quiz__main -->
@@ -175,7 +175,10 @@
             }else{
                 if(useAnswer == quiz[index].infoAnswer){
                     quizElement.classList.add("good");
+                    quizAnswer.style.color = "green";
                     totalScore++;
+                    const quizScore = quizWrap.querySelector(".quiz__score");
+                    quizScore.textContent = `점수: ${totalScore}`;
                 }else{
                     quizElement.classList.add("bad");
                 }
