@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>웹디자인기능사 레이아웃 E-1</title>
+    <title>웹디자인기능사 레이아웃 E-4</title>
     <style>
         * {
             margin: 0;
@@ -19,6 +19,8 @@
         }
         #header {
             width: 200px;
+            height: 100%;
+            background-color: #efefef;
         }
         #header .logo {
             width: 100%;
@@ -33,6 +35,7 @@
         #contents {
             width: 400px;
             height: 100%;
+            background-color: #e3e3e3;
         }
         #contents .banner {
             width: 100%;
@@ -62,14 +65,15 @@
         #footer {
             width: 100%;
             display: flex;
+            flex-wrap: wrap;
         }
         #footer .footer1 {
-            width: 20%;
+            width: 200px;
             height: 120px;
             background-color: #a3a3a3;
         }
         #footer .footer2 {
-            width: 80%;
+            width: calc(100% - 400px);
         }
         #footer .footer2 .footer2-1 {
             width: 100%;
@@ -79,7 +83,12 @@
         #footer .footer2 .footer2-2 {
             width: 100%;
             height: 60px;
-            background-color: #808080;
+            background-color: #929292;
+        }
+        #footer .footer3 {
+            width: 200px;
+            height: 120px;
+            background-color: #838383;
         }
     </style>
 </head>
@@ -98,18 +107,21 @@
                 <article class="gallery"></article>
                 <article class="link"></article>
             </section>
-            <!-- //contents -->
+            <!-- contents -->
 
-            <article id="slider">               
+            <article id="slider">
             </article>
             <!-- //slider -->
         </main>
+        <!-- //main -->
+
         <footer id="footer">
             <div class="footer1"></div>
             <div class="footer2">
                 <div class="footer2-1"></div>
                 <div class="footer2-2"></div>
             </div>
+            <div class="footer3"></div>
         </footer>
         <!-- //footer -->
     </div>
