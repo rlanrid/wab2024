@@ -8,6 +8,7 @@
     font-size: 65px;
     background-color: rgba(0, 0, 0, 0);
     border: none;
+    outline: none;
     color: #fff;
 }
 
@@ -50,7 +51,7 @@ body {
     left: 0;
     margin-top: 13%;
     width: 100%;
-    height: 100%;
+    height: 900px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -367,4 +368,34 @@ body {
     background-color: #000;
     text-align: center;
     color: #fff;
+}
+
+
+
+/* 반응형 */
+
+@media(max-width: 1260px){
+    .quiz__wrap {
+        width: 100%;
+    }
+    .background {
+        background-image: none;
+        background-size: none;
+        background-repeat: none;
+    }
+}
+
+@media(max-width: 800px){
+    #main {
+        width: 100%;
+        word-break: keep-all;
+    }
+    .background {
+        width: 100%;
+        height: 100%;
+        background-image: url(../img/moviebg.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        animation: blink 0.7s infinite; /* 1초 간격으로 애니메이션을 반복함 */
+    }
 }

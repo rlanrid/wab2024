@@ -262,7 +262,7 @@
                                     <button class="skip__btn">넘어가기</button>
                                 </div>
                             </div>
-                            <div class="quiz__score">${totalScore} : 점</div>
+                            <div class="quiz__score">${totalScore} 점</div>
                         </div>
                     </div>
                     <p class="quiz__timer">
@@ -372,8 +372,6 @@
         quizStBtn.addEventListener("click", function () {
             updataQuiz(currentIndex);
 
-            
-
             // 타이머
             let time = 180000;
             let min = 3;
@@ -391,10 +389,15 @@
                     if (sec === 0) {
                         sec = 60;
                         Timer.value = "남은 시간 " + Math.floor(min) + ':' + '00';
+                    }              
+                    if(Math.floor(min) == 0){
+                        Timer.style.color = "red";
                     }
                 }, 1000);
             }
+
             TIMER();
+
             setTimeout(function () {
                 const userScore = document.querySelector(".userScore");
                 const posterAnimation = document.querySelector(".parallax__item");
