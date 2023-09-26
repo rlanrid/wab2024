@@ -69,6 +69,16 @@
             </div>
         </div>
     </main>
+
+    <footer id="footer">
+        <div class="footer__inner">
+            <p class="quiz__timer">
+                <input id="Timer" type="text" value="" readyonly/>
+            </p>
+        </div>
+    </footer>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         const ani = gsap.timeline();
@@ -92,9 +102,9 @@
 
         // 선택자
         const quizWrap = document.querySelector(".quiz__wrap");
-        let totalScore = 0;
         const Start = document.querySelector("#header__start");
         const quizStBtn = document.querySelector(".start__btn");
+        let totalScore = 0;
 
 
         // totalA
@@ -292,13 +302,11 @@
                             </div>
                         </div>
                     </div>
-                    <p class="quiz__timer">
-                        <input id="Timer" type="text" value="" readonly/>
-                    </p>
                     <!-- //quiz__main -->
                 </div>
                 `;
             quizWrap.innerHTML = quizWrapTag;
+
             // 정답 입력 필드 선택자
             const quizInput = quizWrap.querySelector(".quiz__input input");
 
@@ -337,10 +345,6 @@
                 const useAnswer = quizInput.value;
                 const quizQuestion = quizWrap.querySelector(".quiz__question");
 
-                // 넘어가기 버튼 삭제
-                const skipBtn = quizWrap.querySelector(".skip__btn");
-                skipBtn.style.display = "none";
-
                 if (useAnswer.length < 0 || useAnswer == "") {
                     alert("답을 적어주세요");
                 } else {
@@ -353,6 +357,11 @@
                         quizQuestion.classList.add("wrong");
                     }
 
+                    
+                    // 넘어가기 버튼 삭제
+                    const skipBtn = quizWrap.querySelector(".skip__btn");
+                    skipBtn.style.display = "none";
+
                     quizhintBtn.classList.add("none");
                     quizAnswerBtn.classList.add("none");
 
@@ -360,6 +369,7 @@
                     quizAnswer.classList.remove("none");
                     nextBtn.classList.remove("none");
                 }
+
             });
 
             // 다음 문제 버튼
@@ -406,43 +416,47 @@
             });
         }
 
-
-
         quizStBtn.addEventListener("click", function () {
-            updataQuiz(currentIndex);
-  
-            // 타이머
-            let time = 180000;
-            let min = 3;
-            let sec = 60;
+        updataQuiz(currentIndex);
 
-            Timer.value = "제한 시간 " + min + ":" + '00';
-            function TIMER() {
-                PLAYTIME = setInterval(function () {
-                    time = time - 1000;
-                    min = time / (60 * 1000);
-                    if (sec > 0) {
-                        sec = sec - 1;
-                        Timer.value = '남은 시간 ' + Math.floor(min) + ':' + sec;
-                    }
-                    if (sec === 0) {
-                        sec = 60;
-                        Timer.value = '남은 시간 ' + Math.floor(min) + ':' + '00';
-                    }
-                    if (Math.floor(min) === 0 && sec <= 30){
-                        const quizTimer = document.querySelector(".quiz__timer > input[type=text]");
-                        quizTimer.style.color = 'red';
-                    }
-                }, 1000);
-            }
-            TIMER();
-            setTimeout(function () {
-                totalA();
-                clearInterval(PLAYTIME);
-            }, 180000);
-            
-            Start.classList.add("none");
-        });
+        // 타이머
+        let time = 180000;
+        let min = 3;
+        let sec = 60;
+
+        Timer.value = "제한 시간 " + min + ":" + '00';
+        function TIMER() {
+            PLAYTIME = setInterval(function () {
+                time = time - 1000;
+                min = time / (60 * 1000);
+                if (sec > 0) {
+                    sec = sec - 1;
+                    Timer.value = '남은 시간 ' + Math.floor(min) + ':' + sec;
+                }
+                if (sec === 0) {
+                    sec = 60;
+                    Timer.value = '남은 시간 ' + Math.floor(min) + ':' + '00';
+                }
+                if (Math.floor(min) === 0 && sec <= 30){
+                    const quizTimer = document.querySelector(".quiz__timer > input[type=text]");
+                    quizTimer.style.color = 'red';
+                }
+            }, 1000);
+        }
+        TIMER();
+        setTimeout(function () {
+            totalA();
+
+            const quizTimer = document.querySelector(".quiz__timer > input[type=text]");
+            quizTimer.style.display = 'none';
+
+            clearInterval(PLAYTIME);
+        }, 180000);
+        
+        Start.classList.add("none");
+    });
+
+        
 
     </script>
 </body>
