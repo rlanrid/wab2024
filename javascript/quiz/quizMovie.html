@@ -248,7 +248,7 @@
                 infoTitle: "영화 초성퀴즈",
                 infoQuestion: "ㅊㅈㅂㄱㅎ",
                 infoHint: "",
-                infoAnswer: "최종병길활",
+                infoAnswer: "최종병기활",
             },
         ];
         // 현재 풀고 있는 문제 번호와 남은 문제 수
@@ -260,34 +260,36 @@
             let quizWrapTag = `
                 <div class="quiz">
                     <div class="container">
-                    <div class="background">
-                        <div class="quiz__header">
-                            <div class="header__title"><p>${quiz[index].infoTitle}</p></div>
-                        </div>
-                        <!-- //quiz__header -->
-                        <div class="quiz__main">
-                            <div class="quiz__question">${quiz[index].infoQuestion}</div>
-                            <div class="hint">
-                                <button class="hint__btn">누르면 힌트</button>
-                                <div class="hint__text none"><span>${quiz[index].infoHint}</span></div>
+                        <div class="background">
+                            <div class="quiz__header">
+                                <div class="header__title"><p>${quiz[index].infoTitle}</p></div>
                             </div>
-                            <div class="quiz__input">
-                                <input type="text" placeholder="정답을 입력해주세요!">
-                            </div>
-                            <div class="quiz__answer">
-                                <button class="answer__btn">정답 확인</button>
-                                <div class="answer__text none"><span>${quiz[index].infoAnswer}</span></div>
-                            </div>
-                            <div class="next">
-                                <div class="next__button">
-                                    <button class="next__btn none">다음 문제</button>
+                            <!-- //quiz__header -->
+
+                            <div class="quiz__main">
+                                <div class="quiz__question">${quiz[index].infoQuestion}</div>
+                                <div class="hint">
+                                    <button class="hint__btn">누르면 힌트</button>
+                                    <div class="hint__text none"><span>${quiz[index].infoHint}</span></div>
+                                </div>
+                                <div class="quiz__input">
+                                    <input type="text" placeholder="정답을 입력해주세요!">
+                                </div>
+                                <div class="quiz__answer">
+                                    <button class="answer__btn">정답 확인</button>
+                                    <div class="answer__text none"><span>${quiz[index].infoAnswer}</span></div>
+                                </div>
+                                <div class="next">
+                                    <div class="next__button">
+                                        <button class="next__btn none">다음 문제</button>
+                                    </div>
                                 </div>
                                 <div class="skip">
                                     <button class="skip__btn">모르겠다</button>
                                 </div>
+                                <div class="quiz__score">${totalScore} 점</div>
+                                <p class="abc">${index+1} / ${quiz.length}</p>
                             </div>
-                            <div class="quiz__score">${totalScore} 점</div>
-                            <p class="abc">${index+1}/20</p>
                         </div>
                     </div>
                     <p class="quiz__timer">
@@ -368,7 +370,6 @@
                     currentIndex++;
                     updataQuiz(currentIndex);
                 } else {
-                    alert("퀴즈가 종료되었습니다.");
                     // quizScore.textContent = `총 점수: ${totalScore}`;
                     nextBtn.classList.remove("none");
                     quizAnswerBtn.classList.add("none");
@@ -397,7 +398,6 @@
                     const skipBtn = quizWrap.querySelector(".skip__btn");
                     skipBtn.style.display = "none";
                 } else {
-                    alert("퀴즈가 종료되었습니다.");
                     nextBtn.classList.remove("none");
                     quizAnswerBtn.classList.add("none");
                     
@@ -429,7 +429,7 @@
                         sec = 60;
                         Timer.value = '남은 시간 ' + Math.floor(min) + ':' + '00';
                     }
-                    if (Math.floor(min) === 0 && sec === 30){
+                    if (Math.floor(min) === 0 && sec <= 30){
                         const quizTimer = document.querySelector(".quiz__timer > input[type=text]");
                         quizTimer.style.color = 'red';
                     }
