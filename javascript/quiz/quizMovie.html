@@ -97,6 +97,20 @@
         const quizStBtn = document.querySelector(".start__btn");
 
 
+        // totalA
+        
+        const totalA = function(){
+                        const userScore = document.querySelector(".userScore");
+                        const posterAnimation = document.querySelector(".parallax__item");
+                        const header__title = document.getElementById("header__inner");
+                        const userRanking = document.querySelector(".ranking");
+                        posterAnimation.classList.add("timeOut");
+                        posterAnimation.classList.add("none");
+                        quizWrap.classList.add("timeOut");
+                        quizWrap.classList.add("none");
+                        header__title.classList.remove("none");
+                        userScore.innerText = "총 점수: " + totalScore + "점";
+                    }
 
 
 
@@ -313,6 +327,10 @@
                 const useAnswer = quizInput.value;
                 const quizQuestion = quizWrap.querySelector(".quiz__question");
 
+                // 넘어가기 버튼 삭제
+                const skipBtn = quizWrap.querySelector(".skip__btn");
+                skipBtn.style.display = "none";
+
                 if (useAnswer.length < 0 || useAnswer == "") {
                     alert("답을 적어주세요");
                 } else {
@@ -331,6 +349,7 @@
                     nextBtn.classList.remove("none");
                 }
             });
+
             // 다음 문제 버튼
             nextBtn.addEventListener("click", () => {
                 if (currentIndex < quiz.length - 1) {
@@ -343,41 +362,51 @@
                     // quizScore.textContent = `총 점수: ${totalScore}`;
                     nextBtn.classList.remove("none");
                     quizAnswerBtn.classList.add("none");
-                    const userScore = document.querySelector(".userScore");
-                    const posterAnimation = document.querySelector(".parallax__item");
-                    const header__title = document.getElementById("header__inner");
-                    const userRanking = document.querySelector(".ranking");
-                    posterAnimation.classList.add("timeOut");
-                    posterAnimation.classList.add("none");
-                    quizWrap.classList.add("timeOut");
-                    quizWrap.classList.add("none");
-                    header__title.classList.remove("none");
-                    userScore.innerText = "총 점수: " + totalScore + "점";
+
+                    totalA();
 
                 }
             });
 
+
             // 넘어가기 버튼
             skipBtn.addEventListener("click", () => {
                 if (currentIndex < quiz.length - 1) {
-                    currentIndex++;
-                    updataQuiz(currentIndex);
+                    const quizAnswer = quizWrap.querySelector(".answer__text");
+                    const quizInput = quizWrap.querySelector(".quiz__input input");
+                    const quizElement = quizWrap.querySelector(".quiz");
+                    const useAnswer = quizInput.value;
+                    const quizQuestion = quizWrap.querySelector(".quiz__question");
+                    
+                    quizElement.classList.add("wrong");
+                    quizQuestion.classList.add("wrong");
+                    quizhintBtn.classList.add("none");
+                    quizHint.classList.remove("none");
+                    quizAnswer.classList.remove("none");
+                    quizAnswerBtn.classList.add("none");
+                    nextBtn.classList.remove("none");
+
+                    const skipBtn = quizWrap.querySelector(".skip__btn");
+                    skipBtn.style.display = "none";
                 } else {
                     alert("퀴즈가 종료되었습니다.");
                     // quizScore.textContent = `총 점수: ${totalScore}`;
                     nextBtn.classList.remove("none");
                     quizAnswerBtn.classList.add("none");
+                    
+                    totalA();
 
-                    const userScore = document.querySelector(".userScore");
-                    const posterAnimation = document.querySelector(".parallax__item");
-                    const header__title = document.getElementById("header__inner");
-                    const userRanking = document.querySelector(".ranking");
-                    posterAnimation.classList.add("timeOut");
-                    posterAnimation.classList.add("none");
-                    quizWrap.classList.add("timeOut");
-                    quizWrap.classList.add("none");
-                    header__title.classList.remove("none");
-                    userScore.innerText = "총 점수: " + totalScore + "점";
+                    // const userScore = document.querySelector(".userScore");
+                    // const posterAnimation = document.querySelector(".parallax__item");
+                    // const header__title = document.getElementById("header__inner");
+                    // const userRanking = document.querySelector(".ranking");
+                    // posterAnimation.classList.add("timeOut");
+                    // posterAnimation.classList.add("none");
+                    // quizWrap.classList.add("timeOut");
+                    // quizWrap.classList.add("none");
+                    // header__title.classList.remove("none");
+                    // userScore.innerText = "총 점수: " + totalScore + "점";
+                    
                     if (totalScore >= 15) {
                         userRanking.innerText = "당신의 등급 : 최고";
                     } else if (totalScore > 10) {
@@ -395,9 +424,7 @@
 
         quizStBtn.addEventListener("click", function () {
             updataQuiz(currentIndex);
-
-            
-                
+  
             // 타이머
             let time = 180000;
             let min = 3;
