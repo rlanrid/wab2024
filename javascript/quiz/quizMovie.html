@@ -57,13 +57,14 @@
     <main id="main">
         <div class="quiz__wrap">
             <div id="header__start">
-                <div class="start">
-                    <h2>영화 초성퀴즈</h2>
-                    <p>제한 시간은 3분입니다.</p>
-                    <button class="start__btn">시작하기</button>
-                </div>
-                <div class="start__bg">
-
+                <div class="container">
+                    <div class="start__bg">
+                        <div class="start">
+                            <h2>영화 초성퀴즈</h2>
+                            <p>제한 시간은 3분입니다.</p>
+                            <button class="start__btn">시작하기</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,7 +86,8 @@
                 requestAnimationFrame(autoScroll);
             }
         }
-        // 페이지 로드 후 1초 후에 자동 스크롤 시작
+
+        // 페이지 로드 후 1.5초 후에 자동 스크롤 시작
         setTimeout(autoScroll, 1500);
 
         // 선택자
@@ -259,10 +261,10 @@
                                     <button class="next__btn none">다음 문제</button>
                                 </div>
                                 <div class="skip">
-                                    <button class="skip__btn">넘어가기</button>
+                                    <button class="skip__btn">모르겠다</button>
                                 </div>
                             </div>
-                            <div class="quiz__score">${totalScore} 점</div>
+                            <div class="quiz__score">${totalScore} : 점</div>
                         </div>
                     </div>
                     <p class="quiz__timer">
@@ -296,6 +298,8 @@
             const quizAnswerBtn = quizWrap.querySelector(".answer__btn");
             const nextBtn = quizWrap.querySelector(".next__btn");
             const quizHint = quizWrap.querySelector(".hint__text");
+            const skipBtn = quizWrap.querySelector(".skip__btn");
+
             // 힌트 확인하기
             quizhintBtn.addEventListener("click", () => {
                 quizhintBtn.classList.add("none");
@@ -353,18 +357,38 @@
                 }
             });
 
-            // // 넘어가기 버튼
-            // skipBtn.addEventListener("click", () => {
-            //     if (currentIndex < quiz.length - 1) {
-            //         currentIndex++;
-            //         updataQuiz(currentIndex);
-            //     } else {
-            //         alert("퀴즈가 종료되었습니다.");
-            //         // quizScore.textContent = `총 점수: ${totalScore}`;
-            //         nextBtn.classList.remove("none");
-            //         quizAnswerBtn.classList.add("none");
-            //     }
-            // });
+            // 넘어가기 버튼
+            skipBtn.addEventListener("click", () => {
+                if (currentIndex < quiz.length - 1) {
+                    currentIndex++;
+                    updataQuiz(currentIndex);
+                } else {
+                    alert("퀴즈가 종료되었습니다.");
+                    // quizScore.textContent = `총 점수: ${totalScore}`;
+                    nextBtn.classList.remove("none");
+                    quizAnswerBtn.classList.add("none");
+
+                    const userScore = document.querySelector(".userScore");
+                    const posterAnimation = document.querySelector(".parallax__item");
+                    const header__title = document.getElementById("header__inner");
+                    const userRanking = document.querySelector(".ranking");
+                    posterAnimation.classList.add("timeOut");
+                    posterAnimation.classList.add("none");
+                    quizWrap.classList.add("timeOut");
+                    quizWrap.classList.add("none");
+                    header__title.classList.remove("none");
+                    userScore.innerText = "총 점수: " + totalScore + "점";
+                    if (totalScore >= 15) {
+                        userRanking.innerText = "당신의 등급 : 최고";
+                    } else if (totalScore > 10) {
+                        userRanking.innerText = "당신의 등급 : 고수";
+                    } else if (totalScore >= 5) {
+                        userRanking.innerText = "당신의 등급 : 중수";
+                    } else {
+                        userRanking.innerText = "당신의 등급 : 하수";
+                    }
+                }
+            });
         }
 
 
@@ -372,6 +396,8 @@
         quizStBtn.addEventListener("click", function () {
             updataQuiz(currentIndex);
 
+            
+                
             // 타이머
             let time = 180000;
             let min = 3;
@@ -384,20 +410,19 @@
                     min = time / (60 * 1000);
                     if (sec > 0) {
                         sec = sec - 1;
-                        Timer.value = "남은 시간 " + Math.floor(min) + ':' + sec;
+                        Timer.value = '남은 시간 ' + Math.floor(min) + ':' + sec;
                     }
                     if (sec === 0) {
                         sec = 60;
-                        Timer.value = "남은 시간 " + Math.floor(min) + ':' + '00';
-                    }              
-                    if(Math.floor(min) == 0){
-                        Timer.style.color = "red";
+                        Timer.value = '남은 시간 ' + Math.floor(min) + ':' + '00';
+                    }
+                    if (Math.floor(min) === 0 && sec === 30){
+                        const quizTimer = document.querySelector(".quiz__timer > input[type=text]");
+                        quizTimer.style.color = 'red';
                     }
                 }, 1000);
             }
-
             TIMER();
-
             setTimeout(function () {
                 const userScore = document.querySelector(".userScore");
                 const posterAnimation = document.querySelector(".parallax__item");
