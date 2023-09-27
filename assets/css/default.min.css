@@ -10,7 +10,7 @@
 pre code.hljs {
   display: block;
   overflow-x: auto;
-  padding: 0;
+  padding: 20px;
   font-family: "nanumSquareNeo";
   line-height: 1.6;
   margin-bottom: 20px;

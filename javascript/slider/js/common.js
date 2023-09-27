@@ -1,4 +1,4 @@
-// hljs.highlightAll();
+hljs.highlightAll();
 
 // 모달
 const modalBtn = document.querySelector(".modal__btn");
