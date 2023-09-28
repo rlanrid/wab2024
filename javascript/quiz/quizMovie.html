@@ -30,6 +30,124 @@
             height: 100%;
             object-fit: cover;
         }
+
+        /* modal__wrap */
+        .modal__btn {
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 50px;
+            display: inline-block;
+            padding: 10px 20px;
+            position: fixed;
+            left: 15px;
+            bottom: 15px;
+            cursor: pointer;
+        }
+        .modal__cont {
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.6);
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transform: scale(0);
+        }
+        .modal__box {
+            width: 70%;
+            border-radius: 10px;
+            background-color: #ccc;
+            transform: scale(0);
+        }
+        .modal__box .title {
+            padding-left: 355px;
+            background-color: #ffffff4d;
+            display: flex;
+            align-items: center;
+            color: black;
+            font-size: 24px;
+            height: 50px;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        .modal__box .cont {
+            background-color: #ccc;
+            height: 300px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-sizing: border-box;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            font-size: 24px;
+            line-height: 2;
+        }
+        .modal__close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: #fff;
+            padding: 1rem 1rem 0.8rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+        }
+        .modal__close:hover {
+            background-color: #901de3;
+        }
+
+        /* 모달 애니메이션 */
+        .modal__cont.show {
+            animation: foldOut 1s ease forwards;
+        }
+        .modal__cont.show .modal__box {
+            animation: zoomOut 0.5s 1s ease forwards;
+        }
+        .modal__cont.show .modal__close {
+            animation: opacityOut 0.5s 1.5s ease forwards;
+        }
+
+        .modal__cont.show.hide {
+            animation: foldIn 0.3s 0.5s ease backwards;
+        }
+        .modal__cont.show.hide .modal__box {
+            animation: zoomIn 0.5s ease forwards;
+        }
+        .modal__cont.show.hide .modal__close {
+            animation: opacityIn 0.5s ease forwards;
+        }
+
+        @keyframes foldOut {
+            0%   {transform: scaleX(0.0001) scaleY(0);}
+            50%  {transform: scaleX(0.0001) scaleY(1);}
+            100% {transform: scaleX(1) scaleY(1);}
+        }
+        @keyframes foldIn {
+            0%   {transform: scaleX(1) scaleY(1);}
+            50%  {transform: scaleX(0.0001) scaleY(1);}
+            100% {transform: scaleX(0.0001) scaleY(0);}
+        }
+        @keyframes zoomOut {
+            0%   {transform: scale(0);}
+            100% {transform: scale(1);}
+        }
+        @keyframes zoomIn {
+            0%   {transform: scale(1);}
+            100% {transform: scale(0);}
+        }
+        @keyframes opacityOut {
+            0%   {opacity: 0;}
+            100% {opacity: 1;}
+        }
+        @keyframes opacityIn {
+            0%   {opacity: 1;}
+            100% {opacity: 0;}
+        }
+        
     </style>
 </head>
 
@@ -40,19 +158,23 @@
             <div class="rankingImage"></div>
             <h3 class="ranking"></h3>
             <p class="userScore"></p>
-        </div>
-        <section id="img" class="parallax__item">
-            <div class="parallax__item__img-container">
-                <div class="box">
-                    <img src="assets/img/movie01.png" alt="" class="parallax__item__img1">
-                    <img src="assets/img/movie02.png" alt="" class="parallax__item__img2">
-                </div>
-                <div class="box">
-                    <img src="assets/img/movie03.png" alt="" class="parallax__item__img3">
-                    <img src="assets/img/movie04.png" alt="" class="parallax__item__img4">
+
+            <div class="modal__wrap">
+                <div class="modal__btn">등급표 보기</div>
+                <div class="modal__cont">
+                    <div class="modal__box">
+                        <div class="title">등급표</div>
+                        <div class="cont">
+                            15이상 - 최고<br>
+                            10이상 15이하 - 고수<br>
+                            5이상 10이하 - 중수<br>
+                            5미만 - 하수<br>
+                        </div>
+                    </div>
+                    <div class="modal__close">X</div>
                 </div>
             </div>
-        </section>
+        </div>
     </header>
 
     <main id="main">
@@ -75,27 +197,40 @@
         <div class="footer__inner">
             <p class="quiz__timer"><input id="Timer" type="text" value="" readonly/></p>
         </div>
+
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
-        const ani = gsap.timeline();
-        ani.to("#img .parallax__item__img1", { xPercent: 300 })
-            .to("#img .parallax__item__img2", { xPercent: -300 })
-            .to("#img .parallax__item__img3", { xPercent: 300 })
-            .to("#img .parallax__item__img4", { xPercent: -300 });
+        
+        // 모달
+        const modalBtn = document.querySelector(".modal__btn");
+        const modalClose = document.querySelector(".modal__close");
+        const modalCont = document.querySelector(".modal__cont");
 
-        function autoScroll() {
-            window.scrollBy(0, 10); // 10px씩 아래로 스크롤
-            const scrollHeight = document.body.scrollHeight;
-            const windowHeight = window.innerHeight;
-            
-            if (window.scrollY + windowHeight < scrollHeight) {
-                requestAnimationFrame(autoScroll);
-            }
-        }
-        // 페이지 로드 후 1초 후에 자동 스크롤 시작
-        setTimeout(autoScroll, 1500);
+        modalBtn.addEventListener("click", () => {
+            modalCont.classList.add("show");
+            modalCont.classList.remove("hide");
+        })
+        modalClose.addEventListener("click", () => {
+            modalCont.classList.add("hide");
+        })
+
+        // 탭메뉴
+        const tabBtn = document.querySelectorAll(".modal__box .tabs > div");
+        const tabCont = document.querySelectorAll(".modal__box .cont > div");
+
+        tabBtn.forEach((element, index) => {
+            element.addEventListener("click", (e) => {
+                e.preventDefault();
+
+                tabBtn.forEach(li => li.classList.remove("active"));
+                element.classList.add("active");
+
+                tabCont.forEach(div => div.style.display = "none");
+                tabCont[index].style.display = "block";
+            })
+        });
         
 
         // 선택자
@@ -111,11 +246,8 @@
 
         const totalA = function () {
             const userScore = document.querySelector(".userScore");
-            const posterAnimation = document.querySelector(".parallax__item");
             const header__title = document.getElementById("header__inner");
             const userRanking = document.querySelector(".ranking");
-            posterAnimation.classList.add("timeOut");
-            posterAnimation.classList.add("none");
             quizWrap.classList.add("timeOut");
             quizWrap.classList.add("none");
             header__title.classList.remove("none");
@@ -343,16 +475,16 @@
                 const quizElement = quizWrap.querySelector(".quiz");
                 const useAnswer = quizInput.value;
                 const quizQuestion = quizWrap.querySelector(".quiz__question");
-
-
+                const updateScore = quizWrap.querySelector(".quiz__score");
 
                 if (useAnswer.length < 0 || useAnswer == "") {
                     alert("답을 적어주세요");
                 } else {
                     if (useAnswer == quiz[index].infoAnswer) {
+                        totalScore++;
                         quizElement.classList.add("correct");
                         quizQuestion.classList.add("correct");
-                        totalScore++;
+                        updateScore.innerHTML = `${totalScore} 점`;
                     } else {
                         quizElement.classList.add("wrong");
                         quizQuestion.classList.add("wrong");
