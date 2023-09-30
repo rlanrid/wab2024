@@ -74,6 +74,7 @@ body {
     color: white;
     font-size: 60px;
     margin-top: 150px;
+    word-break: keep-all;
 }
 /* ----------------------------- 시작 버튼 -------------------------------------------- */
 #header__start {
@@ -330,6 +331,7 @@ body {
     border-radius: 30px;
     border: none;
     color: #fff;
+    outline: none;
 }
 /* ----------------------------- end -------------------------------------------- */
 /* -----------------------------점수----------------------------- */
@@ -450,7 +452,9 @@ body {
         width: 60%;
     }
     #header__inner .quizTimeOut {
+        width: 90%;
         font-size: 40px;
+        margin-top: 133px;
     }
     .ranking {
         font-size: 35px;
@@ -469,12 +473,24 @@ body {
     }
     .background {
         top: 40%;
+        transform: translate(-50%, -47%);
     }
     .skip__btn,
     .skip__btn:hover{
         bottom: 19%;
     }
+    .start__bg {
+        transform: translate(-50%, -56%);
+    }
 }
+
+@media (max-width: 600px) {
+    .background {
+        animation: none;
+        background-image: none;
+    }
+}
+
 @media (max-width : 400px) {
     body {
         overflow: hidden; /* 위아래 스크롤바 숨김 */
@@ -490,7 +506,6 @@ body {
     }
     .start__bg {
         width: 100%;
-        top:19%
     }
     .header__title p {
         font-size: 25px;
@@ -552,6 +567,7 @@ body {
     }
     #header__inner .quizTimeOut {
         height: 95px;
+        margin-top: 138px;
     }
     .abc {
         left: 50%;
