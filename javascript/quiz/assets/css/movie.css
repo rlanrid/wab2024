@@ -41,7 +41,7 @@ body {
     animation: blink 1s infinite; /* 1초 간격으로 애니메이션을 반복함 */
     align-items: center;
 }
-.abc {
+.quiz__current {
     position: absolute;
     bottom: 45px;
     left: 18px;
@@ -569,7 +569,7 @@ body {
         height: 95px;
         margin-top: 138px;
     }
-    .abc {
+    .quiz__current {
         left: 50%;
         transform: translateX(-50%);
     }
