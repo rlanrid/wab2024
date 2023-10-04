@@ -3,43 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 페이지</title>
-
+    <title>PHP 블로그 만들기</title>
+    
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <?php include "../include/head.php"?>
+    
 </head>
 <body class="gray">
-    <div id="skip">
-        <a href="#header">헤더 영역 바로가기</a>
-        <a href="#main">콘텐츠 영역 바로가기</a>
-        <a href="#footer">푸터 영역 바로가기</a>
-    </div>
+    <?php include "../include/skip.php" ?>
+    <!-- //skip -->
 
-    <header id="header" role="banner">
-        <div class="header__inner container">
-            <div class="left">
-                <a href="/">
-                    <span class="blind">메인으로</span>
-                </a>
-            </div>
-            <div class="logo">
-                <a href="main.html">Developer Blog</a>
-            </div>
-            <div class="right">
-                <ul>
-                    <li><a href="join.html">회원가입</a></li>
-                </ul>
-            </div>
-        </div>
-        <nav class="nav__inner">
-            <ul>
-                <li><a href="#">회원가입</a></li>
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">게시판</a></li>
-                <li><a href="#">블로그</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include "../include/header.php" ?>
     <!-- //header -->
 
     <main id="main" role="main">
@@ -47,7 +21,7 @@
             <h2>로그인</h2>
             <p>로그인을 하시면 게시글 및 댓글 작성이 가능합니다.</p>
             <div class="login__form btStyle bmStyle">
-                <form action="#" name="#" method="post">
+                <form action="loginSave.php" name="loginSave" method="post">
                     <fieldset>
                         <legend class="blind">로그인 영역</legend>
                         <div>
@@ -73,12 +47,7 @@
     </main>
     <!-- //main -->
 
-    <footer id="footer" role="contentinfo">
-        <div class="footer__inner container btStyle">
-            <div>Copyright 2023 webstoryboy</div>
-            <div>blog by webs</div>
-        </div>
-    </footer>
+    <?php include "../include/footer.php"?>
     <!-- //footer -->
 </body>
 </html>
