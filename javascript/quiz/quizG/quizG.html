@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 이펙트123</title>
+
+    <link rel="stylesheet" href="css/quizG.css">
+    <link rel="stylesheet" href="../../assets/css/default.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body class="fixed">
+    <header id="header">
+        <h1>
+            <a href="../../index.html">Quiz</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="quizEffect01.html">1</a></li>
+                <li><a href="quizEffect02.html">2</a></li>
+                <li><a href="quizEffect03.html">3</a></li>
+                <li><a href="quizEffect04.html">4</a></li>
+                <li><a href="quizEffect05.html">5</a></li>
+                <li><a href="quizEffect06.html">6</a></li>
+                <li><a href="quizEffect07.html">7</a></li>
+                <li class="active"><a href="quizEffect123.html">G</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz__wrap">
+            <!-- <div class="quiz">
+                <div class="quiz__header">
+                    <span class="quiz__date"></span>
+                </div>
+                <div class="quiz__main">
+                    <div class="quiz__question">
+                        <em></em>
+                        <span></span>
+                        <div class="quiz__desc"></div>
+                    </div>
+                    <div class="quiz__input">
+                        <input type="text" placeholder="정답을 입력해주세요!">
+                    </div>
+                    <div class="quiz__answer"></div>
+                </div>
+                <div class="quiz__footer">
+                    <button class="quiz__confirm">정답 확인하기</button>
+                </div>
+            </div> -->
+        </div>
+        <div class="quiz__score">0</div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:rlanrider77@gmail.com">rlanrider77@gmail.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script src="../slider/js/common.js"></script>
+
+    <script>
+        // 선택자
+        const quizWrap = document.querySelector(".quiz__wrap");
+
+        // 문제 정보
+        let quizInfo = [];
+
+        // 문제 가져오기
+        const fetchQuiz = () => {
+            fetch("https://rlanrid.github.io/webs2024/javascript/quiz/quizG/json/gineungsaShort.json")
+                .then(res => res.json())
+                .then(items => {
+                    quizInfo = items.map((item, index) => {
+                        const formattedQuiz = {
+                            infoDate: item.time,
+                            infoQuestion: item.question,
+                            infoAnswer: item.correct_answer,
+                            infoDesc: item.question_desc
+                        }
+                        return formattedQuiz;
+                    });
+                    console.log(quizInfo)
+                    updataQuiz(0);
+                });
+        };
+
+        let quizScore = 0;
+        let currentIndex = 0; // 현재 문제
+
+        // 문제 출력
+        const updataQuiz = (index) => {
+            let quizWrapTag = `
+                <div class="quiz">
+                    <div class="quiz__header">
+                        <span class="quiz__date">정보처리 ${quizInfo[index].infoDate}</span>
+                    </div>
+                    <div class="quiz__main">
+                        <div class="quiz__question">
+                            ${index + 1}. ${quizInfo[index].infoQuestion}
+                            ${quizInfo[index].infoDesc ? `<div class="quiz__desc2">${quizInfo[index].infoDesc}</div>` : ''}
+                        </div>
+                        <div class="quiz__input">
+                            <input type="text" id="quizInput" placeholder="정답을 입력해주세요!">
+                        </div>
+                        <div class="quiz__answer none">${quizInfo[index].infoAnswer}</div>
+                        
+                    </div>
+                    <div class="quiz__footer">
+                        <button class="quiz__confirm">정답 확인하기</button>
+                        <button class="quiz__next none">다음 문제</button>
+                    </div>
+                </div>
+            `;
+            quizWrap.innerHTML = quizWrapTag;
+
+            // 선택자
+            const quizConfirm = quizWrap.querySelector(".quiz__confirm");
+            const quizNext = quizWrap.querySelector(".quiz__next");
+
+            // 정답 확인 버튼
+            quizConfirm.addEventListener("click", () => {
+                checkAnswer();
+                quizConfirm.classList.add("none");      // 정답 버튼 삭제
+                quizNext.classList.remove("none");      // 다음 버튼 추가
+            });
+
+            // 다음 문제 버튼
+            quizNext.addEventListener("click", () => {
+                if (currentIndex < quizInfo.length - 1) {
+                    quizNext.classList.add("none");            
+                    quizConfirm.classList.remove("none");      
+                    currentIndex++;                            
+                    updataQuiz(currentIndex);               
+                } else {
+                    alert("퀴즈가 종료되었습니다.");
+                }
+            });
+        };
+
+        // 정답 확인
+        const checkAnswer = () => {
+            const quizElement = quizWrap.querySelector(".quiz")
+            const quizConfirm = quizWrap.querySelector(".quiz__confirm");
+            const quizNext = quizWrap.querySelector(".quiz__next");
+            const quizInput = quizWrap.querySelector(".quiz__input input");
+            const quizAnswer = quizWrap.querySelector(".quiz__answer");
+            const userAnswer = quizInput.value;
+            const correctAnswer = quizInfo[currentIndex].infoAnswer;
+
+            if (userAnswer === correctAnswer) {
+                quizElement.classList.add("good");
+                quizAnswer.classList.remove("none");
+                quizConfirm.classList.add("none");
+                quizInput.classList.add("none");
+                quizNext.classList.remove("none");
+                quizScore++;
+                updateScore()
+            } else {
+                quizElement.classList.add("bad");
+                quizAnswer.classList.remove("none");
+                quizConfirm.classList.add("none");
+                quizInput.classList.add("none");
+                quizNext.classList.remove("none");
+            }
+
+        }
+
+        // 점수 업데이트
+        const updateScore = () => {
+            const scoreElement = document.querySelector(".quiz__score");
+            scoreElement.textContent = quizScore; 
+        }
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchQuiz();
+        });
+    </script>
+</body>
+
+</html>
