@@ -155,7 +155,7 @@
             const userAnswer = quizInput.value;
             const correctAnswer = quizInfo[currentIndex].infoAnswer;
 
-            if (userAnswer === correctAnswer) {
+            if (userAnswer == correctAnswer) {
                 quizElement.classList.add("good");
                 quizAnswer.classList.remove("none");
                 quizConfirm.classList.add("none");
