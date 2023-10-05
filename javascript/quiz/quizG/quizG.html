@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>퀴즈 이펙트123</title>
+    <title>퀴즈 이펙트 숙제</title>
 
     <link rel="stylesheet" href="css/quizG.css">
     <link rel="stylesheet" href="../../assets/css/default.min.css">
@@ -155,7 +155,7 @@
             const userAnswer = quizInput.value;
             const correctAnswer = quizInfo[currentIndex].infoAnswer;
 
-            if (userAnswer == correctAnswer) {
+            if (userAnswer === correctAnswer) {
                 quizElement.classList.add("good");
                 quizAnswer.classList.remove("none");
                 quizConfirm.classList.add("none");
