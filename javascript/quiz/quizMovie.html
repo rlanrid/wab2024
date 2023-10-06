@@ -41,23 +41,6 @@
             <h3 class="ranking"></h3>
             <p class="userScore"></p>
         </div>
-
-        <div class="modal__wrap">
-            <div class="modal__btn">등급표 보기</div>
-            <div class="modal__cont">
-                <div class="modal__box">
-                    <div class="title">등급표</div>
-                    <div class="cont">
-                        15이상 - 최고<br>
-                        10이상 15이하 - 고수<br>
-                        5이상 10이하 - 중수<br>
-                        5미만 - 하수<br>
-                    </div>
-                </div>
-                <div class="modal__close">X</div>
-            </div>
-        </div>
-
         <section id="img" class="parallax__item">
             <div class="parallax__item__img-container">
                 <div class="box">
@@ -113,36 +96,8 @@
         }
         // 페이지 로드 후 1초 후에 자동 스크롤 시작
         setTimeout(autoScroll, 1500);
-
-        // 모달
-        const modalBtn = document.querySelector(".modal__btn");
-        const modalClose = document.querySelector(".modal__close");
-        const modalCont = document.querySelector(".modal__cont");
-
-        modalBtn.addEventListener("click", () => {
-            modalCont.classList.add("show");
-            modalCont.classList.remove("hide");
-        })
-        modalClose.addEventListener("click", () => {
-            modalCont.classList.add("hide");
-        })
-
-        // 탭메뉴
-        const tabBtn = document.querySelectorAll(".modal__box .tabs > div");
-        const tabCont = document.querySelectorAll(".modal__box .cont > div");
-
-        tabBtn.forEach((element, index) => {
-            element.addEventListener("click", (e) => {
-                e.preventDefault();
-
-                tabBtn.forEach(li => li.classList.remove("active"));
-                element.classList.add("active");
-
-                tabCont.forEach(div => div.style.display = "none");
-                tabCont[index].style.display = "block";
-            })
-        });
         
+
         // 선택자
         const quizWrap = document.querySelector(".quiz__wrap");
         let totalScore = 0;
@@ -152,9 +107,9 @@
         const quizTimer = document.querySelector(".quiz__timer > input[type=text]");
 
 
-        // totalA
+        // quizEnd
 
-        const totalA = function () {
+        const quizEnd = function () {
             const userScore = document.querySelector(".userScore");
             const posterAnimation = document.querySelector(".parallax__item");
             const header__title = document.getElementById("header__inner");
@@ -343,7 +298,7 @@
                                     <button class="skip__btn">모르겠다</button>
                                 </div>
                                 <div class="quiz__score">${totalScore} 점</div>
-                                <p class="abc">${index + 1} / ${quiz.length}</p>
+                                <p class="quiz__current">${index + 1} / ${quiz.length}</p>
                             </div>
                         </div>
                     </div>
@@ -423,7 +378,7 @@
                     // quizScore.textContent = `총 점수: ${totalScore}`;
                     nextBtn.classList.remove("none");
                     quizAnswerBtn.classList.add("none");
-                    totalA();
+                    quizEnd();
                 }
             });
 
@@ -451,10 +406,12 @@
                     nextBtn.classList.remove("none");
                     quizAnswerBtn.classList.add("none");
 
-                    totalA();
+                    quizEnd();
                 }
             });
         }
+
+
 
         quizStBtn.addEventListener("click", function () {
             updataQuiz(currentIndex);
