@@ -115,7 +115,7 @@
 
                 echo "<tr>";
                 echo "<td>".$info['boardID']."</td>";
-                echo "<td>".$info['boardTitle']."</td>";
+                echo "<td><a href='boardView.php?boardID={$info['boardID']}'>".$info['boardTitle']."</a></td>";
                 echo "<td>".$info['youName']."</td>";
                 echo "<td>".date('Y-m-d', $info['regTime'])."</td>";
                 echo "<td>".$info['boardView']."</td>";
@@ -148,18 +148,18 @@
     if($startPage < 1) $startPage = 1;
     if($endPage >= $boardTotalCount) $endPage = $boardTotalCount;
 
+    // 처음으로/이전
+    if($page != 1){
+        $prevPage = $page - 1;
+        echo "<li class='first'><a href='board.php?page=1'>처음으로</a></li>";
+        echo "<li class='prev'><a href='board.php?page={$prevPage}'>이전</a></li>";
+    }
+
     // 페이지
     $first = "first";
     $prev = "prev";
     $next = "next";
     $last = "last";
-
-    echo "<li class='{$first}'><a href='board.php?page=1'>처음으로</a></li>";
-
-    if ($page !== 1) {
-        $prevPage = $page - 1;
-        echo "<li class='{$prev}'><a href='board.php?page={$prevPage}'>이전으로</a></li>";
-    } 
 
     for($i=$startPage; $i<=$endPage; $i++){
         $active = "";
@@ -168,16 +168,12 @@
         echo "<li class='{$active}'><a href='board.php?page={$i}'>${i}</a></li>";
     }
 
-    if ($page !== $boardTotalCount) {
+    // 마지막으로/다음
+    if($page != $boardTotalCount){
         $nextPage = $page + 1;
-        if($nextPage >= $boardTotalCount + 1){
-            $nextPage = $boardTotalCount + 1;
-        } else {
-            echo "<li class='{$next}'><a href='board.php?page={$nextPage}'>다음으로</a></li>";
-        }
+        echo "<li class='next'><a href='board.php?page={$nextPage}'>다음</a></li>";
+        echo "<li class='last'><a href='board.php?page={$boardTotalCount}'>마지막으로</a></li>";
     }
-
-    echo "<li class='{$last}'><a href='board.php?page={$boardTotalCount}'>마지막으로</a></li>";
 ?>
             </ul>
                 <!-- <ul>

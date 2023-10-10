@@ -18,9 +18,5 @@
         echo "Create Tables Complete";
     } else {
         echo "Create Table False";
-    }
-        
-
-                                                                                 
- 
+    }                                                       
 ?>

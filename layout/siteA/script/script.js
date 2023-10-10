@@ -4,7 +4,7 @@ $(function(){
     $(".slider").hide().first().show();
 
     setInterval(function(){
-        let nextIndex = (currentIndex + 1) & 3;
+        let nextIndex = (currentIndex + 1) % 3;
 
         $(".slider").eq(currentIndex).fadeOut(1200);
         $(".slider").eq(nextIndex).fadeIn(1200);
