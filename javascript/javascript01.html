@@ -63,6 +63,7 @@
                     <li><a href="#sample19">19. 객체 : 데이터 저장(키와값) : 표현방법8 : 객체 + 함수 있는 방식</a></li>
                     <li><a href="#sample20">20. 객체 : 데이터 저장(키와값) : 표현방법9 : 객체 구조 분해 할당</a></li>
                     <li><a href="#sample21">21. 객체 : 데이터 저장(키와값) : 표현방법10 : 객체 펼침 연산자</a></li>
+                    <li><a href="#sample22">22. 파일 : 데이터 교환(JSON)</a></li>
                 </ul>
                 <ul>
                     <li><a href="#variable1">지역변수/전역변수</a></li>
@@ -878,6 +879,51 @@
                 </div>
                 <!-- //sample21 --> 
 
+                <div id="sample22" class="sample">
+                    <h3>22. 파일 : 데이터 교환(JSON)</h3>
+                    <p>
+                        JSON파일로 데이터를 교환하는 예제입니다.
+                    </p>
+<pre><code class="language-js">{
+    // json 데이터를 객체로 변환
+    const jsonString = '{"name": "webs", "age": "30"}';
+    const jsonObject = JSON.parse(jsonSTring);
+    console.log(jsonObject.name); 
+
+    //webs
+
+    // 객체를 json 데이터로 변환
+    const personString = {name: "webs", age: 30};
+    const jsonPerson = JSON.stringify(person);
+    console.log(jsonPerson);
+
+    // '{"name": "webs", "age": "30"}'
+}            
+</code></pre>
+                    <p class="desc">
+                        1. JSON 데이터를 객체로 변환:<br>
+                        코드에서 JSON.parse() 메서드를 사용하여 JSON 형식의 문자열 jsonString을 JavaScript 객체로 변환합니다.<br>
+                        이렇게 하면 jsonObject 변수에 JSON 데이터의 내용이 객체 형태로 저장됩니다.<br>
+                        jsonObject.name을 출력하면 객체의 name 속성 값인 "webs"가 출력됩니다.<br>
+                        <br>
+                        2. 객체를 JSON 데이터로 변환:<br>
+                        코드에서 JSON.stringify() 메서드를 사용하여 JavaScript 객체 personString을 JSON 형식의 문자열로 변환합니다. <br>
+                        이렇게 하면 jsonPerson 변수에 객체가 JSON 형식으로 변환된 문자열이 저장됩니다.<br>
+                        jsonPerson을 출력하면 JSON 형식의 문자열 {"name": "webs", "age": 30}이 출력됩니다.<br>
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                webs <br>
+                                <br>
+                                {"name": "webs", "age": 30}
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample22 --> 
+
                 <div id="variable1" class="sample">
                     <h3>변수 : 전역변수 + 지역변수</h3>
                     <p> 
@@ -1369,16 +1415,16 @@
     let d = 50;
 
     console.log(a > b);
-    console.log(b < c);
+    console.log(b &lt; c);
     console.log(c >= d);
-    console.log(a <= b);
+    console.log(a &lt;= b);
     console.log(a != d);
     console.log(c !== b);
 }
             
 </code></pre>
                     <p class="desc">
-                        대소 비교 연산자 (<, >, <=, >=):
+                        대소 비교 연산자 (&lt;, >, &lt;=, >=):
                         두 값을 대소 관계로 비교하고, 참일 경우 true를 반환합니다.<br>
 
                         동등(==) 연산자:
@@ -1506,7 +1552,20 @@
         <script>hljs.highlightAll();</script>
 
         <script>
-            
+            // 22
+            // json 데이터를 객체로 변환
+            const jsonString = '{"name": "webs", "age": "30"}';
+            const jsonObject = JSON.parse(jsonSTring);
+            console.log(jsonObject.name); 
+
+            //webs
+
+            // 객체를 json 데이터로 변환
+            const personString = {name: "webs", age: 30};
+            const jsonPerson = JSON.stringify(person);
+            console.log(jsonPerson);
+
+            // '{"name": "webs", "age": "30"}'
         </script>
     </div>
 </body>
