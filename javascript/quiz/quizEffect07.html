@@ -327,7 +327,11 @@
         const giveUp = () => {
             quizInfo.forEach((question, number) => {
                 const cbtQuestion = document.querySelector(`.cbt:nth-child(${number + 1})`);
+                const cbtAnswer = cbtQuestion.querySelector('.cbt__answer');
+                const cbtDesc = cbtQuestion.querySelector(".cbt__desc");
 
+                cbtAnswer.classList.remove("none");
+                cbtDesc.classList.remove("none");
                 cbtQuestion.classList.add('bad');
             })
             alert("포기하셨습니다!");
