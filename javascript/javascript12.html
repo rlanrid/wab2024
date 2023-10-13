@@ -555,13 +555,13 @@
     const updataQuiz = (index) => {
         let quizWrapTag = ` 
             &lt;div class="quiz"&gt;
-                &lt;div class="quiz__header">${quizInfo[index].infoDate} ${quizInfo[index].infoType}&lt;/div&gt;
+                &lt;div class="quiz__header"&gt;${quizInfo[index].infoDate} ${quizInfo[index].infoType}&lt;/div&gt;
                 &lt;div class="quiz__main"&gt;
                     &lt;div class="quiz__question"&gt;${index+1}. ${quizInfo[index].infoQuestion}&lt;/div&gt;                    
                     &lt;div class="quiz__choice"&gt;
                         &lt;label for="choice1"&gt;
                             &lt;input type="radio" id="choice1" name="choice" value="1"&gt;
-                            &lt;span>${quizInfo[index].infoChoice[0]}&lt;/span&gt;
+                            &lt;span&gt;${quizInfo[index].infoChoice[0]}&lt;/span&gt;
                         &lt;/label&gt;
                         &lt;label for="choice2"&gt;
                             &lt;input type="radio" id="choice2" name="choice" value="2"&gt;
@@ -582,12 +582,12 @@
                     &lt;div class="quiz__desc none"&gt;                 
                         ${quizInfo[index].infoDesc}       
                     &lt;/div&gt;
-                &lt;/div>
+                &lt;/div&gt;
                 &lt;div class="quiz__footer"&gt;
                     &lt;button class="quiz__confirm"&gt;정답 확인하기&lt;/button&gt;
                     &lt;button class="quiz__next none"&gt;다음 문제&lt;/button&gt;
-                &lt;/div>
-            &lt;/div>
+                &lt;/div&gt;
+            &lt;/div&gt;
         `;
 
         quizWrap.innerHTML = quizWrapTag;
@@ -678,14 +678,27 @@
                     <h2>06. 퀴즈 이펙트 : 객관식 : 정답 선택하기 유형(슬라이드, JSON)</h2>
                     <p>JSON 파일을 이용해서 객관식 문제를 슬라이드 형식으로 작업합니다. </p>
                     <ul>
-                        <li>저장하기 : </li>
-                        <li>실행하기 : </li>
-                        <li>제어하기 : </li>
-                        <li>선택자 : </li>
-                        <li>메서드 : </li>
-                        <li>이벤트 : </li>
+                        <li>저장하기 : 변수, 배열, 객체</li>
+                        <li>실행하기 : 익명 함수, 매개변수 함수, 화살표 함수</li>
+                        <li>제어하기 : 다중if</li>
+                        <li>선택자 : querySelector(), querySelectorAll()</li>
+                        <li>메서드 : innerHTML, classList</li>
+                        <li>이벤트 : addEventListener()</li>
                     </ul>  
                     <a href="quiz/quizEffect06.html">확인하기</a>
+                </div>
+                <div>
+                    <h2>07. 퀴즈 이펙트 : 객관식 : 정답 선택하기 유형(슬라이드, JSON)</h2>
+                    <p>JSON 파일을 이용해서 객관식 문제를 슬라이드 형식으로 작업합니다. </p>
+                    <ul>
+                        <li>저장하기 : 변수, 배열, 객체</li>
+                        <li>실행하기 : 익명 함수, 매개변수 함수, 화살표 함수</li>
+                        <li>제어하기 : 다중if</li>
+                        <li>선택자 : querySelector(), querySelectorAll()</li>
+                        <li>메서드 : innerHTML, classList</li>
+                        <li>이벤트 : addEventListener()</li>
+                    </ul>  
+                    <a href="quiz/quizEffect07.html">확인하기</a>
                 </div>
             </div>
             <!-- //main__desc -->
