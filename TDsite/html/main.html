@@ -4,45 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trend Device</title>
-    <link rel="stylesheet" href="../assets/css/resets.css">
-    <link rel="stylesheet" href="../assets/css/vars.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
-        .container {
-            width: 1280px;
-            height: inherit;
-            margin: 0 auto;
-            text-align: center;
-        }
-        #wrap {
-            width: 100%;
-            height: 100vh;
-        }
-        #header {
-            width: 100%;
-            height: 50px;
-            position: relative;
-        }
-        #header .container h1 {
-            position: absolute;
-            font-size: 1.25rem;
-            font-weight: 600;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-        }
-        #header .header__menu {
-            display: flex;
-            height: inherit;
-            justify-content: space-between;
-            align-items: center;
-        }
-        #header .header__menu .header__right {
-            display: flex;
-        }
-        #header .header__menu .header__right .search {
-            margin-right: 10px;
-        }
+        /* slider */
         #slider {
             width: 100%;
             height: 860px;
@@ -59,7 +23,7 @@
         }
         .sliderWrap .slider span {
             position: absolute;
-            left: 50%;
+            left: 49%;
             top: 25%;
             transform: translate(-50%, -50%);
             color: var(--black900);
@@ -80,6 +44,11 @@
             color: var(--blue100);
             cursor: pointer;
         }
+        .sliderWrap .slider span a:hover {
+            text-decoration: underline;
+        }
+
+        /* main */
         #main {
             width: 100%;
             background-color: #fff;
@@ -141,6 +110,8 @@
             text-align: center;
             line-height: 30px;
         }
+
+        /* footer */
         #footer {
             width: 100%;
             height: 300px;
@@ -192,26 +163,70 @@
             <div class="container">
                 <h1>Trend Device</h1>
                 <div class="header__menu">
-                    <div class="header__left">
-                        <div class="ham">햄버거</div>
+                    <div class="header__ham">
+                        <div class="ham">
+                            <a href="#">
+                                <span></span>
+                            </a>
+                        </div>
                     </div>
-                    <div class="header__right">
-                        <div class="search">돋보기</div>
-                        <div class="member">회원</div>
-                    </div>
+                    <!-- //header__ham -->
 
+                    <div class="header__etc">
+                        <div class="search"><span>돋보기</span></div>
+                        <div class="member"><span>회원</span></div>
+                    </div>
+                    <!-- //header__etc -->
                 </div>
-                <div class="nav"></div>
-                <!-- //nav -->
             </div>
         </header>
         <!-- //header -->
+        
+        <nav id="nav">
+            <div class="container">
+                <ul>
+                    <li>
+                        <a href="#">스마트폰</a>
+                        <ul class="submenu">
+                            <li><a href="#">삼성</a></li>
+                            <li><a href="#">애플</a></li>
+                            <li><a href="#">제품비교하기</a></li>
+                            <li><a href="#">제품리뷰</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">커뮤니티</a>
+                        <ul class="submenu">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">자유게시판</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">문의하기</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">고객센터</a>
+                        <ul class="submenu">
+                            <li><a href="#">문의하기</a></li>
+                            <li><a href="#">자유게시판</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">문의하기</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //nav -->
 
         <article id="slider">
             <div class="sliderWrap">
                 <div class="slider s1">
                     <img src="../assets/img/slide01-min.jpg" alt="">
-                    <span><strong>iPhone 15 Pro</strong><br>티타늄. 초강력. 초경량. 초프로.<br><i>10월 13일 출시</i><br><a>더 알아보기 ></a></span>
+                    <span>
+                        <strong>iPhone 15 Pro</strong><br>
+                        티타늄. 초강력. 초경량. 초프로.<br>
+                        <i>10월 13일 출시</i><br>
+                        <a>더 알아보기 ></a>
+                    </span>
                 </div>
                 <div class="slider s2">
                     <img src="../assets/img/slide01-min.jpg" alt="">
@@ -306,5 +321,31 @@
         <!-- //footer -->
     </div>
     <!-- //wrap -->
+
+    <!-- script -->
+    <script>
+        let header = document.querySelector("#header");
+        let nav = document.querySelector("#nav");
+        let hamMenu = document.querySelector("#header .header__ham");
+        let hamShape = document.querySelector("#header .header__ham div");
+
+        function showNav(){
+            nav.style.height = "360px";
+            hamShape.classList.add("hamX");
+            hamShape.classList.remove("ham");
+        };
+        function hideNav(){
+            nav.style.height = "0";
+            hamShape.classList.add("ham");
+            hamShape.classList.remove("hamX");
+        };
+
+        // 탭메뉴 효과
+        hamMenu.addEventListener("mouseover", showNav);
+        hamMenu.addEventListener("mouseout", hideNav);
+
+        nav.addEventListener("mouseover", showNav);
+        nav.addEventListener("mouseout", hideNav);
+    </script>
 </body>
 </html>
