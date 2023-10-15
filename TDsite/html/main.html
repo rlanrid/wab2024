@@ -10,12 +10,13 @@
         #slider {
             width: 100%;
             height: 860px;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
         .sliderWrap {
             display: flex;
         }
         .sliderWrap .slider {
+            width: 300%;
             position: relative;
         }
         .sliderWrap .slider img {
@@ -220,7 +221,9 @@
         <article id="slider">
             <div class="sliderWrap">
                 <div class="slider s1">
-                    <img src="../assets/img/slide01-min.jpg" alt="">
+                    <figure>
+                        <img src="../assets/img/slider01.jpg" alt="">
+                    </figure>
                     <span>
                         <strong>iPhone 15 Pro</strong><br>
                         티타늄. 초강력. 초경량. 초프로.<br>
@@ -229,11 +232,15 @@
                     </span>
                 </div>
                 <div class="slider s2">
-                    <img src="../assets/img/slide01-min.jpg" alt="">
+                    <figure>
+                        <img src="../assets/img/slider01.jpg" alt="">
+                    </figure>
                     <span>이미지2</span>
                 </div>
                 <div class="slider s3">
-                    <img src="../assets/img/slide01-min.jpg" alt="">
+                    <figure>
+                        <img src="../assets/img/slider01.jpg" alt="">
+                    </figure>             
                     <span>이미지3</span>
                 </div>
             </div>
