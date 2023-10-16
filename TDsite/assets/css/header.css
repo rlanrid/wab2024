@@ -22,7 +22,7 @@
 #header .header__menu .header__etc {
     display: flex;
 }
-#header .header__menu .header__etc .search {
+#header .header__menu .header__etc .header__search {
     margin-right: 10px;
 }
 #header .header__menu .header__ham {
