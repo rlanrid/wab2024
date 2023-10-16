@@ -21,9 +21,13 @@
 }
 #header .header__menu .header__etc {
     display: flex;
+    justify-content: space-between;
 }
 #header .header__menu .header__etc .header__search {
-    margin-right: 10px;
+   background-color: var(--black200);
+}
+#header .header__menu .header__etc .header__member {
+   background-color: var(--black100);
 }
 #header .header__menu .header__ham {
     cursor: pointer;
