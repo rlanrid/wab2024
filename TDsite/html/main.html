@@ -9,6 +9,8 @@
         #slider {
             width: 100%;
             height: 860px;
+            background-color: #eee;
+            margin: 0 auto;
             overflow: hidden;
         }
         .sliderWrap {
@@ -16,6 +18,7 @@
         }
         .sliderWrap .slider {
             position: relative;
+            width: 100%;
         }
         .sliderWrap .slider img {
             vertical-align: top;
@@ -50,6 +53,7 @@
         /* main */
         #main {
             width: 100%;
+            height: 2440px;
             background-color: #fff;
         }
         #main .main__img1 img,
@@ -109,51 +113,6 @@
             text-align: center;
             line-height: 30px;
         }
-
-        /* footer */
-        #footer {
-            width: 100%;
-            height: 300px;
-            background-color: var(--black900);
-        }
-        #footer > .container {
-            text-align: left;
-        }
-        .footer__top h2 {
-            font-size: 2.5rem;
-            color: var(--black200);
-            font-weight: 500;
-            padding: 50px 0 15px;
-        }
-        .footer__top .ft__list2 {
-            padding-bottom: 50px;
-        }
-        .footer__top ul li {
-            display: inline-block;
-            padding: 0 15px;
-            color: var(--black200);
-        }
-        .footer__top ul li:first-child{
-            padding-left: 0;
-        }
-        .footer__bottom {
-            display: flex;
-            justify-content: space-between;
-        }
-        .footer__bottom p {
-            padding-bottom: 5px;
-            color: var(--black200);
-        }
-        .footer__bottom .fb__left ul li {
-            display: inline-block;
-            margin-right: 30px;
-            color: var(--black200);
-        }
-        .footer__bottom .fb__right span {
-            width: 100px;
-            height: 100px;
-            background-color: #fff;
-        }
     </style>
 </head>
 <body>
@@ -172,8 +131,12 @@
                     <!-- //header__ham -->
 
                     <div class="header__etc">
-                        <div class="header__search"><span>돋보기</span></div>
-                        <div class="header__member"><span>회원</span></div>
+                        <div class="header__search">
+                            <img src="../assets/img/glass.png" alt="검색">
+                        </div>
+                        <div class="header__user">
+                            <img src="../assets/img/user.png" alt="회원">
+                        </div>
                     </div>
                     <!-- //header__etc -->
                 </div>
@@ -219,9 +182,7 @@
         <article id="slider">
             <div class="sliderWrap">
                 <div class="slider s1">
-                    <figure>
-                        <img src="../assets/img/slide01-min.jpg" alt="">
-                    </figure>
+                    <img src="../assets/img/slide01-min.jpg" alt="">
                     <span>
                         <strong>iPhone 15 Pro</strong><br>
                         티타늄. 초강력. 초경량. 초프로.<br>
@@ -230,15 +191,16 @@
                     </span>
                 </div>
                 <div class="slider s2">
-                    <figure>
-                        <img src="../assets/img/slide01-min.jpg" alt="">
-                    </figure>
-                    <span>이미지2</span>
+                    <img src="../assets/img/slider02-min.jpg" alt="">
+                    <span>
+                        <strong>iPhone 15 Pro</strong><br>
+                        티타늄. 초강력. 초경량. 초프로.<br>
+                        <i>10월 13일 출시</i><br>
+                        <a>더 알아보기 ></a>
+                    </span>
                 </div>
                 <div class="slider s3">
-                    <figure>
-                        <img src="../assets/img/slide01-min.jpg" alt="">
-                    </figure>             
+                    <img src="../assets/img/slider03-min.jpg" alt="">             
                     <span>이미지3</span>
                 </div>
             </div>
@@ -247,7 +209,7 @@
 
         <main id="main">
             <div class="main__img1">
-                <img src="../assets/img/slide01-min.jpg" alt="">
+                <img src="../assets/img/slider04-min.jpg" alt="">
             </div>
             <div class="main__img2">
                 <img src="../assets/img/slide01-min.jpg" alt="">
@@ -256,7 +218,10 @@
             <div class="intro__inner container">
                 <div class="intro__header">
                     <h2>Trend Device를 소개합니다.</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur.<br>Sit tristique metus euismod mauris ut egestas.</p>
+                    <p>
+                        Trend는 소비자들이 다양한 스마트폰 모델을 비교하고 최적의 선택을 할 수 있도록 도와주는 웹 사이트입니다.<br>
+                        휴대폰 모델, 기능, 가격, 성능, 디자인 등과 같은 다양한 요소를 비교하고 평가해보세요!
+                    </p>
                 </div>
                 <!-- //intro__header -->
 
@@ -299,7 +264,7 @@
                     <ul class="ft__list2">
                         <li>사업장 주소:경기도 안산시 단원구 고잔2길 45 코스모프라자 6층</li>
                         <li>대표번호:00-1234-1234</li>
-                        <li>안녕하세요</li>
+                        <li>문의전화:00-1234-5678</li>
                     </ul>
                 </div>
                 <div class="footer__bottom">
@@ -316,9 +281,15 @@
                         </ul>
                     </div>
                     <div class="fb__right">
-                        <span>123</span>
-                        <span>123</span>
-                        <span>123</span>
+                        <span>
+                            <img src="../assets/img/instargram__icon.png" alt="인스타그램">
+                        </span>
+                        <span>
+                            <img src="../assets/img/facebook__icon.png" alt="인스타그램">
+                        </span>
+                        <span>
+                            <img src="../assets/img/github__icon.png" alt="인스타그램">
+                        </span>
                     </div>
                 </div>
             </div>
@@ -329,6 +300,7 @@
 
     <!-- script -->
     <script>
+        // 메뉴
         let header = document.querySelector("#header");
         let nav = document.querySelector("#nav");
         let hamMenu = document.querySelector("#header .header__ham");
@@ -345,12 +317,36 @@
             hamShape.classList.remove("hamX");
         };
 
-        // 탭메뉴 효과
         hamMenu.addEventListener("mouseover", showNav);
         hamMenu.addEventListener("mouseout", hideNav);
 
         nav.addEventListener("mouseover", showNav);
         nav.addEventListener("mouseout", hideNav);
+
+        // 슬라이드
+        window.onload = () => {
+            let currentIndex = 0;   //현재 이미지
+            const sliderWrap = document.querySelector(".sliderWrap");   //전체 이미지
+            const slider = document.querySelectorAll(".slider");    //각각이미지
+            const sliderClone = sliderWrap.firstElementChild.cloneNode(true);
+            sliderWrap.appendChild(sliderClone);
+
+            setInterval(() => {
+                currentIndex++;
+                sliderWrap.style.transition = "all 0.6s";   //애니메이션 추가
+                sliderWrap.style.marginLeft = -currentIndex * 100 + "%";  //왼쪽으로 100%씩 이동
+
+                if(currentIndex == slider.length){
+                    setTimeout(() => {
+                        sliderWrap.style.transition = "0s";
+                        sliderWrap.style.marginLeft = "0";
+                        currentIndex = 0;
+                    }, 1000);
+                }
+            }, 5000);
+        };
+
+
     </script>
 </body>
 </html>

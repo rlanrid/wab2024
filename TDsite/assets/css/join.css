@@ -1,0 +1,78 @@
+.join__inner {
+    border-bottom: 1px solid var(--black);
+}
+.join__header {
+    border-bottom: 1px solid var(--black);
+}
+.join__header .container2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.join__header h2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+.join__header p {
+    font-weight: bold;
+    cursor: pointer;
+}
+.join__contents {
+    margin-top: 50px;
+}
+.join__contents h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+.join__contents p {
+    margin-top: 15px;
+    line-height: 1.5;
+    color: var(--black200);
+}
+.join__contents p > a {
+    color: var(--blue100);
+}
+.join__form {
+    padding: 15px 20%;
+}
+.join__form div {
+    margin-bottom: 2.8rem;
+}
+.join__form div label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    text-align: left;
+}
+.join__inner .join__contents .join__form .input__style {
+    width: 100%;
+    border-radius: 10px;
+    padding: 1rem 1.4rem;
+    border: 1px solid var(--black500);
+    font-size: 1.2rem;
+    position: relative;
+    background-color: var(--white);
+}
+
+
+
+/* 공통요소 */
+
+/* required */
+.required::after {
+    content: ' *';
+    color: var(--red);
+    position: absolute;
+}
+
+/* btn__style */
+.btn__style {
+    display: block;
+    background-color: var(--blue100);
+    color: var(--white);
+    font-size: 1rem;
+    border-radius: 7px;
+    padding: 0.6rem 1.3rem;
+    margin: 35px auto;
+    cursor: pointer;
+}
