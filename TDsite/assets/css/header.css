@@ -154,3 +154,13 @@
 #nav .container > ul > li > ul > li > a {
     font-weight: bold;
 }
+
+
+
+
+
+@media(max-width: 1380px){
+    #header .container {
+        width: 95%;
+    }
+}

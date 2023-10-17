@@ -55,6 +55,48 @@
 }
 
 
+/* joinResult */
+.join__result {
+    margin-bottom: 350px;
+}
+.joinResult__title {
+    margin: 100px 3rem 0;
+    border-bottom: 1px solid var(--black600);
+}
+.joinResult__title h2 {
+    font-size: 1.25rem;
+    text-align: left;
+    color: var(--black200);
+    padding: 1rem 3rem;
+}
+.join__resultBox {
+    width: 100%;
+    height: 260px;
+    margin: 85px auto 0;
+    background-color: var(--black900);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.join__resultBox img {
+    width: 80px;
+    position: absolute;
+    left: 25%;
+    top: 47%;
+    transform: translate(-50%, -50%);
+}
+.join__resultBox p {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.join__result button {
+    width: 180px;
+    height: 50px;
+    margin: 1.25rem 1rem;
+}
+
 
 /* 공통요소 */
 

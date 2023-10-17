@@ -85,96 +85,54 @@
             <div class="board__inner container">
                 <div class="board__top">
                     <h2>자유 게시판</h2>
-                    <button>글쓰기</button>
                 </div>
-                <div class="board__search">
-                    <form action="boardSearch.html" name="boardSearch" method="post">
-                        <fieldset>
-                            <legend class="blind">게시판 검색 영역</legend>
-                        </fieldset>
-                        <div class="search__bar">
-                            
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z " fill="#59595A"/></svg>
-                            <input type="search" name="searchKeyword" id="searchKeyword" placeholder="검색" required>
-                        </div>
-                    </form>    
-                </div>
-                <div class="board__pages">
-                    <ul>
-                        <li class="prev"><a href="#">이전</a></li>
-                        <li class="next"><a href="#">다음</a></li>
-                    </ul>
-                </div>
-                <div class="board__table">
+                <div class="board__View">
                     <table>
                         <colgroup>
                             <col style="width: 3%;">
-                            <col style="width: 2%">
                             <col style="width: 5%">
-                            <col style="width: 5%">
-                            <col style="width: 5%">
-                            <col>
+                            <col style="width: 92%">
                         </colgroup>
-                        <thead class="blind">
-                            <tr>
-                                <th>프로필 이미지</th>
-                                <th>게시글 제목</th>
-                                <th>등록일</th>
-                                <th>공감</th>
-                                <th>조회수</th>
-                                <th>작성자</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr>
                                 <td rowspan="2"><img src="../assets/img/profile.png" alt="프로필 이미지"></td>
-                                <td colspan="5"><a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></td>
-                            </tr>
-                            <tr class="fG">
-                                <td colspan="2">43분전</td>
-                                <td>공감 <em>0</em></td>
-                                <td>조회수 <em>1</em></td>
-                                <td colspan="2">작성자 <em>김이름</em></td>
-                            </tr>
-                            <tr class="trPb">
-                                <td colspan="6"></td>
-                            </tr>
-
-                            <!-- 임시 -->
-                            <tr>
-                                <td rowspan="2"><img src="../assets/img/profile.png" alt="프로필 이미지"></td>
-                                <td colspan="5"><a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></td>
-                            </tr>
-                            <tr class="fG">
-                                <td colspan="2">43분전</td>
-                                <td>공감 <em>0</em></td>
-                                <td>조회수 <em>1</em></td>
-                                <td colspan="2">작성자 <em>김이름</em></td>
-                            </tr>
-                            <tr class="trPb">
-                                <td colspan="6"></td>
+                                <td colspan="2">작성자 <em>작성자</em></td>
                             </tr>
                             <tr>
-                                <td rowspan="2"><img src="../assets/img/profile.png" alt="프로필 이미지"></td>
-                                <td colspan="5"><a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></td>
-                            </tr>
-                            <tr class="fG">
-                                <td colspan="2">43분전</td>
-                                <td>공감 <em>0</em></td>
                                 <td>조회수 <em>1</em></td>
-                                <td colspan="2">작성자 <em>김이름</em></td>
+                                <td colspan="2">공감 <em>0</em></td>
                             </tr>
-                            <tr class="trPb">
-                                <td colspan="6"></td>
+                            <tr class="trPb"><td colspan="3"></td></tr>
+                            <tr class="content__Title">
+                                <td colspan="3">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </td>
                             </tr>
-
+                            <tr class="trPb"><td colspan="3"></td></tr>
+                            <tr>
+                                <td class="board_cotent" colspan="3">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="trDay" colspan="3">게시일 <em>2023. 10. 11 오전 02:53</em></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="board__pages">
+                <div class="board__btns">
+                    <button type="submit" class="btn__style">공감</button>
+                    <button type="submit" class="btn__style2">목록</button>
+                </div>
+                <div class="board__pages2">
                     <ul>
-                        <li class="prev"><a href="#">이전</a></li>
-                        <li class="next"><a href="#">다음</a></li>
+                        <li class="first"><a href="#">&lt;&lt;</a></li>
+                        <li class="prev"><a href="#">&lt;</a></li>
+                        <li class="pages2__select">1</li>
+                        <li>/</li>
+                        <li>10</li>
+                        <li class="next"><a href="#">&gt;</a></li>
+                        <li class="last"><a href="#">&gt;&gt;</a></li>
                     </ul>
                 </div>
             </div>
