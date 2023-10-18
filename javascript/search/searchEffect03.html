@@ -147,16 +147,21 @@
         searchSelect.forEach(select => {
             select.addEventListener("click", () => {
                 const selectedWord = select.innerText.toLowerCase();
+
+                let count = 0;
                 
                 searchList.forEach(list => {
-                const cssName = list.querySelector("strong").textContent.toLowerCase(); // CSS 이름을 소문자로 가져오기
+                    const cssName = list.querySelector("strong").textContent.toLowerCase(); // CSS 이름을 소문자로 가져오기
 
-                if(cssName.charAt(0) === selectedWord) {
-                    list.classList.remove("hide");
-                } else {
-                    list.classList.add("hide");
-                }
-            });
+                    if(cssName.charAt(0) === selectedWord) {
+                        list.classList.remove("hide");
+                        count++;
+                    } else {
+                        list.classList.add("hide");
+                    }
+                });
+
+            searchInfoNum.textContent = count;
         });
 });
 
