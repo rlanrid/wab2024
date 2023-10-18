@@ -43,6 +43,7 @@
 .intro__img {
     max-width: 300px;
     width: 100%;
+    margin-bottom: 2rem;
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
@@ -51,11 +52,6 @@
     max-width: 200px;
     height: 100px;
     border-radius: 50px;
-}
-.intro__img.main {
-    max-width: 500px;
-    height: 300px;
-    border-radius: 250px;
 }
 .intro__text {
     font-size: 1.4rem;
@@ -94,7 +90,7 @@
         max-width: 200px;
     }
     .intro__img.main {
-        max-width: 235px;
+        min-width: 235px;
         height: 136px;
     }
 }
@@ -221,6 +217,22 @@
     display: -webkit-box;
     -webkit-line-clamp: 3; 
     -webkit-box-orient: vertical;
+}
+
+/* 스크롤 스타일 */
+.scroll__style::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+.scroll__style::-webkit-scrollbar-thumb {
+    height: 10%; /* 스크롤바의 길이 */
+    background: var(--black400); /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+.scroll__style::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);  /*스크롤바 뒷 배경 색상*/
 }
 
 

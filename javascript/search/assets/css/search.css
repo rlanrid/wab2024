@@ -59,7 +59,7 @@ li {
     width: 65%;
     height: inherit;
     background-color: #d1e3cf;
-    margin: 30px auto;
+    margin: 10px auto;
     padding: 35px 30px;
     text-align: center;
     border: 1px solid #000;
@@ -80,7 +80,7 @@ li {
 .search__box input {
     width: 50%;
     height: 5px;
-    padding: 30px 30px;
+    padding: 30px;
     border-radius: 100px;
     border: 1px solid gray;
     font-size: 18px;
@@ -103,6 +103,9 @@ li {
 .search__list {
     width: 100%;
     text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 .search__list li.hide {
     display: none;
@@ -113,6 +116,24 @@ li {
 .search__list .css ul li {
     margin: 10px 0;
 }
+.search__list span {
+    padding: 5px 10px;
+    border: 1px solid gray;
+    border-radius: 30px;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+.search__list span.active {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid white;
+}
+.search__list span:hover {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid white;
+}
 .search__select {
     margin: 10px 0;
 }
@@ -121,6 +142,25 @@ li {
     height: 35px;
     padding: 5px 10px;
     border: 1px solid black;
+    cursor: pointer;
+}
+.search__box__result {
+    margin: 30px 0;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 15px;
+    word-break: keep-all;
+    border-top: 1px dashed #000;
+    border-bottom: 1px dashed #000;
+}
+.search__Go {
+    width: 15%;
+    padding: 15px;
+    border-radius: 100px;
+    border: 1px solid gray;
+    font-size: 18px;
+    background-color: #000;
+    color: #fff;
     cursor: pointer;
 }
 
@@ -155,7 +195,4 @@ li {
     }
 }
 
-@media (max-width: 600px){
-    
-}
 

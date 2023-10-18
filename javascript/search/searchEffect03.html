@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>서치2</title>
+    <title>서치3</title>
 
     <link rel="stylesheet" href="assets/css/search.css">
     <link href="https://webfontworld.github.io/LotteriaDdag/LotteriaDdag.css" rel="stylesheet">
 </head>
+
 <body>
     <header id="header">
         <h1><a href="../index.html">Search</a></h1>
         <nav>
             <ul>
                 <li><a href="searchEffect01.html">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="searchEffect03.html">3</a></li>
+                <li><a href="searchEffect02.html">2</a></li>
+                <li class="active"><a href="#">3</a></li>
                 <li><a href="searchEffect04.html">4</a></li>
                 <li><a href="searchEffect05.html">5</a></li>
                 <li><a href="searchEffect06.html">6</a></li>
@@ -32,6 +34,7 @@
                 <h1>CSS 속성 첫글자 검색하기</h1>
             </div>
             <div class="search__select">
+                <span id="showAll">All</span>
                 <span>a</span>
                 <span>b</span>
                 <span>c</span>
@@ -138,34 +141,47 @@
 
     <script>
         const searchList = document.querySelectorAll(".search__list ul li");
-        const searchInfoNum = document.querySelector(".search__info .num");
         const searchSelect = document.querySelectorAll(".search__select span");
+        const searchInfo = document.querySelector(".search__info");
+        const searchBox = document.querySelector(".search__box input");
+
+        let count = 0;
 
         // 전체 갯수 구하기
-        searchInfoNum.textContent = searchList.length;
+        searchInfo.textContent = "CSS 속성의 갯수는 " + searchList.length + "개 입니다.";
 
-        searchSelect.forEach(select => {
-            select.addEventListener("click", () => {
-                const selectedWord = select.innerText.toLowerCase();
+        searchSelect.forEach(el => {
+            el.addEventListener("click", () => {
+                const searchWord = el.innerText;        //사용자가 클릭한 알파벳
+                // console.log(searchWord);
 
-                let count = 0;
-                
-                searchList.forEach(list => {
-                    const cssName = list.querySelector("strong").textContent.toLowerCase(); // CSS 이름을 소문자로 가져오기
+                searchList.forEach(el => {
+                    const cssName = el.querySelector("strong").innerText;       //CSS 속성 텍스트
+                    // console.log(cssName)
 
-                    if(cssName.charAt(0) === selectedWord) {
-                        list.classList.remove("hide");
+                    //알파벳 첫글자 == CSS 속성의 첫글자
+                    if (searchWord.charAt(0) === cssName.charAt(0)) {
+                        el.classList.remove("hide");
                         count++;
                     } else {
-                        list.classList.add("hide");
+                        el.classList.add("hide");
                     }
+                    searchInfo.textContent = searchWord.charAt(0) + "로 시작하는 속성은 " + count + "개입니다.";
                 });
-
-            searchInfoNum.textContent = count;
+                count = 0;
+            });
         });
-});
 
+        // 전체 보기 버튼
+        const showAllButton = document.getElementById("showAll");
 
+        showAllButton.addEventListener("click", () => {
+            searchList.forEach(el => {
+                el.classList.remove("hide");
+            });
+            searchInfo.textContent = "CSS 속성의 갯수는 " + searchList.length + "개입니다.";
+        });
     </script>
 </body>
+
 </html>
