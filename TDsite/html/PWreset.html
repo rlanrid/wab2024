@@ -9,8 +9,9 @@
         /* main */
         #main {
             width: 100%;
-            height: auto;
+            height: 90%;
             background-color: #fff;
+            border-top: 1px solid var(--black);
         }
     
     </style>
@@ -41,7 +42,7 @@
                     <!-- //header__etc -->
                 </div>
                 <div class="board__name">
-                    회원가입
+                    자유게시판
                 </div>
             </div>
             
@@ -84,45 +85,32 @@
         <!-- //nav -->
 
         <main id="main">
-            <div class="join__inner container2">
-                <div class="join__contents">
-                    <h2>Trend ID 생성</h2>
-                    <p>
-                        Trend Device의 회원이 되면 모든 서비스를 이용할 수 있습니다.
-                        <br>이미 회원이신가요? <a href="#">로그인</a>
-                    </p>
-                    <div class="join__form">
+            <div class="PWreset__inner container3">
+                <div class="PWreset__contents">
+                    <div class="PWreset__title">
+                        <h2>암호 재설정</h2>
+                        <p>계속하려면 계정에서 사용하는 이메일 주소 또는 전화번호를 입력하십시오.</p>
+                    </div>
+                    <div class="PWreset__form">
                         <form action="#" name="#" method="post">
                             <fieldset>
-                                <legend class="blind">회원가입 영역</legend>
+                                <legend class="blind">암호 재설정 영역</legend>
                                 <div>
-                                    <label for="youName" class="required">이름</label>
-                                    <input type="text" id="youName" name="youName" placeholder="이름을 입력해주세요!" class="input__style" required>
+                                    <label for="youEmail" class="required blind">이메일</label>
+                                    <input type="email" id="youEmail" name="youEmail" placeholder="이메일" class="input__style" required>
                                 </div>
                                 <div>
-                                    <label for="youEmail" class="required">이메일</label>
-                                    <input type="text" id="youEmail" name="youEmail" placeholder="이메일을 입력해주세요!" class="input__style" required>
+                                    <label for="youPass" class="required blind">비밀번호</label>
+                                    <input type="password" id="youPass" name="youPass" placeholder="비밀번호" class="input__style" autocomplete="off" required>
                                 </div>
-                                <div>
-                                    <label for="youPass" class="required">암호</label>
-                                    <input type="text" id="youPass" name="youPass" placeholder="암호를 입력해주세요!" class="input__style" required>
-                                </div>
-                                <div>
-                                    <label for="youPassC" class="required">암호 확인</label>
-                                    <input type="text" id="youPassC" name="youPassC" placeholder="암호를 확인해주세요!" class="input__style" required>
-                                </div>
-                                <div>
-                                    <label for="youBirth" class="required">생년월일</label>
-                                    <input type="text" id="youBirth" name="youBirth" placeholder="생년월일을 입력해주세요!" class="input__style" required>
-                                </div>
-                                <div>
-                                    <label for="youPhone" class="required">연락처</label>
-                                    <input type="text" id="youPhone" name="youPhone" placeholder="휴대전화를 입력해주세요!" class="input__style" required>
-                                </div>
-                                <button type="submit" class="btn__style">계속</button>
+                                <button type="submit" class="btn__style4">계속</button>
                             </fieldset>
                         </form>
                     </div>
+                </div>
+                <div class="PWreset__support">
+                    <img src="../assets/img/icon__reset.png" alt="암호 재설정">
+                    <p>여기서 잊어버린 암호를 재설정할 수 있습니다.</p>
                 </div>
             </div>
         </main>

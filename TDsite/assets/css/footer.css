@@ -85,6 +85,10 @@
     }
     .footer__bottom .fb__right span img {
         width: 35px;
+        height: 35px;
+    }
+    .footer__bottom .fb__right span:first-child img  {
+        margin: 0;
     }
 }
 @media(max-width: 980px){

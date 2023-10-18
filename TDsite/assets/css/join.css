@@ -1,5 +1,5 @@
 .join__inner {
-    border-bottom: 1px solid var(--black);
+    margin-bottom: 180px;
 }
 .join__header {
     border-bottom: 1px solid var(--black);
@@ -95,6 +95,19 @@
     width: 180px;
     height: 50px;
     margin: 1.25rem 1rem;
+}
+
+
+@media(max-width: 1280px){
+    .join__inner  {
+        width: 80%;
+        margin: 50px auto;
+    }
+}
+@media(max-width: 800px){
+    .join__inner {
+        height: 80%;
+    }
 }
 
 
