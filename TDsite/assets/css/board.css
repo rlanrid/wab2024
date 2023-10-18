@@ -1,3 +1,14 @@
+/* btn__Style2 */
+.btn__style2 {
+    display: block;
+    background-color: var(--black400);
+    color: var(--white);
+    font-size: 1rem;
+    border-radius: 7px;
+    padding: 0.8rem 1.2rem;
+    margin: 0 auto;
+}
+
 /* board__top */
 .board__top {
     display: flex;
@@ -140,7 +151,7 @@
 .board__btns .btn__style,
 .board__btns .btn__style2 {
     margin: 0;
-    width: 100px;
+    width: 120px;
     height: 50px;
     border-radius: 25px;
     cursor: pointer;
@@ -158,8 +169,6 @@
     padding: 0 8px 0 8px;
     font-weight: 700;
 }
-
-
 .board__pages2 .pages2__select {
     position: relative;
 }
@@ -180,13 +189,61 @@
     color: var(--black400);
 }
 
-/* btn__Style2 */
-.btn__style2 {
+/* boardWrite */
+.bw__boardTitle {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+.bw__boardTitle label {
+    width: 5%;
+    font-size: 1.5rem;
+    text-align-last: left;
+}
+.bw__boardTitle__input {
+    width: 95%;
+    height: 33px;
+    border-bottom: 1px solid var(--black400);
+    box-sizing: border-box;
+}
+.bw__boardTitle input {
+    width: 100%;
+    height: 32px;
+    font-size: 2rem;
+    text-align: bottom;
+    border: 0;
+    z-index: 1;
+    position: relative;
+}
+.bw__boardTitle input:focus {
+    border: 0;
+    outline: 0;
+}
+
+.bw__boardCont {
+    width: 100%;
+    display: flex;
+}
+.bw__boardCont label {
+    width: 5%;
+    font-size: 1.5rem;
     display: block;
-    background-color: var(--black400);
-    color: var(--white);
-    font-size: 1rem;
-    border-radius: 7px;
-    padding: 0.8rem 1.2rem;
-    margin: 0 auto;
+    text-align: left;
+}
+.bw__boardCont textarea {
+    width: 95%;
+
+}
+.bw__boardCont textarea:focus {
+    outline: 0;
+}
+.board__btns {
+    display: flex;
+    justify-content: right;
+}
+
+@media (max-width: 1280px){
+    .container {
+        width: 95%;
+    }
 }
