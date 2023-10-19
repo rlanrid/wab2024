@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trend Device</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-​
     <style>
-        #header {
-            margin-bottom: 60px;
-            border: 1px solid var(--black400);
+        /* main */
+        #main {
+            width: 100%;
+            height: 90vh;
+            background-color: #fff;
         }
+    
     </style>
 </head>
 <body>
@@ -27,7 +29,7 @@
                         </div>
                     </div>
                     <!-- //header__ham -->
-​
+
                     <div class="header__etc">
                         <div class="header__search">
                             <img src="../assets/img/glass.png" alt="검색">
@@ -39,7 +41,7 @@
                     <!-- //header__etc -->
                 </div>
                 <div class="board__name">
-                    제품 비교하기
+                    회원가입
                 </div>
             </div>
             
@@ -80,94 +82,64 @@
             </div>
         </nav>
         <!-- //nav -->
-​
+
         <main id="main">
-            <div class="compare__inner container">
-                <div class="compare__top">
-                    <h2>제품 비교하기</h2>
-                    <p>스마트폰 성능, 디자인 비교해보세요!</p>
-                </div>
-                <div class="compare__bottom">
-                    <div class="compare__left">
-                        <div class="compare__left__top">
-                            <select name="phone_select1" id="phone_select1">
-                                <option value="phoneName">iPhone 15 Pro Max</option>
-                                <option value="phoneName">iPhone 15 Pro</option>
-                                <option value="phoneName">iPhone 15 Plus</option>
-                                <option value="phoneName">iPhone 15</option>
-                                
-                                <option value="phoneName">갤럭시Z 폴드5</option>
-                                <option value="phoneName">갤럭시Z 플립5</option>
-                                <option value="phoneName">갤럭시S23 울트라</option>
-                                <option value="phoneName">갤럭시S23+</option>
-                                <option value="phoneName">갤럭시S23</option>
-                            </select>
-                            <img src="#" alt="핸드폰 이미지">
-                            <p class="price">$<em>1,900,000원</em>부터</p>
-                            <a class="btn__style3">바로가기</a>
+            <div class="mypage__inner container2">
+                <div class="mypage__contents">
+                    <div class="mypage__menu">
+                        <div class="mypageMenu__header">
+                            <img src="../assets/img/icon__profile.png" alt="회원 프로필">
+                            <h2>김이름</h2>
+                            <p>kimkimkim@gmail.com</p>
                         </div>
-                        <div class="compare__left__bottom">
-                            <ul class="phoneOption">
-                                <li>
-                                    <img src="#" alt="성능 이미지">
-                                    <div class="text">
-                                        <p>20.3mph</p>
-                                        <span>MAX SPEED</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="#" alt="성능 이미지">
-                                    <div class="text">
-                                        <p>20.3mph</p>
-                                        <span>MAX SPEED</span>
-                                    </div>
-                                </li>
+                        <div class="mypageMenu__footer">
+                            <ul>
+                                <li>로그인 및 보안</li>
+                                <li class="active">개인정보</li>
+                                <li>개인정보 관리</li>
+                                <li>후원하기</li>
+                                <li>회원탈퇴</li>
                             </ul>
-                        </div>
+                        </div> 
                     </div>
-                    <div class="compare__right">
-                        <div class="compare__right__top">
-                            <select name="phone_select2" id="phone_select1">
-                                <option value="phoneName">iPhone 15 Pro Max</option>
-                                <option value="phoneName">iPhone 15 Pro</option>
-                                <option value="phoneName">iPhone 15 Plus</option>
-                                <option value="phoneName">iPhone 15</option>
-                                
-                                <option value="phoneName">갤럭시Z 폴드5</option>
-                                <option value="phoneName">갤럭시Z 플립5</option>
-                                <option value="phoneName">갤럭시S23 울트라</option>
-                                <option value="phoneName">갤럭시S23+</option>
-                                <option value="phoneName">갤럭시S23</option>
-                            </select>
-                            <img src="#" alt="핸드폰 이미지">
-                            <p class="price">$<em>1,900,000원</em>부터</p>
-                            <a class="btn__style3">바로가기</a>
+                    <div class="mypage__info">
+                        <div class="mapageInfo__header">
+                            <h2>개인 정보</h2>
+                            <p>전화번호 및 이메일 등의 정보를 관리하십시오.</p>
                         </div>
-                        <div class="compare__right__bottom">
-                            <ul class="phoneOption">
-                                <li>
-                                    <img src="#" alt="성능 이미지">
-                                    <div class="text">
-                                        <p>20.3mph</p>
-                                        <span>MAX SPEED</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="#" alt="성능 이미지">
-                                    <div class="text">
-                                        <p>20.3mph</p>
-                                        <span>MAX SPEED</span>
-                                    </div>
-                                </li>
-                                
-                            </ul>
+                        <div class="mypageInfo__footer">
+                            <div>
+                                <h2>이름</h2>
+                                <p>김김김</p>
+                                <img src="../assets/img/icon__phone.png" alt="">
+                            </div>
+                            <div>
+                                <h2>이메일</h2>
+                                <p>kimkimim@gmail.com</p>
+                                <img src="../assets/img/icon__phone.png" alt="">
+                            </div>
+                            <div>
+                                <h2>전화번호</h2>
+                                <p>010-0000-0000</p>
+                                <img src="../assets/img/icon__phone.png" alt="">
+                            </div>
+                            <div>
+                                <h2>생년월일</h2>
+                                <p>1999.01.01</p>
+                                <img src="../assets/img/icon__phone.png" alt="">
+                            </div>
+                            <div>
+                                <h2>정보</h2>
+                                <p>내정보</p>
+                                <img src="../assets/img/icon__phone.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
         <!-- //main -->
-​
+
         <footer id="footer">
             <div class="container">
                 <div class="footer__top">
@@ -213,7 +185,7 @@
         <!-- //footer -->
     </div>
     <!-- //wrap -->
-​
+
     <!-- script -->
     <script src="../assets/script/script.js"></script>
 </body>

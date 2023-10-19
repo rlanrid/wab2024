@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trend Device</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-​
     <style>
-        #header {
-            margin-bottom: 60px;
-            border: 1px solid var(--black400);
+        /* main */
+        #main {
+            width: 100%;
+            background-color: #fff;
+            border-top: 1px solid var(--black);
         }
+    
     </style>
 </head>
 <body>
@@ -27,7 +29,7 @@
                         </div>
                     </div>
                     <!-- //header__ham -->
-​
+
                     <div class="header__etc">
                         <div class="header__search">
                             <img src="../assets/img/glass.png" alt="검색">
@@ -39,7 +41,7 @@
                     <!-- //header__etc -->
                 </div>
                 <div class="board__name">
-                    제품 비교하기
+                    관심목록
                 </div>
             </div>
             
@@ -80,94 +82,112 @@
             </div>
         </nav>
         <!-- //nav -->
-​
+
         <main id="main">
-            <div class="compare__inner container">
-                <div class="compare__top">
-                    <h2>제품 비교하기</h2>
-                    <p>스마트폰 성능, 디자인 비교해보세요!</p>
+            <div class="wishList__inner container2">
+                <div class="wishList__title">
+                    <h2>관심 목록</h2>
+                    <p>
+                        이전에 저장해둔 제품을 계속 쇼핑하세요. 관심 제품을 친구나 가족, 그리고<br>
+                        Trend 스페셜 리스트에 공유하고 꼭 맞는 제품을 찾아보세요.
+                    </p>
                 </div>
-                <div class="compare__bottom">
-                    <div class="compare__left">
-                        <div class="compare__left__top">
-                            <select name="phone_select1" id="phone_select1">
-                                <option value="phoneName">iPhone 15 Pro Max</option>
-                                <option value="phoneName">iPhone 15 Pro</option>
-                                <option value="phoneName">iPhone 15 Plus</option>
-                                <option value="phoneName">iPhone 15</option>
-                                
-                                <option value="phoneName">갤럭시Z 폴드5</option>
-                                <option value="phoneName">갤럭시Z 플립5</option>
-                                <option value="phoneName">갤럭시S23 울트라</option>
-                                <option value="phoneName">갤럭시S23+</option>
-                                <option value="phoneName">갤럭시S23</option>
-                            </select>
-                            <img src="#" alt="핸드폰 이미지">
-                            <p class="price">$<em>1,900,000원</em>부터</p>
-                            <a class="btn__style3">바로가기</a>
-                        </div>
-                        <div class="compare__left__bottom">
-                            <ul class="phoneOption">
-                                <li>
-                                    <img src="#" alt="성능 이미지">
-                                    <div class="text">
-                                        <p>20.3mph</p>
-                                        <span>MAX SPEED</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="#" alt="성능 이미지">
-                                    <div class="text">
-                                        <p>20.3mph</p>
-                                        <span>MAX SPEED</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="wishList__contents">
+                    <div class="wishList__edit">
+                        <h2>관심 제품</h2>
+                        <p>편집</p>
                     </div>
-                    <div class="compare__right">
-                        <div class="compare__right__top">
-                            <select name="phone_select2" id="phone_select1">
-                                <option value="phoneName">iPhone 15 Pro Max</option>
-                                <option value="phoneName">iPhone 15 Pro</option>
-                                <option value="phoneName">iPhone 15 Plus</option>
-                                <option value="phoneName">iPhone 15</option>
-                                
-                                <option value="phoneName">갤럭시Z 폴드5</option>
-                                <option value="phoneName">갤럭시Z 플립5</option>
-                                <option value="phoneName">갤럭시S23 울트라</option>
-                                <option value="phoneName">갤럭시S23+</option>
-                                <option value="phoneName">갤럭시S23</option>
-                            </select>
-                            <img src="#" alt="핸드폰 이미지">
-                            <p class="price">$<em>1,900,000원</em>부터</p>
-                            <a class="btn__style3">바로가기</a>
+                    <div class="wishList__mylist">
+                        <div>
+                            <div class="mylist__img">
+                                <img src="../assets/img/mylist__img.png" alt="관심 제품 이미지">
+                            </div>
+                            <div class="mylist__showAll">
+                                <p>모든 관심제품</p>
+                            </div>
+                            <div class="mylist__count">1개 항목</div>
+                            <div class="mylist__info">
+                                <a href="#">세부 정보 보기 ></a>
+                            </div>
                         </div>
-                        <div class="compare__right__bottom">
-                            <ul class="phoneOption">
-                                <li>
-                                    <img src="#" alt="성능 이미지">
-                                    <div class="text">
-                                        <p>20.3mph</p>
-                                        <span>MAX SPEED</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="#" alt="성능 이미지">
-                                    <div class="text">
-                                        <p>20.3mph</p>
-                                        <span>MAX SPEED</span>
-                                    </div>
-                                </li>
-                                
-                            </ul>
+                        <div>
+                            <div class="mylist__img">
+                                <img src="../assets/img/mylist__img.png" alt="관심 제품 이미지">
+                            </div>
+                            <div class="mylist__showAll">
+                                <p>모든 관심제품</p>
+                            </div>
+                            <div class="mylist__count">1개 항목</div>
+                            <div class="mylist__info">
+                                <a href="#">세부 정보 보기 ></a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mylist__img">
+                                <img src="../assets/img/mylist__img.png" alt="관심 제품 이미지">
+                            </div>
+                            <div class="mylist__showAll">
+                                <p>모든 관심제품</p>
+                            </div>
+                            <div class="mylist__count">1개 항목</div>
+                            <div class="mylist__info">
+                                <a href="#">세부 정보 보기 ></a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mylist__img">
+                                <img src="../assets/img/mylist__img.png" alt="관심 제품 이미지">
+                            </div>
+                            <div class="mylist__showAll">
+                                <p>모든 관심제품</p>
+                            </div>
+                            <div class="mylist__count">1개 항목</div>
+                            <div class="mylist__info">
+                                <a href="#">세부 정보 보기 ></a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mylist__img">
+                                <img src="../assets/img/mylist__img.png" alt="관심 제품 이미지">
+                            </div>
+                            <div class="mylist__showAll">
+                                <p>모든 관심제품</p>
+                            </div>
+                            <div class="mylist__count">1개 항목</div>
+                            <div class="mylist__info">
+                                <a href="#">세부 정보 보기 ></a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mylist__img">
+                                <img src="../assets/img/mylist__img.png" alt="관심 제품 이미지">
+                            </div>
+                            <div class="mylist__showAll">
+                                <p>모든 관심제품</p>
+                            </div>
+                            <div class="mylist__count">1개 항목</div>
+                            <div class="mylist__info">
+                                <a href="#">세부 정보 보기 ></a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mylist__img">
+                                <img src="../assets/img/mylist__img.png" alt="관심 제품 이미지">
+                            </div>
+                            <div class="mylist__showAll">
+                                <p>모든 관심제품</p>
+                            </div>
+                            <div class="mylist__count">1개 항목</div>
+                            <div class="mylist__info">
+                                <a href="#">세부 정보 보기 ></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
         <!-- //main -->
-​
+
         <footer id="footer">
             <div class="container">
                 <div class="footer__top">
@@ -213,7 +233,7 @@
         <!-- //footer -->
     </div>
     <!-- //wrap -->
-​
+
     <!-- script -->
     <script src="../assets/script/script.js"></script>
 </body>
