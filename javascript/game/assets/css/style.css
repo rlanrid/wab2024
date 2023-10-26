@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caladea&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;500&display=swap');
+
 #wrap {
     width: 100%;
     height: 100vh;
@@ -74,8 +76,68 @@
 }
 .music__control {
     margin-top: -90px;
-    background-color: #fff;
+    background-color: rgb(232, 187, 247);
     width: 100%;
     height: 400px;
     border-radius: 20px;
+}
+.music__control > .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 90px;
+    flex-direction: column;
+    line-height: 1.5;
+}
+.music__control > .title h3 {
+    font-family: 'Playpen Sans', cursive;
+    font-weight: 800;
+}
+.music__control > .title span {
+    color: #333;
+    opacity: 0.6;
+    font-weight: 800;
+}
+.music__control .progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.music__control .bar {
+    margin-top: 30px;
+    width: 80%;
+    border-bottom: 5px solid #fff;
+    padding-bottom: 10px;
+}
+.music__control .bar .time {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+    font-weight: 800;
+    opacity: 0.7;
+}
+.music__control .progress .progress {
+    position: absolute;
+    left: 23px;
+    top: 54px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #FE798A;
+}
+.music__control .control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.music__control .control img {
+    margin: 0 10px;
+    width: 60px;
+    height: 60px;
+}
+.music__control .control .next img {
+    transform: rotate(180deg);
 }

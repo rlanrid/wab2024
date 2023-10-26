@@ -40,6 +40,7 @@
                     <li class="btn3">내림차순 정렬하기</li>
                     <li class="btn4">알파벳순(a~z)</li>
                     <li class="btn5">알파벳순(z~a)</li>
+                    <li class="btn6">랜덤</li>
                 </ul>
             </div>
             <div class="search__info">
@@ -204,7 +205,10 @@
         });
 
         // 랜덤 정렬하기
-
+        document.querySelector(".btn6").addEventListener("click", () => {
+            cssProperty.sort((a, b) => Math.random() - 0.5);
+            listUpdate();
+        });
 
 
     </script>
