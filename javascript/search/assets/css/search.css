@@ -162,7 +162,9 @@ li.show {
 .search__list .line {
     margin: 50px 0;
 }
-
+.search__list ul {
+    width: 100%;
+}
 .search__list.line li {
     color: #000;
     padding: 5px 20px;
@@ -172,9 +174,10 @@ li.show {
 .search__list.line li strong {
     color: #000;
 }
-.search__list.line li i {
+.search__list.line li em {
     color: #000;
     font-style: normal;
+    float: right;
 }
 
 /* .search__list.line ul li {
@@ -232,7 +235,10 @@ li.show {
     color: #fff;
 }
 
-.search__star ul li {}
+.search__star li::after {
+    content: attr(data-desc);
+}
+
 
 #footer {
     width: 100%;

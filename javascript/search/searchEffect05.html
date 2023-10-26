@@ -35,11 +35,11 @@
             </div>
             <div class="search__star">
                 <ul>
-                    <li>★☆☆☆☆ <span>사용 안함</span></li>
-                    <li>★★☆☆☆ <span>가끔 사용</span></li>
-                    <li>★★★☆☆ <span>보통 사용</span></li>
-                    <li>★★★★☆ <span>자주 사용</span></li>
-                    <li>★★★★★ <span>필수 사용</span></li>
+                    <li data-star="1" data-desc=" 사용 안함">★☆☆☆☆ </li>
+                    <li data-star="2" data-desc=" 가끔 사용">★★☆☆☆ </li>
+                    <li data-star="3" data-desc=" 보통 사용">★★★☆☆ </li>
+                    <li data-star="4" data-desc=" 자주 사용">★★★★☆ </li>
+                    <li data-star="5" data-desc=" 필수 사용">★★★★★ </li>
                 </ul>
             </div>
             <div class="search__info">
@@ -156,61 +156,63 @@
         const searchInfo = document.querySelector(".search__info");
         const searchBox = document.querySelector(".search__box input");
         const searchBoxResult = document.querySelector(".search__box__result");
-        const searchButton = document.querySelectorAll(".search__star ul li");
+        const searchStarItems = document.querySelectorAll(".search__star li");
+        const searchCount = document.querySelector(".search__info .num");
 
 
         // 출력하기
-        function listUpdate(list) {
+        function listUpdate(list){
             let listItem = "";
 
-            const star = ["★☆☆☆☆", "★★☆☆☆", "★★★☆☆", "★★★★☆", "★★★★★"];
+            for(const data of list){
+                let listStar = searchStarItems[data.star-1].innerText;
 
-            for (const data of list) {
-                if (data.star === 1) {
-                    data.star = star[0];
-                } else if (data.star === 2) {
-                    data.star = star[1];
-                } else if (data.star === 3) {
-                    data.star = star[2];
-                } else if (data.star === 4) {
-                    data.star = star[3];
-                } else {
-                    data.star = star[4];
-                }
-
-                listItem += `<li><strong>${data.name}</strong> : ${data.desc} <i>${data.star}</i></li>`;
+                listItem += `<li><strong>${data.name}</strong> : ${data.desc} <em>${listStar}</em></li>`;
             }
             searchList.innerHTML = listItem;
+            searchCount.textContent = list.length;
         }
-        listUpdate(cssProperty);
+        listUpdate(cssProperty)
 
-        document.addEventListener("DOMContentLoaded", function() {
-            searchButton.forEach((button, index) => {
-                button.addEventListener("click", () => {
-                    // 별 텍스트 가져오기
-                    const selectedStarText = button.textContent.substring(0, 5);
+        // 클릭하기
+        searchStarItems.forEach(star => {
+            star.addEventListener("click", () => {
+                const target = star.dataset.star;
+                const filterList = cssProperty.filter(data => data.star >= target);
+                listUpdate(filterList);
+            })
+        })
 
-                    // 모두 숨기기
-                    document.querySelectorAll(".search__list ul li").forEach((li) => {
-                        li.classList.add("hide");
-                    });
 
-                    // 선택된 별과 일치하는 요소를 필터링
-                    const result = cssProperty.filter((el) => el.star === selectedStarText);
 
-                    // 별 선택에 따른 결과 표시
-                    result.forEach((item) => {
-                        const starText = item.star;
-                        document.querySelectorAll(".search__list ul li i").forEach((el) => {
-                            if (el.textContent === starText) {
-                                const li = el.parentElement; 
-                                li.classList.remove("hide");
-                            }
-                        });
-                    });
-                });
-            });
-        });
+
+        // document.addEventListener("DOMContentLoaded", function() {
+        //     searchButton.forEach((button, index) => {
+        //         button.addEventListener("click", () => {
+        //             // 별 텍스트 가져오기
+        //             const selectedStarText = button.textContent.substring(0, 5);
+
+        //             // 모두 숨기기
+        //             document.querySelectorAll(".search__list ul li").forEach((li) => {
+        //                 li.classList.add("hide");
+        //             });
+
+        //             // 선택된 별과 일치하는 요소를 필터링
+        //             const result = cssProperty.filter((el) => el.star === selectedStarText);
+
+        //             // 별 선택에 따른 결과 표시
+        //             result.forEach((item) => {
+        //                 const starText = item.star;
+        //                 document.querySelectorAll(".search__list ul li i").forEach((el) => {
+        //                     if (el.textContent === starText) {
+        //                         const li = el.parentElement; 
+        //                         li.classList.remove("hide");
+        //                     }
+        //                 });
+        //             });
+        //         });
+        //     });
+        // });
 
     </script>
 </body>
