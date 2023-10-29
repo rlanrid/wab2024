@@ -68,17 +68,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 50px;
+    padding: 10px 50px;
 }
 .music__view img {
     width: 160px;
     height: 160px;
 }
 .music__control {
-    margin-top: -90px;
+    margin-top: -95px;
     background-color: rgb(232, 187, 247);
     width: 100%;
-    height: 400px;
+    height: 430px;
     border-radius: 20px;
 }
 .music__control > .title {
@@ -140,4 +140,17 @@
 }
 .music__control .control .next img {
     transform: rotate(180deg);
+}
+.music__list {
+    width: 100%;
+    margin-top: -130px;
+}
+.music__list .scroll {
+    height: 130px;
+    background-color: #fff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow-y: auto;
+    line-height: 1.6;
+    padding: 0 10px;
 }
