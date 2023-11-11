@@ -1,7 +1,6 @@
 <footer id="footer">
     <div class="container">
         <div class="footer__top">
-            <h2>Trend Device</h2>
             <ul class="ft__list1">
                 <li>트렌드 디바이스</li>
                 <li>사업자등록번호:123-123-12345</li>
@@ -20,21 +19,18 @@
                 </p>
                 <ul>
                     <li>Copyright © 2023 TrendDevice. All Rights Reserved.</li>
-                    <li>사이트맵</li>
-                    <li>개인정보처리방침</li>
-                    <li>고객센터</li>
-                    <li>회원탈퇴</li>
+                    <li><a href="#">사이트맵</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="../surpport/surpport.php">고객센터</a></li>
+                    <li><a href="../mypage/memberDelete.php">회원탈퇴</a></li>
                 </ul>
             </div>
             <div class="fb__right">
                 <span>
-                    <img src="../../assets/img/instargram__icon.png" alt="인스타그램">
+                    <a href="#"><img src="../../assets/img/figma.png" alt="피그마"></a>
                 </span>
                 <span>
-                    <img src="../../assets/img/facebook__icon.png" alt="인스타그램">
-                </span>
-                <span>
-                    <img src="../../assets/img/github__icon.png" alt="인스타그램">
+                    <a href="#"><img src="../../assets/img/github__icon.png" alt="깃허브"></a>
                 </span>
             </div>
         </div>

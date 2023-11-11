@@ -7,15 +7,24 @@
     margin-top: 60px;
 }
 
+
 /* compare__top */
 .compare__top {
     width: 100%;
     margin-bottom: 100px;
 }
+
+.compare__plus {
+    cursor: pointer;
+    font-size: 20px;
+}
+
 .compare__top h2 {
     font-size: 4rem;
     font-weight: 700;
+    word-break: keep-all;
 }
+
 .compare__top p {
     font-weight: 600;
 }
@@ -25,6 +34,7 @@
     width: 100%;
     display: flex;
 }
+
 .compare__bottom select {
     width: 50%;
     height: 60px;
@@ -33,11 +43,64 @@
     border: 1px solid var(--black600);
     padding: 5px;
 }
+
 .compare__bottom img {
     width: 70%;
     vertical-align: top;
     display: inline-block;
 }
+/* .compare__bottom.column2 */
+.compare__bottom.column2 .compare__center {
+    display: none;
+}
+.compare__bottom.column2 .compare__center2 {
+    display: none;
+}
+.compare__bottom.column2 > div {
+    width: 50%;
+}
+.compare__bottom.column2 .phoneOption li {
+    width: 50%;
+}
+.compare__bottom.column2 select {
+    width: 50%;
+}
+
+/* compare__bottom column3 */
+.compare__bottom.column3 .compare__center {
+    display: block;
+}
+.compare__bottom.column3 .compare__center2 {
+    display: none;
+}
+.compare__bottom.column3 > div {
+    width: 33.3333%;
+}
+.compare__bottom.column3 .phoneOption li {
+    width: 80%;
+}
+.compare__bottom.column3 select {
+    width: 80%;
+}
+
+/* compare__bottom column4 */
+.compare__bottom.column4 .compare__center {
+    display: block;
+}
+.compare__bottom.column4 .compare__center2 {
+    display: block;
+}
+.compare__bottom.column4 > div {
+    width: 24%;
+}
+.compare__bottom.column4 .phoneOption li {
+    width: 80%;
+}
+.compare__bottom.column4 select {
+    width: 80%;
+}
+
+
 .compare__left__top img,
 .compare__right__top img {
     margin: 70px 0 70px;
@@ -57,7 +120,8 @@
     justify-content: center;
     align-items: center;
 }
-.phoneOption li{
+
+.phoneOption li {
     width: 50%;
     min-height: 150px;
     margin-bottom: 70px;
@@ -66,35 +130,44 @@
     border-radius: 10px;
     position: relative;
     text-align: left;
+    word-break: keep-all;
 }
+
 .phoneOption img {
     width: 30px;
 }
+
 .phoneOption li .text {
     position: absolute;
     left: 10px;
     bottom: 10px;
 }
+
 .phoneOption li .text p {
     font-size: 1.5rem;
     font-weight: 900;
 }
+
 .phoneOption li .text span {
     font-weight: 700;
     color: var(--black400);
 }
+
 .phoneOption li img {
     position: absolute;
     top: 10px;
     left: 10px;
 }
+
 p.price {
     font-size: 1rem;
     font-weight: 700;
 }
+
 .compare__left {
     width: 50%;
 }
+
 .compare__right {
     width: 50%;
 }
