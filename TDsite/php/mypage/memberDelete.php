@@ -34,14 +34,6 @@
     <title>Trend Device</title>
      <!-- css -->
      <?php include "../include/head.php"?>
-    <style>
-        /* main */
-        #main {
-            width: 100%;
-            height: 90vh;
-            background-color: #fff;
-        }    
-    </style>
 </head>
 <body>
     <div id="wrap">

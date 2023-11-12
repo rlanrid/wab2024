@@ -230,9 +230,9 @@
             echo "<div class='lb__name'>{$rank}. {$imgInfo['youName']}</div>";
             echo "<span class='lb__grade'>관리자</span>";
             echo "</div>";
-            echo "<div class='lb__count'><p>";
+            echo "<div class='lb__count'><span><p>";
             echo "$boardCount";
-            echo "</p></div>";
+            echo "</span></p></div>";
             echo "</div>";
             echo "</li>";
 
@@ -269,9 +269,9 @@
             echo "<div class='lb__name'>{$rank}. {$imgInfo['youName']}</div>";
             echo "<span class='lb__grade'>관리자</span>";
             echo "</div>";
-            echo "<div class='lb__count'><p>";
+            echo "<div class='lb__count'><span><p>";
             echo "$commentCount";
-            echo "</p></div>";
+            echo "</span></p></div>";
             echo "</div>";
             echo "</li>";
 
@@ -314,9 +314,9 @@
             echo "<div class='lb__name'>{$rank}. {$imgInfo['youName']}</div>";
             echo "<span class='lb__grade'>관리자</span>";
             echo "</div>";
-            echo "<div class='lb__count'><p>";
+            echo "<div class='lb__count'><span><p>";
             echo "$boardCount";
-            echo "</p></div>";
+            echo "</span></p></div>";
             echo "</div>";
             echo "</li>";
 
@@ -353,9 +353,9 @@
             echo "<div class='lb__name'>{$rank}. {$imgInfo['youName']}</div>";
             echo "<span class='lb__grade'>관리자</span>";
             echo "</div>";
-            echo "<div class='lb__count'><p>";
+            echo "<div class='lb__count'><span><p>";
             echo "$commentCount";
-            echo "</p></div>";
+            echo "</span></p></div>";
             echo "</div>";
             echo "</li>";
 

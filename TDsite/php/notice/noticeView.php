@@ -43,6 +43,11 @@
 
     // 현재 시간과의 차이 계산
     $currentTimestamp = time(); // 현재 시간의 타임스탬프
+
+    // 프로필 이미지 가져오기
+    $imgSql = "SELECT youImgFile FROM tdMembers WHERE memberID = '$AmemberID'";
+    $imgResult = $connect -> query($imgSql);
+    $imgInfo = $imgResult -> fetch_array(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -75,7 +80,7 @@
                         </colgroup>
                         <tbody>
                             <tr>
-                                <td rowspan="2"><img src="../../assets/img/profile.png" alt="프로필 이미지"></td>
+                                <td rowspan="2"><img src="../../assets/memberimg/<?= !empty($imgInfo['youImgFile']) ? $imgInfo['youImgFile'] : 'icon__profile.png' ?>" alt="<?= $imgInfo['youName']?>의 프로필"></td>
                                 <td colspan="2">작성자 <em><?=$boardInfo['nAuthor']?></em></td>
                             </tr>
                             <tr>

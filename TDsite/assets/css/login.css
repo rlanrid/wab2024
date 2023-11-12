@@ -105,6 +105,39 @@
     margin-bottom: 50px;
 }
 
+@media (max-width: 1300px) {
+    .find__resultBox img {
+        display: none;
+    }
+}
+.button__box {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+.span__box {
+    color: #2079D3;
+    font-size: 14px;
+}
+.span__box div {
+    margin: 7px 0;
+}
+.span__box div:last-child a {
+    color: var(--black400);
+    cursor: auto;
+}
+.span__box div:first-child > a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+.span__box div > a > em:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+.span__box div > a > em {
+    color: var(--blue100);
+}
 
 @media(max-width: 1200px){
     .find__inner {

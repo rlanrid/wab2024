@@ -8,31 +8,6 @@
 
     <!-- css -->
     <?php include "../include/head.php"?>
-    <style>
-        /* main */
-        #main {
-            width: 100%;
-            background-color: #fff;
-        }
-        @media (max-width: 1300px) {
-            .find__resultBox img {
-                display: none;
-
-            }
-        }
-        .button__box {
-            display: flex;
-            /* align-items: center; */
-            justify-content: center;
-        }
-        .span__box {
-            color: #2079D3;
-            font-size: 14px;
-        }
-        .span__box div {
-            margin-top: 5px;
-        }
-    </style>
 </head>
 
 <body>
@@ -57,15 +32,14 @@
                 <!-- //find__resultBox -->
 
                 <div class="button__box">
-                    <a href="../join/join.php" class="btn__style3">회원가입</a>
+                    <a href="../main/main.php" class="btn__style7 login__btn">메인</a>
                     <a href="login.php" class="btn__style3">로그인</a>
-                    <a href="../main/main.php" class="btn__style3 login__btn">메인</a>
                 </div>
                 <!-- //button__box -->
 
                 <div class="span__box">
                     <div class="passwordfind"><a href="PWreset.php">암호를 잊으셨습니까?</a></div>
-                    <div class="joinclub"><a href="../join/join.php">커뮤니티에 가입하세요!</a></div>
+                    <div class="joinclub"><a href="../join/join.php">아직 계정이 없으십니까? <em>회원가입</em></a></div>
                 </div>
 
             </div>

@@ -36,6 +36,10 @@
 .join__contents p > a {
     color: var(--blue100);
 }
+.join__contents p > a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
 .join__form {
     padding: 2rem 20%;
 }
@@ -133,7 +137,8 @@
     cursor: pointer;
 }
 
-.join__result .btn__style3 {
+.join__result .btn__style3,
+.join__result .btn__style7 {
     margin-top: 1.25rem;
     margin: 1rem;
 }

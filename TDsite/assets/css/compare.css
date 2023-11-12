@@ -14,10 +14,29 @@
     margin-bottom: 100px;
 }
 
-.compare__plus {
+.compare__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    margin-top: 15px;
+}
+
+.compare__plus p, 
+.compare__minus p {
     cursor: pointer;
     font-size: 20px;
+    width: 35px;
+    height: 35px;
+    color: var(--white);
+    background-color: var(--blue100);
+    border-radius: 50%;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 .compare__top h2 {
     font-size: 4rem;
@@ -170,4 +189,13 @@ p.price {
 
 .compare__right {
     width: 50%;
+}
+
+@media(max-width: 800px) {
+    .compare__btn {
+        display: none;
+    }
+    .compare__inner .btn__style3 {
+        width: 85%;
+    }
 }

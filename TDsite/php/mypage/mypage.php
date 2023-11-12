@@ -83,12 +83,12 @@
                             <div class="modalName__btn">
                                 <h2>이름</h2>
                                 <p><?= $membersInfo['youName']?></p>
-                                <img src="../../assets/img/icon__user.png" alt="">
+                                <img src="../../assets/img/icon__user.png" alt="이름아이콘">
                             </div>
                             <div class="modalEmail__btn">
                                 <h2>이메일</h2>
                                 <p><?= $membersInfo['youEmail']?></p>
-                                <img src="../../assets/img/icon__message.png" alt="">
+                                <img src="../../assets/img/icon__message.png" alt="이메일아이콘">
                             </div>
                             <div class="modalPhone__btn">
                                 <h2>전화번호</h2>
@@ -102,7 +102,7 @@
                                     $formattedDate = $first . " - " . $second . " - " . $third ;
                                 ?>
                                 <p><?= $formattedDate ?></p>
-                                <img src="../../assets/img/icon__phone.png" alt="">
+                                <img src="../../assets/img/icon__phone.png" alt="전화번호아이콘">
                             </div>
                             <div class="modalBirth__btn">
                                 <h2 class="modalBirth__btn">생년월일</h2>
@@ -120,16 +120,16 @@
                                 ?>
 
                                 <p><?= $formattedDate ?></p>
-                                <img src="../../assets/img/icon__calendar.png" alt="">
+                                <img src="../../assets/img/icon__calendar.png" alt="생년월일아이콘">
                             </div>
                             <div class="modalProfile__btn">
                                 <h2>프로필 사진</h2>
                                 <p><?= $membersInfo['youImgFile'] ?></p>
-                                <img src="../../assets/img/icon__info.png" alt="">
+                                <img src="../../assets/img/icon__info.png" alt="프로필아이콘">
                             </div>
                             <div>
                                 <h2>내 활동</h2>
-                                <img src="../../assets/img/content-marketing.png" alt="">
+                                <img src="../../assets/img/content-marketing.png" alt="활동아이콘">
                                 <p><a href="myboard.php">작성한 게시글 보기</a></p>
                             </div>
                         </div>

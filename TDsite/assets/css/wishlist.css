@@ -1,6 +1,5 @@
 .wishList__inner {
-    margin-top: 160px;
-    min-height: 100vh;
+    margin: 160px auto;
 }
 
 .wishList__title h2 {
@@ -43,7 +42,6 @@
     width: 100%;
     text-align: left;
     margin-top: 50px;
-    min-height: 80vh;
     display: flex;
     flex-wrap: wrap;
 }

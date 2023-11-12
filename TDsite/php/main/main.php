@@ -1,9 +1,12 @@
 <?php
     include "../connect/connect.php";
     include "../connect/session.php";
-//     echo"<pre>";
-//     var_dump($_SESSION);
-//     echo"</pre>";
+
+    if(isset($_SESSION['memberID'])){
+        $memberId = $_SESSION['memberID'];
+    } else {
+        $memberId = -1;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -79,8 +82,31 @@
                     <span class="item__img2">
                         <img src="../../assets/img/z-Fold52.jpg" alt="GSAP이미지2">
                     </span>
+                    <span class="item__desc2 t1">
+                        <h2>몰입감 넘치는 192.1 mm 메인 디스플레이</h2>
+                        <p>
+                            강력한 게임 몰입감, 영화 감상은 기본.<br>
+                            PC 수준의 생산성까지 발휘할 수 있도록 도와주는 태블릿급 크기의 디바이스로 무한한 경험을 펼쳐 보세요.
+                        </p>
+                    </span>
                 </section>
                 <!-- //section2 -->
+
+                <section id="section3">
+                    <div class="content__wrap">
+                        <div class="content__img"></div>
+                        <div class="content__text">
+                            <h2>더 가볍고, 더 얇게.<br>
+                                향상된 휴대성6
+                            </h2>
+                            <p>
+                                프레임이 줄어들었다고,성능을 타협하진 않았습니다.<br>
+                                더 좋아진 그립감으로 보다 편하게<br>
+                                갤럭시 Z 폴드5를 휴대할 수 있습니다.
+                            </p>
+                        </div>
+                    </div>
+                </section>
 
                 <section id="section6" class="parallax__item">
                     <span class="item__name t1">더 가볍고, 더 얇게.</span>
@@ -104,25 +130,34 @@
 
                 <div class="intro__images">
                     <div class="intro__img">
-                        <img src="../../assets/img/icon__compare.png" alt="스마트폰 비교하기">
-                        <span>스마트폰 비교하기</span>
+                        <a href="../phone/compare.php"><img src="../../assets/img/compare__icon.png" alt="스마트폰 비교하기"></a>
+                        <span><a href="../phone/compare.php">스마트폰 비교하기</a></span>
                     </div>
                     <div class="intro__img">
-                        <a href="../join/join.php"><img src="../../assets/img/icon__join.png" alt="회원가입"></a>
+                        <a href="../join/join.php"><img src="../../assets/img/join__icon.png" alt="회원가입"></a>
                         <span><a href="../join/join.php">회원가입</a></span>
                     </div>
                     <div class="intro__img">
-                        <img src="../../assets/img/icon__comunity.png" alt="커뮤니티">
-                        <span>커뮤니티</span>
+                        <a href="../board/boardCate.php?category=자유게시판"><img src="../../assets/img/community__icon.png" alt="커뮤니티"></a>
+                        <span><a href="../board/boardCate.php?category=자유게시판">커뮤니티</a></span>
                     </div>
                 </div>
                 <!-- //intro__img -->
 
                 <div class="intro__footer">
-                    <span>이미 회원이신가요?</span>
-                    <div class="intro__btn">
-                        <a href="../login/login.php">로그인</a>
-                    </div>
+<?php 
+    if($memberId === -1){ ?>
+        <span></span>
+        <!-- <div class="intro__btn">
+            <a href="../phone/apple.php">둘러보기</a>
+        </div> -->
+    <?php } else { ?>
+        <span>이미 회원이신가요?</span>
+        <div class="intro__btn">
+            <a href="../login/login.php">로그인</a>
+        </div>
+    <?php }
+?>
                 </div>
                 <!-- //intro__footer -->
             </div>
@@ -168,7 +203,7 @@
                 }
             }
             slideInterval = setInterval(slide, 5000);
-        };
+        }
     
 
         // 애니메이션
@@ -185,17 +220,28 @@
 
         const ani2 = gsap.timeline();
         ani2.from("#section2 .item__img2", {
-            autoAlpha: 0,
-            scale: 3,
+            opacity: 0,
+            scale: 2,
             width: "100%",
-            height: "100vh"
+            height: "100%",
+            duration: 1
+        }).from("#section2 .item__desc2 h2", {
+            yPercent: -5,
+            opacity: 0,
+            ease: "expo.out",
+            duration: 0.8
+        }).from("#section2 .item__desc2 p", {
+            yPercent: -5,
+            opacity: 0,
+            ease: "expo.out",
+            duration: 0.8
         });
 
         ScrollTrigger.create({
             animation: ani2,
             trigger: "#section2",
             start: "top top",
-            end: "+=2000",
+            end: "+=3500",
             scrub: true,
             pin: true
         });

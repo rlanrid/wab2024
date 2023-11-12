@@ -29,7 +29,7 @@
                     <img src="../../assets/img/icon__success.png" alt="회원가입 성공">
                     <p>회원가입이 정상적으로 완료되었습니다.<br>회원이 되신걸 환영합니다.</p>
                 </div>
-                <a href="../main/main.php" class="btn__style3">메인</a>
+                <a href="../main/main.php" class="btn__style7">메인</a>
                 <a href="../login/login.php" class="btn__style3">로그인</a>
             </div>
         </main>

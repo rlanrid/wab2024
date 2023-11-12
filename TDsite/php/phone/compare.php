@@ -29,8 +29,10 @@
                 <div class="compare__top">
                     <h2>제품 비교하기</h2>
                     <p>스마트폰 성능, 디자인 비교해보세요!</p>
-                    <div class="compare__plus">+</div>
-                    <div class="compare__minus blind">-</div>
+                    <div class="compare__btn">
+                        <div class="compare__plus"><p>+</p></div>
+                        <div class="compare__minus blind"><p>-</p></div>
+                    </div>
                 </div>
                 <div class="compare__bottom column2">
                     <div class="compare__left">
@@ -436,39 +438,67 @@
         const plusBtn = document.querySelector(".compare__plus");
         const minusBtn = document.querySelector(".compare__minus");
         const compareCont = document.querySelector(".compare__bottom");
-        
+
+        function handleScreenSize() {
+            const screenSize = window.innerWidth;
+            const isMobile = screenSize <= 800;
+
+            if (isMobile) {
+                compareCont.classList.add("column2");
+                compareCont.classList.remove("column3");
+                compareCont.classList.remove("column4");
+            } else {
+                plusBtn.classList.remove("blind");
+                minusBtn.classList.add("blind");
+            }
+
+            handleButtons(); // 버튼 상태 초기화
+        }
+
+        function handleButtons() {
+            const columnList = compareCont.classList;
+
+            plusBtn.classList.toggle("blind", !columnList.contains("column2") && !columnList.contains("column3"));
+            minusBtn.classList.toggle("blind", !columnList.contains("column3") && !columnList.contains("column4"));
+        }
+
         plusBtn.addEventListener("click", () => {
             const columnList = compareCont.classList;
-            minusBtn.classList.remove("blind");
 
-            if(columnList.contains("column2")){
-                compareCont.classList.remove("column2");
-                compareCont.classList.add("column3");
-            } else if(columnList.contains("column3")){
-                compareCont.classList.remove("column3");
-                compareCont.classList.add("column4");
-                plusBtn.classList.add("blind");
+            if (columnList.contains("column2")) {
+                compareCont.classList.replace("column2", "column3");
+            } else if (columnList.contains("column3")) {
+                compareCont.classList.replace("column3", "column4");
             } else {
                 alert("오류");
             }
+
+            handleButtons();
         });
 
         minusBtn.addEventListener("click", () => {
             const columnList = compareCont.classList;
-            plusBtn.classList.remove("blind");
 
-            if(columnList.contains("column4")){
-                compareCont.classList.remove("column4");
-                compareCont.classList.add("column3");
-            } else if(columnList.contains("column3")){
-                compareCont.classList.remove("column3");
-                compareCont.classList.add("column2");
-                minusBtn.classList.add("blind");
+            if (columnList.contains("column4")) {
+                compareCont.classList.replace("column4", "column3");
+            } else if (columnList.contains("column3")) {
+                compareCont.classList.replace("column3", "column2");
             } else {
                 alert("오류");
             }
+
+            handleButtons();
+        });
+
+        window.addEventListener("load", () => {
+            handleScreenSize();
+            window.addEventListener("resize", () => {
+                handleScreenSize();
+            });
         });
     </script>
+
+    <!-- compare -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         const select1 = document.getElementById('phone_select1');

@@ -41,7 +41,7 @@
     function toggleNav() {
         if (isNavOpen) {
             nav.style.height = "0";
-            blur.style.height = "1px";
+            blur.style.height = "0px";
             blur.style.opacity = "0";
             hamShape.classList.add("ham");
             hamShape.classList.remove("hamX");
@@ -61,7 +61,15 @@
     }
 
     hamMenu.addEventListener("click", toggleNav);
-    nav.addEventListener("click", toggleNav);
+    blur.addEventListener("click", toggleNav);
+
+    // if(window.innerWidth > 780){
+    //     blur.addEventListener("mouseover", toggleNav);
+    // } else {
+    //     blur.addEventListener("click", toggleNav);
+    // }
+
+    
 
     // 스크롤 감지하여 nav 닫히도록
     window.addEventListener("scroll", function() {

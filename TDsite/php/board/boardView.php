@@ -135,7 +135,7 @@
                         </colgroup>
                         <tbody>
                             <tr>
-                                <td rowspan="2"><img src="../../assets/memberimg/<?= !empty($imgInfo['youImgFile']) ? $imgInfo['youImgFile'] : 'icon__profile.png' ?>" alt="<?= $imgInfo['youName']?>의 프로필">   </td>
+                                <td rowspan="2"><img src="../../assets/memberimg/<?= !empty($imgInfo['youImgFile']) ? $imgInfo['youImgFile'] : 'icon__profile.png' ?>" alt="<?= $imgInfo['youName']?>의 프로필"></td>
                                 <td colspan="2">작성자 <em><?=$boardInfo['fAuthor']?></em></td>
                             </tr>
                             <tr>
@@ -160,7 +160,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="trDay" colspan="3">게시일 <em>2023. 10. 11 오전 02:53</em></td>
+                                <td class="trDay" colspan="3">게시일 <em><?=date('Y. m. d 오전 g:i', $boardInfo['fRegTime'])?></em></td>
                             </tr>
                         </tbody>
                     </table>
@@ -168,8 +168,17 @@
                 <div class="board__btns">
                     <button type="submit" id="LikeButton" class="btn__style">공감</button>
                     <a href="boardCate.php?category=<?=$category?>" class="btn__style2">목록</a>
-                    <a href="boardModify.php?blogId=<?=$_GET['blogId']?>&category=<?=$category?>" class="btn__style2">수정하기</a>
-                    <a href="boardDelete.php?blogId=<?=$_GET['blogId']?>&category=<?=$category?>" class="btn__style2" onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</a>
+<?php 
+    $boardMemberId = $boardInfo['memberID'];
+    
+    if($memberId === $boardMemberId){ ?>
+        <a href="boardModify.php?blogId=<?=$_GET['blogId']?>&category=<?=$category?>" id="boardModify" class="btn__style2">수정하기</a>
+        <a href="boardDelete.php?blogId=<?=$_GET['blogId']?>&category=<?=$category?>" id="boardDelete" class="btn__style2" onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</a>
+    <?php } else { ?>
+        <a href="boardModify.php?blogId=<?=$_GET['blogId']?>&category=<?=$category?>" id="boardModify" class="btn__style2 blind">수정하기</a>
+        <a href="boardDelete.php?blogId=<?=$_GET['blogId']?>&category=<?=$category?>" id="boardDelete" class="btn__style2 blind" onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</a>
+    <?php } 
+?>
                 </div>
 
                 <section id="boardComment" class="board__comment">
@@ -345,6 +354,7 @@
             commentMemberId = $(this).data("member-id");
             if(commentMemberId === memberId){
                 $("#popupDelete").removeClass("none");
+                document.body.classList.add('disable-scroll');
             } else {
                 alert("자신이 작성한 댓글만 삭제 가능합니다.");
             }
@@ -353,6 +363,7 @@
         // 댓글 삭제 버튼 --> 취소 버튼
         $("#commentDeleteCancle").click(function(){
             $("#popupDelete").addClass("none");
+            document.body.classList.remove('disable-scroll');
         });
 
         // 댓글 삭제 버튼 --> 삭제 버튼
@@ -395,6 +406,7 @@
             commentMemberId = $(this).data("member-id");
             if(commentMemberId === memberId){  
                 $("#popupModify").removeClass("none"); 
+                document.body.classList.add('disable-scroll');
 
                 let commentMsg = $(this).closest(".comment__view").find("p").text();
                 $("#commentModifyMsg").val(commentMsg);
@@ -407,6 +419,7 @@
         // 댓글 수정 버튼 --> 취소 버튼
         $("#commentModifyCancle").click(function(){
             $("#popupModify").addClass("none");
+            document.body.classList.remove('disable-scroll');
         });
 
         // 댓글 수정 버튼 --> 수정 버튼

@@ -2,9 +2,9 @@
     include "../connect/connect.php";
     // include "../connect/session.php";
 
-//     echo"<pre>";
-//     var_dump($_SESSION);
-//     echo"</pre>";
+    //     echo"<pre>";
+    //     var_dump($_SESSION);
+    //     echo"</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -15,14 +15,6 @@
 
     <!-- css -->
     <?php include "../include/head.php"?>
-    <style>
-        /* main */
-        #main {
-            width: 100%;
-            height: 90%;
-            background-color: #fff;
-        }
-    </style>
 </head>
 <body>
     <div id="wrap">

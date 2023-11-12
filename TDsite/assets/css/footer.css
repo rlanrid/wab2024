@@ -130,14 +130,7 @@
     .footer__bottom .fb__right span {
         width: 25px;
     }
-}
-
-@media(max-width: 600px) {
-    .ft__list1 {
-        display: none;
-    }
-
-    .ft__list2 {
-        display: none;
+    #footer>.container {
+        font-size: 12px;
     }
 }

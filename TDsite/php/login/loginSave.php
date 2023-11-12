@@ -25,6 +25,7 @@
         $_SESSION['memberID'] = $memberInfo['memberID'];
         $_SESSION['youEmail'] = $memberInfo['youEmail'];
         $_SESSION['youName'] = $memberInfo['youName'];
+        $_SESSION['youPass'] = $memberInfo['youPass'];
         Header("Location: ../main/main.php");
        }
     }
