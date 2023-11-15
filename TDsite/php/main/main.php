@@ -70,6 +70,7 @@
                 <section id="section1" class="parallax__item">
                     <span class="item__name1 t1">
                         <h2>갤럭시 Z폴드 5</h2>
+                        <p>주머니에서 꺼내는 PC급 스마트폰.</p>
                         <a href="#">바로가기</a>
                     </span>
                     <span class="item__img1">
@@ -107,15 +108,20 @@
                         </div>
                     </div>
                 </section>
+                <!-- //section3 -->
 
-                <section id="section6" class="parallax__item">
-                    <span class="item__name t1">더 가볍고, 더 얇게.</span>
-                    <span class="item__desc t2">
-                        프레임이 줄어들었다고,<br> 성능을 타협하진 않았습니다.
+                <section id="section4">
+                    <span class="item__title">iPhone 15 Pro</span>
+                    <span class="item__img3">
+                        <img src="../../assets/img/GSAPiPhone15.jpg" alt="iPhone15Pro">
                     </span>
-                    <span class="item__img"></span>
+                    <div class="item__link">
+                        <a href="http://rlanrider9.dothome.co.kr/TDsite/php/phone/phoneView.php?phoneId=1&category=%EC%83%81%ED%92%88%EA%B2%8C%EC%8B%9C%ED%8C%90">
+                            바로가기
+                        </a>
+                    </div>
                 </section>
-                <!-- //section6 -->
+                <!-- //section4 -->
             </div>
 
             <div class="intro__inner container">
@@ -130,15 +136,15 @@
 
                 <div class="intro__images">
                     <div class="intro__img">
-                        <a href="../phone/compare.php"><img src="../../assets/img/compare__icon.png" alt="스마트폰 비교하기"></a>
-                        <span><a href="../phone/compare.php">스마트폰 비교하기</a></span>
+                        <a href="../phone/compare.php"><img src="../../assets/img/icon__compare.png" alt="스마트폰 비교하기"></a>
+                        <span><a href="../phone/compare.php">비교하기</a></span>
                     </div>
                     <div class="intro__img">
-                        <a href="../join/join.php"><img src="../../assets/img/join__icon.png" alt="회원가입"></a>
+                        <a href="../join/join.php"><img src="../../assets/img/icon__join.png" alt="회원가입"></a>
                         <span><a href="../join/join.php">회원가입</a></span>
                     </div>
                     <div class="intro__img">
-                        <a href="../board/boardCate.php?category=자유게시판"><img src="../../assets/img/community__icon.png" alt="커뮤니티"></a>
+                        <a href="../board/boardCate.php?category=자유게시판"><img src="../../assets/img/icon__comunity.png" alt="커뮤니티"></a>
                         <span><a href="../board/boardCate.php?category=자유게시판">커뮤니티</a></span>
                     </div>
                 </div>
@@ -147,15 +153,15 @@
                 <div class="intro__footer">
 <?php 
     if($memberId === -1){ ?>
-        <span></span>
-        <!-- <div class="intro__btn">
-            <a href="../phone/apple.php">둘러보기</a>
-        </div> -->
-    <?php } else { ?>
         <span>이미 회원이신가요?</span>
         <div class="intro__btn">
             <a href="../login/login.php">로그인</a>
         </div>
+        <!-- <div class="intro__btn">
+            <a href="../phone/apple.php">둘러보기</a>
+        </div> -->
+    <?php } else { ?>
+        <span></span>
     <?php }
 ?>
                 </div>
@@ -176,7 +182,6 @@
 
     <!-- script -->
     <script>
-
         window.onload = () => {
             // 슬라이드
             let currentIndex = 0;   //현재 이미지
@@ -208,8 +213,9 @@
 
         // 애니메이션
         const ani1 = gsap.timeline();
-        ani1.from("#section1 .item__name1", {yPercent: -5, opacity: 0, ease: "expo.out", duration: 1,})
-            .from("#section1 a", {yPercent: -5, opacity: 0, ease: "expo.out", duration: 1,});
+        ani1.from("#section1 h2", {yPercent: -5, opacity: 0, ease: "expo.out", duration: 1,})
+            .from("#section1 p", {yPercent: -5, opacity: 0, ease: "expo.out", duration: 0.8,})
+            .from("#section1 a", {yPercent: -5, opacity: 0, ease: "expo.out", duration: 0.8,});
 
         ScrollTrigger.create({
             animation: ani1,
@@ -219,45 +225,84 @@
         });
 
         const ani2 = gsap.timeline();
-        ani2.from("#section2 .item__img2", {
-            opacity: 0,
-            scale: 2,
-            width: "100%",
-            height: "100%",
-            duration: 1
-        }).from("#section2 .item__desc2 h2", {
-            yPercent: -5,
-            opacity: 0,
-            ease: "expo.out",
-            duration: 0.8
-        }).from("#section2 .item__desc2 p", {
-            yPercent: -5,
-            opacity: 0,
-            ease: "expo.out",
-            duration: 0.8
-        });
+        ScrollTrigger.matchMedia({
+            "(min-width: 1090px)" : function(){
+                ani2.from("#section2 .item__img2", {
+                    opacity: 0,
+                    scale: 2,
+                    width: "100%",
+                    height: "100%",
+                    duration: 1,
+                    trigger: "#section2",
+                    start: "top top",
+                    end: "+=3500",
+                }).from("#section2 .item__desc2 h2", {
+                    yPercent: -5,
+                    opacity: 0,
+                    ease: "expo.out",
+                    duration: 0.8
+                }).from("#section2 .item__desc2 p", {
+                    yPercent: -5,
+                    opacity: 0,
+                    ease: "expo.out",
+                    duration: 0.8
+                });
+                ScrollTrigger.create({
+                    animation: ani2,
+                    trigger: "#section2",
+                    start: "top center",
+                    end: "+=3500",
+                });
+            },
+            "(max-width: 1080px)" : function(){
+                ani2.from("#section2 .item__img2", {
+                    opacity: 0,
+                    scale: 2,
+                    width: "100%",
+                    height: "100%",
+                    duration: 1,
+                }).from("#section2 .item__desc2 h2", {
+                    yPercent: -5,
+                    opacity: 0,
+                    ease: "expo.out",
+                    duration: 0.8,
+                }).from("#section2 .item__desc2 p", {
+                    yPercent: -5,
+                    opacity: 0,
+                    ease: "expo.out",
+                    duration: 0.8
+                });
+                ScrollTrigger.create({
+                    animation: ani2,
+                    trigger: "#section2",
+                    start: "top center",
+                    end: "+=3500",
+                });
+            }
+        })
+
+        const ani3 = gsap.timeline();
+        ani3.from("#section3 .content__text h2", {yPercent: -5, opacity: 0, ease: "expo.out", duration: 0.8,})
+            .from("#section3 .content__text p", {yPercent: -5, opacity: 0, ease: "expo.out", duration: 0.8,});
 
         ScrollTrigger.create({
-            animation: ani2,
-            trigger: "#section2",
-            start: "top top",
-            end: "+=3500",
-            scrub: true,
-            pin: true
+            animation: ani3,
+            trigger: "#section3",
+            start: "top center",
+            end: "+=2500",
         });
 
-        const ani6 = gsap.timeline()
-        ani6.from("#section6 .t1", { x: innerWidth * 1 })
-            .from("#section6 .t2", { x: innerWidth * -1 })
+
+        const ani4 = gsap.timeline();
+        ani4.to("#section4 .item__img3", {xPercent: -150, opacity: 1, ease: "expo.out", duration: 1})
+            .from("#section4 .item__title", {yPercent: -5, opacity: 0, ease: "expo.out", duration: 1})
+            .from("#section4 .item__link a", {yPercent: -5, opacity:0, ease: "expo.out", duration: 1});
 
         ScrollTrigger.create({
-            animation: ani6,
-            trigger: "#section6",
-            start: "top top",
-            end: "+=6000",
-            scrub: true,
-            anticipatePin: 1,
-            pin: true
+            animation: ani4,
+            trigger: "#section4",
+            start: "top center",
+            end: "+=3000"
         });
 
 

@@ -65,8 +65,8 @@
 }
 
 #main .intro__inner .intro__images .intro__img img {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
 }
 
 #main .intro__img span {
@@ -127,17 +127,20 @@
 #section3 {
     width: 100%;
 }
+
 .content__wrap {
     width: 100%;
     height: 760px;
     position: relative;
 }
+
 .content__img {
     background-image: url(../../assets/img/ZfoldGSAP.jpg);
     height: 100%;
     background-position: center;
     background-size: cover;
 }
+
 .content__text {
     position: absolute;
     left: 65%;
@@ -147,13 +150,17 @@
     display: flex;
     flex-direction: column;
 }
+
 .content__text h2 {
     font-size: 30px;
     font-weight: 800;
     margin-bottom: 20px;
+    word-break: keep-all;
 }
+
 .content__text p {
     font-size: 18px;
+    word-break: keep-all;
 }
 
 /* GSAP */
@@ -163,6 +170,7 @@
     justify-content: center;
     background-color: var(--white200);
 }
+
 #section1 .item__name1 {
     padding-top: 250px;
     margin-left: 100px;
@@ -174,6 +182,10 @@
     white-space: nowrap;
 }
 
+#section1 .item__name1 p {
+    margin-left: 7px;
+}
+
 #section1 .item__name1 a {
     padding: 8px 22px;
     border-radius: 5px;
@@ -182,24 +194,35 @@
     color: var(--black);
     margin: 13px 0 0 7px;
     display: inline-block;
+    transition: background-color 0.3s;
 }
+
+#section1 .item__name1 a:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
 #section1 .item__img1 img {
     width: 100%;
 }
 
-@media(max-width:1280px){
+
+@media(max-width:1280px) {
     #section1 {
         flex-direction: column;
     }
+
     #section1 .item__img1 img {
         margin-bottom: 250px;
     }
 }
-@media(max-width:540px){
+
+@media(max-width:540px) {
     #section1 .item__name1 {
         margin: 0;
         padding: 250px 0 100px 50px;
     }
+
     #section1 .item__name1 h2 {
         font-size: 2rem;
     }
@@ -207,15 +230,6 @@
 
 .parallax__cont {
     overflow: hidden;
-}
-
-#section6 {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 #section2 {
@@ -227,6 +241,7 @@
     align-items: center;
     overflow: hidden;
 }
+
 #section2 .item__img2 {
     width: 100%;
     height: 800px;
@@ -234,6 +249,7 @@
     align-items: center;
     justify-content: center;
 }
+
 #section2 .item__desc2 {
     position: absolute;
     left: 50%;
@@ -244,12 +260,77 @@
     flex-direction: column;
     text-align: center;
 }
+
+#section2 .item__desc2 p {
+    word-break: keep-all;
+}
+
 #section2 .item__desc2 h2 {
     font-size: 3.5rem;
     font-weight: 800;
     white-space: nowrap;
     margin-bottom: 25px;
 }
+
+@media(max-width:1080px) {
+    #section2 .item__desc2 h2 {
+        font-size: 2.3rem;
+    }
+}
+
+@media(max-width:680px) {
+    #section2 .item__desc2 h2 {
+        font-size: 5vw;
+    }
+}
+
+@media(max-width:500px) {
+    #section2 .item__img2 {
+        scale: 0.6;
+    }
+
+    #section2 .item__desc2 p {
+        font-size: 0.8rem;
+    }
+}
+
+#section4 {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#section4 .item__title {
+    color: #BEB8AE;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+#section4 .item__img3 {
+    opacity: 0;
+    transform: translateX(150%);
+}
+
+#section4 .item__img3 img {
+    width: 100%;
+}
+
+#section4 .item__link {
+    margin-top: 20px;
+}
+
+#section4 .item__link a {
+    font-size: 1rem;
+    color: var(--white);
+    background-color: var(--blue100);
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
+}
+
 .item__name {
     position: absolute;
     left: 40px;
@@ -268,41 +349,4 @@
     z-index: 99;
     text-transform: uppercase;
     display: inline-block;
-}
-
-.t2 {
-    position: absolute;
-    left: 40px;
-    top: 50%;
-}
-
-.t3 {
-    position: absolute;
-    left: 40px;
-    top: 60%;
-}
-
-.t4 {
-    position: absolute;
-    left: 40px;
-    top: 70%;
-}
-
-.item__img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-}
-
-#section1 .item__img {
-
-}
-
-
-#section6 .item__img {
-    background-image: url(../img/gsap01-min.jpg);
 }

@@ -6,7 +6,7 @@
     // var_dump($_SESSION);
     // echo "</pre>";
 
-    $categorySql = "SELECT * FROM Phone WHERE pDelete = 1 AND pCategory = '삼성' ORDER BY phoneId DESC";
+    $categorySql = "SELECT * FROM Phone WHERE pDelete = 1 AND pCategory = '삼성' ORDER BY phoneId ASC";
     $categoryResult = $connect -> query($categorySql);
     $categoryInfo = $categoryResult -> fetch_array(MYSQLI_ASSOC);
     $categoryCount = $categoryResult -> num_rows;

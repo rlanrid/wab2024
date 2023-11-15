@@ -5,7 +5,7 @@
     $sql .= "phoneId int(10) unsigned auto_increment,";
     $sql .= "pTitle varchar(255) NOT NULL,";
     $sql .= "pCategory varchar(10) NOT NULL,";
-    $sql .= "pRegTime int(10) NOT NULL,";
+    $sql .= "pRegTime DATETIME NOT NULL,";
 
     $sql .= "pDesc longtext DEFAULT NULL,";
     $sql .= "pLink longtext DEFAULT NULL,";
@@ -25,7 +25,6 @@
     
     $sql .= "pImgFile varchar(100) DEFAULT NULL,";
     $sql .= "pImgSize varchar(100) DEFAULT NULL,";
-    $sql .= "pModTime int(10) DEFAULT NULL,";
     $sql .= "pDelete int(10) DEFAULT 1,";
 
     $sql .= "PRIMARY KEY (phoneId)";

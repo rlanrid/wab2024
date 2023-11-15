@@ -160,7 +160,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="trDay" colspan="3">게시일 <em><?=date('Y. m. d 오전 g:i', $boardInfo['fRegTime'])?></em></td>
+                                <td class="trDay" colspan="3">게시일 <em>
+<?php
+    $timestamp = $boardInfo['fRegTime'];
+    $am_pm = date('a', $timestamp);
+    $ampm_str = ($am_pm == 'am') ? '오전' : '오후';
+    echo date('Y. m. d', $timestamp) . ' ' . $ampm_str . ' ' . date('g:i', $timestamp);
+?>
+</em></td>
                             </tr>
                         </tbody>
                     </table>

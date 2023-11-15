@@ -1,3 +1,52 @@
+.table__header {
+    height: 100px;
+    margin-bottom: 20px;
+}
+.table__header td {
+    min-width: 30px;
+    text-align: center;
+    font-size: 16px;
+}
+.table__header > .table__title {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 10%;
+    max-width: 100%;
+}
+.table__header .filter {
+    text-align: right;
+}
+
+.table__contents td {
+    min-width: 30px;
+    text-align: center;
+    font-size: 16px;
+    height: 50px;
+}
+.table__contents .title {
+    max-width: 100%;
+    text-align: left;
+    font-size: 14px;
+    margin-right: 10%;
+}
+.latest__info {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 16px;
+    color: var(--blue100);
+}
+.latest__info .date {
+    margin-left: 0.33333rem;
+}
+
+
+
+
+
+
+
+
 /* btn__Style2 */
 .btn__style2 {
     display: block;
