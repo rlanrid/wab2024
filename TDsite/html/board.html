@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trend Device</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
-
+        
     </style>
 </head>
-
 <body>
     <div id="wrap">
         <header id="header">
@@ -41,7 +39,7 @@
             </div>
         </header>
         <!-- //header -->
-
+        
         <nav id="nav">
             <div class="container">
                 <ul>
@@ -71,7 +69,7 @@
             </div>
         </nav>
         <!-- //nav -->
-
+        
         <main id="main">
             <div class="board__inner container">
                 <div class="board__top">
@@ -84,15 +82,11 @@
                             <legend class="blind">게시판 검색 영역</legend>
                         </fieldset>
                         <div class="search__bar">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-                                <path
-                                    d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z "
-                                    fill="#59595A" />
-                            </svg>
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z " fill="#59595A"/></svg>
                             <input type="search" name="searchKeyword" id="searchKeyword" placeholder="검색" required>
                         </div>
-                    </form>
+                    </form>    
                 </div>
                 <div class="board__pages">
                     <ul>
@@ -102,13 +96,14 @@
                 </div>
                 <div class="board__table">
                     <table>
-                        <colgroup>
-                            <col style="width: 50%;">
-                            <col style="width: 5%;">
-                            <col style="width: 5%;">
-                            <col style="width: 5%;">
+                        <!-- <colgroup>
+                            <col style="width: 5%">
+                            <col style="width: 5%">
+                            <col style="width: 5%">
                             <col style="width: 10%">
-                        </colgroup>
+                            <col style="width: 10%">
+                            <col>
+                        </colgroup> -->
                         <thead class="blind">
                             <tr>
                                 <th>프로필 이미지</th>
@@ -120,145 +115,66 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="table__header">
-                                <td class="table__title">글타래</td>
-                                <td>체크</td>
-                                <td>조회수</td>
-                                <td>댓글</td>
-                                <td class="filter">필터:최근항목</td>
+                            <tr>
+                                <td rowspan="2" style="width: 5%"><img src="../assets/img/profile.png" alt="프로필 이미지"></td>
+                                <td colspan="5"><a href="boardView.html">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></td>
                             </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
+                            <tr class="fG">
+                                <td>43분전</td>
+                                <td>공감 <em>0</em></td>
+                                <td>조회수 <em>1</em></td>
+                                <td>작성자 <em>김이름</em></td>
+                                <td style="width: 50%"></td>
                             </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
+                            <!-- //1 -->
+                            <tr>
+                                <td rowspan="2" style="width: 5%"><img src="../assets/img/profile.png" alt="프로필 이미지"></td>
+                                <td colspan="5"><a href="boardView.html">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></td>
                             </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
+                            <tr class="fG">
+                                <td>43분전</td>
+                                <td>공감 <em>0</em></td>
+                                <td>조회수 <em>1</em></td>
+                                <td>작성자 <em>김이름</em></td>
+                                <td style="width: 50%"></td>
                             </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
+                            <!-- //1 -->
+                            <tr>
+                                <td rowspan="2" style="width: 5%"><img src="../assets/img/profile.png" alt="프로필 이미지"></td>
+                                <td colspan="5"><a href="boardView.html">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></td>
                             </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
+                            <tr class="fG">
+                                <td>43분전</td>
+                                <td>공감 <em>0</em></td>
+                                <td>조회수 <em>1</em></td>
+                                <td>작성자 <em>김이름</em></td>
+                                <td style="width: 50%"></td>
                             </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
+                            <!-- //1 -->
+                            <tr>
+                                <td rowspan="2" style="width: 5%"><img src="../assets/img/profile.png" alt="프로필 이미지"></td>
+                                <td colspan="5"><a href="boardView.html">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></td>
                             </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
+                            <tr class="fG">
+                                <td>43분전</td>
+                                <td>공감 <em>0</em></td>
+                                <td>조회수 <em>1</em></td>
+                                <td>작성자 <em>김이름</em></td>
+                                <td style="width: 50%"></td>
                             </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
+                            <!-- //1 -->
+                            <tr>
+                                <td rowspan="2" style="width: 5%"><img src="../assets/img/profile.png" alt="프로필 이미지"></td>
+                                <td colspan="5"><a href="boardView.html">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></td>
                             </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
+                            <tr class="fG">
+                                <td>43분전</td>
+                                <td>공감 <em>0</em></td>
+                                <td>조회수 <em>1</em></td>
+                                <td>작성자 <em>김이름</em></td>
+                                <td style="width: 50%"></td>
                             </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="table__contents">
-                                <td class="title">게시글 제목</td>
-                                <td class="check">애플</td>
-                                <td class="view">2</td>
-                                <td class="comment">1</td>
-                                <td class="latest">
-                                    <div class="latest__info">
-                                        <div class="author">이이이</div>
-                                        <div class="date">5일전</div>
-                                    </div>
-                                </td>
-                            </tr>
+                            <!-- //1 -->
                         </tbody>
                     </table>
                 </div>
@@ -343,5 +259,4 @@
     <!-- script -->
     <script src="../assets/script/script.js"></script>
 </body>
-
 </html>
