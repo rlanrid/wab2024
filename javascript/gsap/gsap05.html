@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,21 +15,25 @@
             margin: 0;
             padding: 0;
         }
+
         a {
             color: #fff;
             text-decoration: none;
         }
+
         body {
             color: #fff;
             background-color: #111;
             font-family: 'NexonLv1Gothic';
         }
+
         #parallax__title {
             position: fixed;
             left: 20px;
             top: 20px;
             z-index: 10000;
         }
+
         #parallax__title h1 {
             font-size: 30px;
             border-bottom: 1px dashed #fff;
@@ -37,15 +42,19 @@
             font-weight: 400;
             display: inline-block;
         }
+
         #parallax__title p {
             font-size: 16px;
         }
+
         #parallax__title ul {
             margin-top: 10px;
         }
+
         #parallax__title li {
             display: inline;
         }
+
         #parallax__title li a {
             width: 20px;
             height: 20px;
@@ -56,17 +65,19 @@
             font-size: 12px;
             display: inline-block;
         }
+
         #parallax__title li.active a {
             background-color: #fff;
             color: #000;
         }
-        
+
         /* parallax__cont */
         #parallax__cont {
             max-width: 1600px;
             width: 98%;
             margin: 0 auto;
         }
+
         .parallax__item {
             width: 1000px;
             max-width: 70vw;
@@ -76,10 +87,12 @@
             position: relative;
             padding-top: 15vw;
         }
-        .parallax__item:nth-child(even){
+
+        .parallax__item:nth-child(even) {
             margin-left: 0;
             text-align: right;
         }
+
         .parallax__item__num {
             font-size: 35vw;
             position: absolute;
@@ -89,20 +102,24 @@
             font-family: "Lato";
             font-weight: 100;
         }
+
         .parallax__item:nth-child(even) .parallax__item__num {
             left: auto;
             right: -5vw;
         }
+
         .parallax__item__title {
             padding-bottom: 5px;
             font-weight: 400;
         }
+
         .parallax__item__imgWrap {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
             overflow: hidden;
         }
+
         .parallax__item__img {
             position: absolute;
             left: -5%;
@@ -116,37 +133,48 @@
             filter: saturate(0%);
             transition: all 1s;
         }
+
         .parallax__item__img:hover {
             filter: saturate(100%);
             transform: scale(1.025);
         }
+
         #section1 .parallax__item__img {
             background-image: url(img/images01-min.jpg);
         }
+
         #section2 .parallax__item__img {
             background-image: url(img/images02-min.jpg);
         }
+
         #section3 .parallax__item__img {
             background-image: url(img/images03-min.jpg);
         }
+
         #section4 .parallax__item__img {
             background-image: url(img/images04-min.jpg);
         }
+
         #section5 .parallax__item__img {
             background-image: url(img/images05-min.jpg);
         }
+
         #section6 .parallax__item__img {
             background-image: url(img/images06-min.jpg);
         }
+
         #section7 .parallax__item__img {
             background-image: url(img/images07-min.jpg);
         }
+
         #section8 .parallax__item__img {
             background-image: url(img/images08-min.jpg);
         }
+
         #section9 .parallax__item__img {
             background-image: url(img/images09-min.jpg);
         }
+
         .parallax__item__desc {
             font-size: 4vw;
             line-height: 1.4;
@@ -156,12 +184,18 @@
             position: relative;
             word-break: keep-all;
         }
+
         .parallax__item__img:nth-child(even) .parallax__item__desc {
             margin-left: auto;
             margin-right: -4vw;
         }
+
+        #footer a {
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
     <header id="parallax__title">
         <h1>GSAP Parallax Effect05</h1>
@@ -287,31 +321,31 @@
     <script>
 
         const hide = (item) => {
-            gsap.set(item, {autoAlpha: 0});
+            gsap.set(item, { autoAlpha: 0 });
         }
 
         const animate = (item) => {
             let x = 300;
-            let y = 0; 
+            let y = 0;
             let delay = item.dataset.delay;
 
-            if(item.classList.contains("reveal_LTR")){
+            if (item.classList.contains("reveal_LTR")) {
                 x = -100;
                 y = 0;
-            } else if(item.classList.contains("reveal_BTT")) {
+            } else if (item.classList.contains("reveal_BTT")) {
                 x = 0,
-                y = 100
-            } else if(item.classList.contains("reveal_TTB")){
+                    y = 100
+            } else if (item.classList.contains("reveal_TTB")) {
                 x = 0,
-                y = -100
+                    y = -100
             } else {
                 x = 100,
-                y = 0
+                    y = 0
             }
 
-            gsap.fromTo(item, 
-                {autoAlpha: 0, x: x, y: y}, 
-                {autoAlpha: 1, x: 0, y: 0, delay: delay, duration: 1.25, overwrite: "auto", ease: "expo"})
+            gsap.fromTo(item,
+                { autoAlpha: 0, x: x, y: y },
+                { autoAlpha: 1, x: 0, y: 0, delay: delay, duration: 1.25, overwrite: "auto", ease: "expo" })
         }
 
         gsap.utils.toArray(".reveal").forEach(item => {
@@ -322,9 +356,10 @@
                 start: "top bottom",
                 end: "bottom top",
                 markers: true,
-                onEnter: () => {animate(item)}
+                onEnter: () => { animate(item) }
             })
         });
     </script>
 </body>
+
 </html>
