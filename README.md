@@ -1,4 +1,4 @@
-# wab2024
+# webs2024
 수업시간에 정리한 내용입니다.
 https://rlanrid.github.io/webs2024/
 
